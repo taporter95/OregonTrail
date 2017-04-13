@@ -1,56 +1,48 @@
-var caravan {
-	party: [];
-	status: [];
-	health: "good";
-	money: 0;
-	oxen: 0;
-	food: 0;
-	clothing: 0;
-	ammo: 0;
-	wheels: 0;
-	axles: 0;
-	tongues: 0;
-	score_multiplier: 1;
-};
 
-var gameStats {
-	date: new Date();
-	pace: "steady";
-	paceVal: 1;
-	rations: "filling";
-	rationVal: 3;
-	health: "good";
-	location: 0;
-	milesTraveled: 0;
-	milesToNext: 0;
-};
+var caravan = new Object();
+caravan.party = [];
+caravan.status = ["good", "good", "good", "good", "good"];
+caravan.diseases = ["none", "none", "none", "none", "none"];
+caravan.health = [10, 10, 10, 10, 10];
+caravan.partyHealth = "good";
+caravan.money = 0;
+caravan.oxen = 0;
+caravan.food = 0;
+caravan.clothing = 0;
+caravan.ammo = 0;
+caravan.parts = [0, 0, 0];
+
+var gameStats = new Object();
+gameStats.date = new Date();
+gameStats.pace = "steady";
+gameStats.paceVal = 1;
+gameStats.rations = "filling";
+gameStats.rationVal = 3;
+gameStats.health = "good";
+gameStats.weather = "warm";
+gameStats.weatherCode = 1;
+gameStats.location = 0;
+gameStats.milesTraveled = 0;
+gameStats.milesToNext = 0;
 
 var locationNames = ["Independence", "Kansas River", "Big Blue River", "Fort Kearney", "Chimney Rock", "Fort Larmite", "Independence Rock", "South Pass", "Green River Crossing", "Fort Bridger", "Soda Springs", "Fort Hall", "Snake River Crossing", "Fort Boise", "Blue Mountains"];
 var travelDistances = [102, 82, 118, 250, 86, 190, 102, 57, 125, 143, 162, 57, 182, 113, 160];
 var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landmark", "landmark", "river", "fort", "landmark", "fort", "river", "fort", "landmark"];
 
+chooseClassAndNames();
+
 function chooseClassAndNames(){
+	moneyOptions = ["error", 1600, 800, 400];
+	multipliers = ["error", 1, 2, 3];
 	console.log("Choose class");
 	console.log("1 : banker");
 	console.log("2 : carpenter");
 	console.log("3 : farmer");
-	var profession = parseInt(prompt());
-	if (profession == 1){
-		caravan.money = 1600;
-		caravan.score_multiplier = 1;
-	}
-	else if (profession == 2){
-		caravan.money = 800;
-		caravan.score_multiplier = 2;
-	}
-	else if (profession == 3){
-		caravan.money = 400;
-		caravan.score_multiplier = 3;
-	}
-	for (var i = 0; i < 5; i++){
-		caravan.party.push(prompt("Enter party member name: "));
-		caravan.status.push(10);
-	}
+	var profession = parseInt(prompt("Enter Profession"));
+	
+	caravan.money = moneyOptions[profession];
+	caravan.score_multiplier = multipliers[profession];
+	
 	console.log("When do you want to leave?");
 	console.log("1. March");
 	console.log("2. April");
@@ -75,8 +67,9 @@ function buySupplies(){
 		console.log("5. Spare Parts      $" + bill[5]);
 		console.log("--------------------------------");
 		console.log("         Total Bill:  $" + bill[0]);
+		console.log("\n money: " caravan.money);
 		input = parseInt(prompt("What would you like to buy?"));
-		if (input > 5){
+		if (input < 5){
 			bill[input] = buyItem(input);
 		}
 	}
@@ -85,9 +78,9 @@ function buySupplies(){
 	caravan.food = bill[2] / 0.20;
 	caravan.clothing = bill[3] / 10;
 	caravan.ammo = (bill[4] / 2) * 20;
-	caravan.wheels = bill[5] / 30;
-	caravan.axles = bill[5] / 30;
-	caravan.tongues = bill[5] / 30;
+	caravan.parts[0] = bill[5] / 30;
+	caravan.parts[1] = bill[5] / 30;
+	caravan.parts[2] = bill[5] / 30;
 
 	situation(true);
 }
@@ -98,19 +91,19 @@ function buyItem(item){
 		input = parseInt(prompt("How many yokes?"));
 		return 40 * input;
 	}
-	else if (input == 2){
+	else if (item == 2){
 		input = parseInt(prompt("How much food?"));
 		return 0.20 * input;
 	}
-	else if (input == 3){
+	else if (item == 3){
 		input = parseInt(prompt("How many clothes?"));
 		return 10 * input;
 	}
-	else if (input == 4){
+	else if (item == 4){
 		input = parseInt(prompt("How many boxes of bullets?"));
 		return 2 * input;
 	}
-	else if (input == 5){
+	else if (item == 5){
 		input = parseInt(prompt("How many of each?"));
 		return 10 * 3 * input;
 	}
@@ -126,7 +119,7 @@ function situation(inTown){
 	console.log("	3.  Look at map");
 	console.log("	4. 	Change pace");
 	console.log("	5.  Change food rations");
-	console.log("   6. 	Stop to rest");
+	console.log("	6. 	Stop to rest");
 	console.log("	7.  Attempt to trade");
 	if (inTown == true){
 		console.log("	8.  Talk to people");
@@ -148,8 +141,8 @@ function takeAction(action){
 	var input = 0;
 	var pace = ["error", "steady", "strenuous", "grueling"];
 	var rations = ["error", "bare bones", "meager", "filling"]; 
+
 	if (action == 1){
-		gameStats.milesToNext = travelDistances[location];
 		travel();
 	}
 	else if (action == 2){
@@ -183,17 +176,119 @@ function takeAction(action){
 }
 
 function travel(){
-	if (gameStats.milesToNext == travelDistances[location]){
-		console.log(gameStats.milesToNext + " miles to " + locationNames[location + 1]);
+	if (gameStats.milesToNext == 0){
+		gameStats.location += 1;
+		gameStats.milesToNext = travelDistances[gameStats.location];
 	}
+	if (gameStats.milesToNext == travelDistances[gameStats.location]){
+		console.log(gameStats.milesToNext + " miles to " + locationNames[gameStats.location + 1]);
+	}
+
+	displayStats();
+
 	gameStats.milesToNext -= (gameStats.pace * 10) + 10;
+
+	for (var i = 0; i < 5; i++){
+		if (caravan.diseases[i] == "none"){
+			caravan.diseases[i] = getDisease();
+			if (caravan.diseases[i] != "none"){
+				caravan.health[i] = 5;
+				caravan.status[i] = "fair";
+				console.log(caravan.party[i] + " has " + caravan.diseases[i]);
+				break;
+			}
+		}
+	}
+
+	updateHealth(false);
+
+	if (gameStats.milesToNext < 0) {
+		gameStats.milesToNext = 0;
+	}
+	var choice = prompt("would you like to take an action?");
+	if (choice == "y"){
+		situation(false);
+	}
 	travel();
 }
 
-function rest(numDays){
-
+function displayStats(){
+	console.log("Date: " + gameStats.date);
+	console.log("Pace: " + gameStats.pace);
+	console.log("Rations: " + gameStats.rations);
 }
 
-/*function randomNumber(min, max){
-	Math.floor(Math.random())
-}*/
+function rest(numDays){
+	for (var i = 0; i < numDays; i++){
+		updateHealth(true);
+	}
+}
+
+function display(message){
+	document.getElementById("message").innerHTML = message;
+}
+
+function getInput(number){
+	var input = document.getElementById("input").innerHTML;
+	if (number){
+		input = parseInt(input);
+	}
+	return input;
+}
+
+function getDisease(){
+	var diseases = ["the measles", "a snakebite", "dysentery", "typhoid", "cholera", "exaustion", "a broken leg"];
+	var num = randomNumber(1, 100);
+	if (num <= 5){
+		return diseases[randomNumber(0, 6)];
+	}
+	else {
+		return "none";
+	}
+}
+
+function updateHealth(resting){
+	var restingBonus = 0;
+	if (resting){
+		restingBonus = 15;
+	}
+	//weather: good, warm, hot, very hot, cold, very cold
+	var statuses = ["dead", "poor", "poor", "poor", "poor", "fair", "fair", "fair", "fair", "good", "good"];
+	var weatherMod = [10, 5, -5, -10, -5, -15];
+	var rationMod = [-5, 5, 10];
+	var paceMods = [0, -5, -10];
+	var paceMod = 0;
+	
+	if (!resting){
+		paceMod = paceMods[gameStats.paceVal];
+	}
+
+	var chanceOfRecovery = 50 + weatherMod[gameStats.weatherCode] + rationMod[gameStats.rationVal] + paceMod + restingBonus;
+
+	for (var i = 0; i < 5; i++) {
+		if (caravan.health[i] > 0 || caravan.health[i] < 10) { 
+			var chance = randomNumber(1, 100);
+			if (chance <= chanceOfRecovery){
+				caravan.health[i] += 1;
+			}
+			else {
+				caravan.health[i] -= 1;
+			}
+			caravan.status[i] = statuses[caravan.health[i]];
+			if (caravan.status[i] == "dead"){
+				console.log(caravan.party[i] + " has died");
+			}
+			if (caravan.health[i] == 10) {
+				caravan.diseases[i] = "none";
+			}
+		}
+	}
+
+	var totalHealth = caravan.health[0] + caravan.health[1] + caravan.health[2] + caravan.health[3] + caravan.health[4];
+	totalHealth = Math.floor(totalHealth / 5);
+	caravan.partyHealth = statuses[totalHealth];
+}
+
+function randomNumber(min, max){
+	return Math.floor(Math.random() * (max - min)) + min;
+}
