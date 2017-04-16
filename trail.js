@@ -67,7 +67,7 @@ function buySupplies(){
 		console.log("5. Spare Parts      $" + bill[5]);
 		console.log("--------------------------------");
 		console.log("         Total Bill:  $" + bill[0]);
-		console.log("\n money: " caravan.money);
+		console.log("\n money: " (caravan.money - bill[0]);
 		input = parseInt(prompt("What would you like to buy?"));
 		if (input < 5){
 			bill[input] = buyItem(input);
@@ -179,14 +179,19 @@ function travel(){
 	if (gameStats.milesToNext == 0){
 		gameStats.location += 1;
 		gameStats.milesToNext = travelDistances[gameStats.location];
-	}
-	if (gameStats.milesToNext == travelDistances[gameStats.location]){
+		if (locationType[gameStats.location] == "river"){
+			crossRiver();
+		}
+		else if (locationType[gameStats.location] == "fort"){
+			situation(true);
+		}
 		console.log(gameStats.milesToNext + " miles to " + locationNames[gameStats.location + 1]);
 	}
 
 	displayStats();
 
 	gameStats.milesToNext -= (gameStats.pace * 10) + 10;
+	gameStats.date.setDate(gameStats.date.getDate() + 1);
 
 	for (var i = 0; i < 5; i++){
 		if (caravan.diseases[i] == "none"){
@@ -201,6 +206,7 @@ function travel(){
 	}
 
 	updateHealth(false);
+	updateWeather();
 
 	if (gameStats.milesToNext < 0) {
 		gameStats.milesToNext = 0;
@@ -216,11 +222,13 @@ function displayStats(){
 	console.log("Date: " + gameStats.date);
 	console.log("Pace: " + gameStats.pace);
 	console.log("Rations: " + gameStats.rations);
+	console.log("Health: " + caravan.partyHealth);
 }
 
 function rest(numDays){
 	for (var i = 0; i < numDays; i++){
 		updateHealth(true);
+		gameStats.date.setDate(gameStats.date.getDate() + 1);
 	}
 }
 
@@ -252,7 +260,7 @@ function updateHealth(resting){
 	if (resting){
 		restingBonus = 15;
 	}
-	//weather: good, warm, hot, very hot, cold, very cold
+
 	var statuses = ["dead", "poor", "poor", "poor", "poor", "fair", "fair", "fair", "fair", "good", "good"];
 	var weatherMod = [10, 5, -5, -10, -5, -15];
 	var rationMod = [-5, 5, 10];
@@ -266,7 +274,7 @@ function updateHealth(resting){
 	var chanceOfRecovery = 50 + weatherMod[gameStats.weatherCode] + rationMod[gameStats.rationVal] + paceMod + restingBonus;
 
 	for (var i = 0; i < 5; i++) {
-		if (caravan.health[i] > 0 || caravan.health[i] < 10) { 
+		if (caravan.health[i] < 10 && caravan.health[i] != 0) { 
 			var chance = randomNumber(1, 100);
 			if (chance <= chanceOfRecovery){
 				caravan.health[i] += 1;
@@ -274,6 +282,11 @@ function updateHealth(resting){
 			else {
 				caravan.health[i] -= 1;
 			}
+
+			if (caravan.health[i] < 0){
+				caravan.health[i] = 0;
+			}
+
 			caravan.status[i] = statuses[caravan.health[i]];
 			if (caravan.status[i] == "dead"){
 				console.log(caravan.party[i] + " has died");
@@ -287,6 +300,58 @@ function updateHealth(resting){
 	var totalHealth = caravan.health[0] + caravan.health[1] + caravan.health[2] + caravan.health[3] + caravan.health[4];
 	totalHealth = Math.floor(totalHealth / 5);
 	caravan.partyHealth = statuses[totalHealth];
+}
+
+function updateWeather(){
+	// weather codes: good => 0, warm => 1, hot => 2, very hot => 3, cool => 4, cold => 5, very cold => 6
+	var weatherTypes = ["good", "warm", "hot", "very hot", "cold", "very cold"];
+	var weatherCodes = [[4, 4, 5, 5, 5], [4, 4, 4, 5, 5], [0, 4, 4, 5, 5], [0, 1, 4, 4, 5], [0, 0, 1, 1, 4], [0, 0, 1, 1, 2], [0, 1, 1, 2, 3], [0, 1, 2, 3, 3], [0, 0, 1, 4, 4], [0, 0, 4, 4, 5], [0, 4, 4, 4, 5], [4, 4, 4, 5, 5]];
+	gameStats.weatherCode = weatherCodes[gameStats.date.getMonth()][randomNumber(0, 4)];
+	gameStats.weather = weatherTypes[gameStats.weatherCode];
+}
+
+function crossRiver(){
+	var riverWidth = randomNumber(400, 600);
+	var riverDepth = parseFloat((Math.random() * (6 - 2) + 2).toFixed(1));
+	var crossed = false;
+
+	while (crossed == false){
+		console.log("Weather: " + gameStats.weather + "feet");
+		console.log("River width: " + riverWidth + "feet");
+		console.log("River depth: " + riverDepth + "feet");
+		console.log("You may:");
+		console.log("1. attempt to ford the river");
+		console.log("2. caulk the wagon and float it across");
+		console.log("3. take the ferry across");
+		console.log("4. wait to see if conditions improve");
+		
+		var choice = parseInt(prompt("What would you like to do?"));
+
+		if (choice == 1){
+			if (riverDepth <= 2.5){
+				crossed = true;
+			}
+		}
+		else if (choice == 2){
+			if (riverDepth <= 4){
+				crossed = true;
+			}
+		}
+		else if (choice == 3){
+			caravan.money -= 5;
+			crossed = true;
+		}
+		else if (choice == 4){
+			var num = randomNumber(1, 100);
+			var change = parseFloat((Math.random() * (0.4 - 0.1) + 0.1).toFixed(1));
+			if (num <= 75){
+				riverDepth -= change;
+			}
+			else {
+				riverDepth += change;
+			}
+		}
+	}
 }
 
 function randomNumber(min, max){
