@@ -1,6 +1,7 @@
 
 var caravan = new Object();
 caravan.party = [];
+caravan.partySize = 5;
 caravan.status = ["good", "good", "good", "good", "good"];
 caravan.diseases = ["none", "none", "none", "none", "none"];
 caravan.health = [10, 10, 10, 10, 10];
@@ -25,9 +26,9 @@ gameStats.location = 0;
 gameStats.milesTraveled = 0;
 gameStats.milesToNext = 0;
 
-var locationNames = ["Independence", "Kansas River", "Big Blue River", "Fort Kearney", "Chimney Rock", "Fort Larmite", "Independence Rock", "South Pass", "Green River Crossing", "Fort Bridger", "Soda Springs", "Fort Hall", "Snake River Crossing", "Fort Boise", "Blue Mountains"];
-var travelDistances = [102, 82, 118, 250, 86, 190, 102, 57, 125, 143, 162, 57, 182, 113, 160];
-var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landmark", "landmark", "river", "fort", "landmark", "fort", "river", "fort", "landmark"];
+var locationNames = ["Independence", "Kansas River", "Big Blue River", "Fort Kearney", "Chimney Rock", "Fort Laramie", "Independence Rock", "South Pass", "Green River Crossing", "Fort Bridger", "Soda Springs", "Fort Hall", "Snake River Crossing", "Fort Boise", "Blue Mountains", "Fort Walla Walla"];
+var travelDistances = [102, 82, 118, 250, 86, 190, 102, 57, 125, 143, 162, 57, 182, 113, 160, 55];
+var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landmark", "landmark", "river", "fort", "landmark", "fort", "river", "fort", "landmark", "fort"];
 
 chooseClassAndNames();
 
@@ -192,6 +193,7 @@ function travel(){
 
 	gameStats.milesToNext -= (gameStats.pace * 10) + 10;
 	gameStats.date.setDate(gameStats.date.getDate() + 1);
+	caravan.food -= caravan.partySize * gameStats.rationVal;
 
 	for (var i = 0; i < 5; i++){
 		if (caravan.diseases[i] == "none"){
@@ -256,25 +258,33 @@ function getDisease(){
 }
 
 function updateHealth(resting){
-	var restingBonus = 0;
-	if (resting){
-		restingBonus = 15;
-	}
-
-	var statuses = ["dead", "poor", "poor", "poor", "poor", "fair", "fair", "fair", "fair", "good", "good"];
-	var weatherMod = [10, 5, -5, -10, -5, -15];
-	var rationMod = [-5, 5, 10];
-	var paceMods = [0, -5, -10];
+	var restingBonus = 15;
+	var statuses = ["dead", "very poor", "very poor", "poor", "poor", "fair", "fair", "fair", "fair", "good", "good"];
+	//weather types: very cold, cold, cool, good, warm, hot, very hot, rainy, very rainy, snowy
+	var weatherMod = [-25, -15, -5, 0, -5, -15, -25, -15, -20, -20];
+	var rationMod = [-15, -5, 0];
+	var paceMods = [-10, -15, -20];
 	var paceMod = 0;
-	
+	var foodMod = 0;
+
 	if (!resting){
 		paceMod = paceMods[gameStats.paceVal];
+		restingBonus = 0;
+	}
+	if (caravan.food <= 0){
+		foodMod = -10;
 	}
 
-	var chanceOfRecovery = 50 + weatherMod[gameStats.weatherCode] + rationMod[gameStats.rationVal] + paceMod + restingBonus;
+	var chanceOfRecovery = 100;
 
 	for (var i = 0; i < 5; i++) {
-		if (caravan.health[i] < 10 && caravan.health[i] != 0) { 
+		if (caravan.health[i] != 0) {
+			if (caravan.diseases[i] != "none"){
+				chanceOfRecovery = 75 + weatherMod[gameStats.weatherCode] + rationMod[gameStats.rationVal] + paceMod + foodMod + restingBonus;
+			} 
+			else {
+				chanceOfRecovery = 100 + weatherMod[gameStats.weatherCode] + rationMod[gameStats.rationVal] + paceMod + foodMod + restingBonus;
+			}
 			var chance = randomNumber(1, 100);
 			if (chance <= chanceOfRecovery){
 				caravan.health[i] += 1;
@@ -303,10 +313,10 @@ function updateHealth(resting){
 }
 
 function updateWeather(){
-	// weather codes: good => 0, warm => 1, hot => 2, very hot => 3, cool => 4, cold => 5, very cold => 6
-	var weatherTypes = ["good", "warm", "hot", "very hot", "cold", "very cold"];
-	var weatherCodes = [[4, 4, 5, 5, 5], [4, 4, 4, 5, 5], [0, 4, 4, 5, 5], [0, 1, 4, 4, 5], [0, 0, 1, 1, 4], [0, 0, 1, 1, 2], [0, 1, 1, 2, 3], [0, 1, 2, 3, 3], [0, 0, 1, 4, 4], [0, 0, 4, 4, 5], [0, 4, 4, 4, 5], [4, 4, 4, 5, 5]];
-	gameStats.weatherCode = weatherCodes[gameStats.date.getMonth()][randomNumber(0, 4)];
+	// weather codes: very cold => 0, cold => 1, cool => 2, good => 3, warm => 4, hot => 5, very hot => 6, rainy => 7, very rainy => 8, snowy => 9
+	var weatherTypes = ["very cold", "cold", "cool", "good", "warm", "hot", "very hot", "rainy", "very rainy", "snowy"];
+	var weatherCodes = [[0, 0, 0, 0, 0, 9, 9, 9, 1, 1], [0, 0, 0, 0, 9, 9, 1, 1, 1, 1], [0, 0, 0, 1, 1, 1, 1, 1, 9, 9], [0, 1, 1, 1, 2, 2, 2, 2, 7, 7], [0, 0, 1, 1, 4], [0, 0, 1, 1, 2], [0, 1, 1, 2, 3], [0, 1, 2, 3, 3], [0, 0, 1, 4, 4], [0, 0, 4, 4, 5], [0, 4, 4, 4, 5], [4, 4, 4, 5, 5]];
+	gameStats.weatherCode = weatherCodes[gameStats.date.getMonth()][randomNumber(0, 9)];
 	gameStats.weather = weatherTypes[gameStats.weatherCode];
 }
 
