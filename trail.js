@@ -191,21 +191,9 @@ function travel(){
 
 	displayStats();
 
-	gameStats.milesToNext -= (gameStats.pace * 10) + 10;
+	gameStats.milesToNext -= (gameStats.pace * 6) + 10;
 	gameStats.date.setDate(gameStats.date.getDate() + 1);
 	caravan.food -= caravan.partySize * gameStats.rationVal;
-
-	for (var i = 0; i < 5; i++){
-		if (caravan.diseases[i] == "none"){
-			caravan.diseases[i] = getDisease();
-			if (caravan.diseases[i] != "none"){
-				caravan.health[i] = 5;
-				caravan.status[i] = "fair";
-				console.log(caravan.party[i] + " has " + caravan.diseases[i]);
-				break;
-			}
-		}
-	}
 
 	updateHealth(false);
 	updateWeather();
@@ -234,16 +222,55 @@ function rest(numDays){
 	}
 }
 
-function display(message){
-	document.getElementById("message").innerHTML = message;
-}
-
-function getInput(number){
-	var input = document.getElementById("input").innerHTML;
-	if (number){
-		input = parseInt(input);
+function randomEvent(){
+	var eventHappens = false;
+	var random = randomNumber(1, 100);
+	var blizzardMod = 0;
+	if (gameStats.weather == "snowy"){
+		blizzardMod = 75;
 	}
-	return input;
+	else if (gameStats.weather == "very cold"){
+		blizzardMod = 50;
+	}
+
+	for (var i = 0; i < 5; i++){
+		if (caravan.diseases[i] == "none"){
+			caravan.diseases[i] = getDisease();
+			if (caravan.diseases[i] != "none"){
+				caravan.health[i] = 5;
+				caravan.status[i] = "fair";
+				console.log(caravan.party[i] + " has " + caravan.diseases[i]);
+				eventHappens = true;
+				break;
+			}
+		}
+	}
+
+	if (!eventHappens){
+		if (random <= blizzardMod){
+			console.log("severe blizzard lose a day");
+			gameStats.date.setDate(gameStats.date.getDate() + 1);
+			caravan.food -= caravan.partySize * gameStats.rationVal;
+			updateHealth(false);
+			updateWeather();
+			eventHappens = true;
+		}
+	}
+
+	if (!eventHappens){
+		if (random <= 10){
+			var daysLost = randomNumber(1, 9);
+			console.log("impassable trail lose " + daysLost + " days");
+			for (var i = 0; i < daysLost; i++){
+				gameStats.date.setDate(gameStats.date.getDate() + 1);
+				caravan.food -= caravan.partySize * gameStats.rationVal;
+				updateHealth(false);
+				updateWeather();
+			}
+			eventHappens = true;
+		}
+	}
+
 }
 
 function getDisease(){
