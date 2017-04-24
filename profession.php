@@ -50,7 +50,7 @@ session_start();
  
   <form name="info" action="names.php" method="post">
   What is your choice? (between 1 and 3):
-  <input type="number" name="quantity" min="1" max="3">
+  <input type="number" name="quantity" min="1" max="3" required>
   <br>
   <button type="submit">Continue</button>
   </form>
