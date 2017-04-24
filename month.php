@@ -57,7 +57,7 @@ session_start();
   
   <form name="info" action="genStore.php" method="post">
   What is your choice? (between 1 and 5):
-  <input type="number" name="quantity" min="1" max="5">
+  <input type="number" name="quantity" min="1" max="5" required>
   <br>
   <button type="submit">Continue</button>
   </form>
