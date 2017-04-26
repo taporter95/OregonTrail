@@ -1,5 +1,23 @@
 <?php
 session_start();
+
+$names = array($_POST["wagonleader"],$_POST["second"],$_POST["third"],$_POST["fourth"],$_POST["fifth"]);
+$temp = array("Dorothy","Mary","Emily","Jed","Sara");
+
+for($i = 0; $i < 5; $i++){
+  if(empty($names[$i])){
+    $names[$i] = $temp[$i];
+  }
+}
+
+
+$_SESSION["wagonleader"] = $names[0];
+$_SESSION["second"] = $names[1];
+$_SESSION["third"] = $names[2];
+$_SESSION["fourth"] = $names[3];
+$_SESSION["fifth"] = $names[4];
+
+
 ?>
 <?xml version = "1.0"?>
 <!DOCTYPE html PUBLIC "-//w3c//DTD XHTML 1.1//EN"
