@@ -11,11 +11,7 @@ for($i = 0; $i < 5; $i++){
 }
 
 
-$_SESSION["wagonleader"] = $names[0];
-$_SESSION["second"] = $names[1];
-$_SESSION["third"] = $names[2];
-$_SESSION["fourth"] = $names[3];
-$_SESSION["fifth"] = $names[4];
+$_SESSION["party"] = $names;
 
 
 ?>
