@@ -2,35 +2,37 @@
 
 
 function getSession(){
-	$.ajax({url:"sessionGet.php", success: gotSess});
+	$.ajax({url:"sessionGet.php", success: gotSess, error: bad});
 }
 
-function gotSess(sessIn){
-	// get all party info from sessions 
-	window.party = sessIn[0];
-	window.stats = sessIn[1];
-	window.money = sessIn[2];
-	window.oxen = sessIn[3];
-	window.food = sessIn[4];
-	window.clothing = sessIn[5];
-	window.hooks = sessIn[6];
-	window.wheels = sessIn[7];
-	window.axles = sessIn[8];
-	window.tongues = sessIn[9];
+function gotSess(holder){
+	holder = (JSON.parse(holder));
+	// get all party info from sessions
+	window.party = holder[0];
+	window.stats = holder[1];
+	window.money = holder[2];
+	window.oxen = holder[3];
+	window.food = holder[4];
+	window.clothing = holder[5];
+	window.bait = holder[6];
+	window.wheels = holder[7];
+	window.axles = holder[8];
+	window.tongues = holder[9];
 	
 	// get all game stats
-	window.date = sessIn[10];
-	window.pace = sessIn[11];
-	window.paceVal = sessIn[12];
-	window.rations = sessIn[13];
-	window.rationVal = sessIn[14];
-	window.health = sessIn[15];
-	window.weather = sessIn[16];
-	window.weatherCode = sessIn[17];
-	window.locale = sessIn[18];
-	window.milesTraveled = sessIn[19];	
-	window.milesToNext = sessIn[20];	
-	
+	window.date = holder[10];
+	window.pace = holder[11];
+	window.paceVal = holder[12];
+	window.rations = holder[13];
+	window.rationsVal = holder[14];
+	window.health = holder[15];
+	window.weather = holder[16];
+	window.weatherCode = holder[17];
+	window.locale = holder[18];
+	window.milesTraveled = holder[19];	
+	window.milesToNext = holder[20];	
+	window.profession = holder[21];
+	window.disease = holder[22];
 }
 
 
@@ -44,7 +46,7 @@ function sendSession(){
 	oxenIn:oxen,
 	foodIn:food,
 	clothingIn:clothing,
-	hooksIn:hooks,
+	baitIn:bait,
 	wheelsIn:wheels,
 	axlesIn:axles,
 	tonguesIn:tongues,
@@ -59,8 +61,19 @@ function sendSession(){
 	weatherCodeIn:weatherCode,
 	localeIn:locale,
 	milesTraveledIn:milesTraveled,
-	milesToNextIn:milesToNext
+	milesToNextIn:milesToNext,
+	profession:professionIn,
+	disease:diseaseIn
 	}
 	
 	});
+}
+
+function help(){
+	alert(money);
+	
+}
+
+function bad(){
+	alert("I died");
 }

@@ -1,3 +1,6 @@
+<?php 
+session_start();
+ echo $_SESSION["money"];?>
 
 <?xml version = "1.0"?>
 <!DOCTYPE html PUBLIC "-//w3c//DTD XHTML 1.1//EN"
@@ -15,11 +18,13 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script type="text/javascript" src="sessions.js"> </script>
+  <script type="text/javascript" src="sessions.js"></script>
+
   
 
   <script>
-  	
+  var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landmark", "landmark", "river", "fort", "landmark", "fort", "river", "fort", "landmark", "fort"];
+
 $( function() {
 
   
@@ -68,7 +73,7 @@ $( function() {
 	$("#supplies").click(function(){
 		$("#supplyBox").css("visibility","visible");
 		//add way to show all supplies
-		
+		$("#supplyList").html("Oxen: " + window.oxen + " <br/> Clothing: " + clothing + " <br/> Bait: " + bait + " <br/> Wagon Wheels: " + wheels + " <br/> Wagon Axles: " + axles + " <br/> Wagon Tongues: " + tongues +"  <br/> Pounds of food: " + food + " <br/> Money left: $" + money);
 		
 		$("#supplyBox").dialog({
 			
@@ -151,7 +156,17 @@ $( function() {
 				text: "Wait",
 				click: function() {
 					// make time pass, heal people, and the such
-					
+					for (var i = 0; i < $("#waiting").val(); i++){
+						
+						// ask how update Health works???
+						
+						
+						// ?????
+						
+						
+						date = setDate(date.getdate()+1);
+					}
+					// update weather
 					$( this ).dialog( "close" );
 					}
 			}
@@ -172,6 +187,8 @@ $( function() {
 				click: function() {
 					// trade items with whoever
 					
+					
+					
 					$( this ).dialog( "close" );
 					}
 			},
@@ -189,7 +206,9 @@ $( function() {
   
   
   
-});   
+});
+
+
   </script>
   
   
@@ -208,6 +227,8 @@ $( function() {
   <button type="submit" onclick="sendSession()">Fishing</button>
   </form>
   
+  
+
   <button id="pace"> Pace</button>
   <button id="supplies"> Supplies</button>
   <button id="map"> Map</button>
@@ -216,13 +237,16 @@ $( function() {
   <button id="trade"> Trade</button>
   
   
+  <!-- ADD IN IF IN TOWN THEN TALK TO PEOPLE??? -->
+  
+  
   
   <div id="paceBox" class="modalBox" title="Pace">
   <p>Please choose which paceat which you would like to travel.</p>
 </div>
 
 <div id="supplyBox" class="modalBox" title="Supplies">
-  <p> This is a list of your supplies.</p>
+  <p id="supplyList"> This is a list of your supplies.</p>
 </div>
 
 <div id="mapBox" class="modalBox" title="Map">
@@ -236,14 +260,13 @@ $( function() {
 <div id="restBox" class="modalBox" title="Resting">
   <p> How long would you like to rest? </p>
   
-  <input id="upDownSpinnner" > <p> Days </p>
+  <input id="waiting" type="upDownSpinnner" > <p> Days </p>
   
 </div>
 
 <div id="tradeBox" class="modalBox" title="Trading">
   <p> Logic for trading here. Do you trade?</p>
 </div>
-
 
 
 

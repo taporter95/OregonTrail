@@ -1,0 +1,9 @@
+add in 
+
+  <script type="text/javascript" src="session.js"> </script>
+  
+  to body
+  onload="getSession()"
+  
+  to buttons that go elsewhere
+  onclick="sendSession()"
