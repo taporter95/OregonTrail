@@ -6,6 +6,7 @@ function getSession(){
 }
 
 function gotSess(holder){
+	alert(holder);
 	holder = (JSON.parse(holder));
 	// get all party info from sessions
 	window.party = holder[0];
@@ -38,8 +39,10 @@ function gotSess(holder){
 
 function sendSession(){
 	// sends back all party info to the sessions 
-	$.ajax({url:"sessionSend.php", post,
-	parameters:{
+	alert("im in send, my pace is: " + pace);
+	$.ajax({url:"sessionSend.php",
+	//type: 'POST',
+	data:{
 	partyIn:party,
 	statsIn:stats,
 	moneyIn:money,
@@ -62,11 +65,17 @@ function sendSession(){
 	localeIn:locale,
 	milesTraveledIn:milesTraveled,
 	milesToNextIn:milesToNext,
-	profession:professionIn,
-	disease:diseaseIn
-	}
-	
+	professionIn:profession,
+	diseaseIn:disease
+	},
+	success: sendOff,
+	error: bad
 	});
+	alert("pause");
+}
+
+function sendOff(ajax){
+	alert(ajax);
 }
 
 function help(){

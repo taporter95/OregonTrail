@@ -25,6 +25,7 @@ $_SESSION["locale"] = 4300;
 $_SESSION["milesTraveled"] = 20;
 $_SESSION["milesToNext"] = 50;
 $_SESSION["profession"] = 1;
+$_SESSION["disease"] = 1;
 
 
 ?>

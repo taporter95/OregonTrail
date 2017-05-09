@@ -1,31 +1,32 @@
 <?php
 session_start();
 
-$_SESSION["party"] = $_POST["partyIn"];
-$_SESSION["stats"] = $_POST["statsIn"];
-$_SESSION["money"] = $_POST["moneyIn"];
-$_SESSION["oxen"] = $_POST["oxenIn"];
-$_SESSION["food"] = $_POST["foodIn"];
-$_SESSION["clothing"] = $_POST["clothingIn"];
-$_SESSION["bait"] = $_POST["baitIn"];
-$_SESSION["wheels"] = $_POST["wheelsIn"];
-$_SESSION["axles"] = $_POST["axlesIn"];
-$_SESSION["tongues"] = $_POST["tonguesIn"];
 
-$_SESSION["date"] = $_POST["dateIn"];
-$_SESSION["pace"] = $_POST["paceIn"];
-$_SESSION["paceVal"] = $_POST["paceValIn"];
-$_SESSION["rations"] = $_POST["rationsIn"];
-$_SESSION["rationsVal"] = $_POST["rationsValIn"];
-$_SESSION["health"] = $_POST["healthIn"];
-$_SESSION["weather"] = $_POST["weatherIn"];
-$_SESSION["weatherCode"] = $_POST["weatherCodeIn"];
-$_SESSION["locale"] = $_POST["localeIn"];
-$_SESSION["milesTraveled"] = $_POST["milesTraveledIn"];
-$_SESSION["milesToNext"] = $_POST["milesToNextIn"];
-$_SESSION["profession"] = $_POST["professionIn"];
-$_SESSION["disease"] = $_POST["diseaseIn"];
+$_SESSION["party"] = $_REQUEST["partyIn"];
+$_SESSION["stats"] = $_REQUEST["statsIn"];
+$_SESSION["money"] = $_REQUEST["moneyIn"];
+$_SESSION["oxen"] = $_REQUEST["oxenIn"];
+$_SESSION["food"] = $_REQUEST["foodIn"];
+$_SESSION["clothing"] = $_REQUEST["clothingIn"];
+$_SESSION["bait"] = $_REQUEST["baitIn"];
+$_SESSION["wheels"] = $_REQUEST["wheelsIn"];
+$_SESSION["axles"] = $_REQUEST["axlesIn"];
+$_SESSION["tongues"] = $_REQUEST["tonguesIn"];
+
+$_SESSION["date"] = $_REQUEST["dateIn"];
+$_SESSION["pace"] = $_REQUEST["paceIn"];
+$_SESSION["paceVal"] = $_REQUEST["paceValIn"];
+$_SESSION["rations"] = $_REQUEST["rationsIn"];
+$_SESSION["rationsVal"] = $_REQUEST["rationsValIn"];
+$_SESSION["health"] = $_REQUEST["healthIn"];
+$_SESSION["weather"] = $_REQUEST["weatherIn"];
+$_SESSION["weatherCode"] = $_REQUEST["weatherCodeIn"];
+$_SESSION["locale"] = $_REQUEST["localeIn"];
+$_SESSION["milesTraveled"] = $_REQUEST["milesTraveledIn"];
+$_SESSION["milesToNext"] = $_REQUEST["milesToNextIn"];
+$_SESSION["profession"] = $_REQUEST["professionIn"];
+$_SESSION["disease"] = $_REQUEST["diseaseIn"];
 
 
-$response = '';
+$response = $_REQUEST["paceIn"];
 echo $response;

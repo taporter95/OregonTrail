@@ -15,15 +15,14 @@ session_start();
   
   <!-- everything for my modal stuff -->
    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+  <link rel="stylesheet" href="boxStyle.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script type="text/javascript" src="sessions.js"></script>
 
   
-
   <script>
-  var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landmark", "landmark", "river", "fort", "landmark", "fort", "river", "fort", "landmark", "fort"];
+ // var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landmark", "landmark", "river", "fort", "landmark", "fort", "river", "fort", "landmark", "fort"];
 
 $( function() {
 
@@ -164,7 +163,7 @@ $( function() {
 						// ?????
 						
 						
-						date = setDate(date.getdate()+1);
+						//date = setDate(date.getdate()+1);
 					}
 					// update weather
 					$( this ).dialog( "close" );
@@ -227,6 +226,9 @@ $( function() {
   <button type="submit" onclick="sendSession()">Fishing</button>
   </form>
   
+  <form name="info" action="options.php" method="post">
+  <button type="submit" onclick="sendSession()">Reload</button>
+  </form>
   
 
   <button id="pace"> Pace</button>
