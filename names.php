@@ -11,6 +11,7 @@
   <body>
 
 	<h1> Names </h1>
+	      <img src="images/wagon.png">
 	<p>What are the first names of the members of your party?</p>
   <form name="info" action="month.php" method="post">
 	1. <input type="text" name="wagonleader" value="">
