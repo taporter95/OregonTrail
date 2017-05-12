@@ -18,19 +18,7 @@
   <script type="text/javascript" src="trailFunctions.js"> </script>
   
   
-      <script>
-function find(){
-	var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landmark", "landmark", "river", "fort", "landmark", "fort", "river", "fort", "landmark", "fort"];
-	console.log(locale);
-	console.log(locationType[locale]);
-	if (locationType[locale]== "fort"){
-	 $("#talk").css("visibility","visible");
-	 $("#shop").css("visibility","visible");
-	 
-	}
-	
-}
-</script>  
+  
 
 
 <script>
@@ -270,6 +258,19 @@ $( function() {
   </head>
   <body onload="getSession()">
   
+      <script>
+$(document).ready(function(){
+	var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landmark", "landmark", "river", "fort", "landmark", "fort", "river", "fort", "landmark", "fort"];
+	console.log(locale);
+	console.log(locationType[locale]);
+	if (locationType[locale]== "fort"){
+	 $("#talk").css("visibility","visible");
+	 $("#shop").css("visibility","visible");
+	 
+	}
+	
+});
+</script>
 
 
 	<h1> Options </h1>
@@ -336,7 +337,6 @@ $( function() {
   <p> Buy shit or get out.</p>
 </div>
 
-<p onload="find()"> </p>
 
 
  

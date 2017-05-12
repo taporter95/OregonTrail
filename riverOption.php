@@ -14,9 +14,19 @@
  
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  var riverWidth = randomNumber(400, 600);
+  <script type="text/javascript" src="sessions.js"></script> 
+  <script type="text/javascript" src="trailFunctions.js"> </script>
+  
+  
+<script>
+  var riverWidth = 20;//randomNumber(400, 600);
 	var riverDepth = parseFloat((Math.random() * (6 - 2) + 2).toFixed(1));
+ 
+
+</script>
+  
+  
+ <script>
   $( function() {
 	 
 
@@ -52,7 +62,7 @@
 		$("#riverInfo").innerHTML = (
 		"Weather: " + weather +
 		"River Width: " + riverWidth +
-		"River Depth: " + riverDepth;
+		"River Depth: " + riverDepth);
 		
 		$("#infoBox").dialog({
 			
@@ -74,16 +84,14 @@
   </script>
 			
   </head>
-  <body>
+  <body onload="getSession()">
 	<h1> River Option </h1>
-	
-	
-  <form name="info" action="ferry.html" method="post">
-  <button type="submit">Ferry</button>
-  </form>
 
   <form name="info" action="crossing.html" method="post">
-  <button type="submit">Crossing </button>
+  <input onclick="sendSession()" type="submit" name="choice" value="Ford">
+    <input onclick="sendSession()" type="submit" name="choice" value="Caulk">
+	<input onclick="sendSession()" type="submit" name="choice" value="Ferry">
+ 
   </form>
   
   <button id="wait"> Wait</button>

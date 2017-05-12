@@ -21,7 +21,7 @@ $_SESSION["health"] = 2;
 
 $_SESSION["weather"] = 200;
 $_SESSION["weatherCode"] = 2;
-$_SESSION["locale"] = 4300;
+$_SESSION["locale"] = 0;
 $_SESSION["milesTraveled"] = 20;
 $_SESSION["milesToNext"] = 50;
 $_SESSION["profession"] = 1;

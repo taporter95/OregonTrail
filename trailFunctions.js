@@ -6,9 +6,9 @@ var foodAndWater = [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5];
 
 var date_obj = new Date();
 
-function continue(){
+function continueTrail(){
 	if (milesToNext == travelDistances[locale]){
-		var message = milesToNext " miles to " + locationNames[locale+1];
+		var message = milesToNext + " miles to " + locationNames[locale+1];
 		if (foodAndWater[locale] == 4){
 			message += "\n There is little food and water for your oxen.";
 		}

@@ -1,12 +1,11 @@
 // this gets and sends to sessions with ajax
 
-
 function getSession(){
 	$.ajax({url:"sessionGet.php", success: gotSess, error: bad});
 }
 
 function gotSess(holder){
-	alert(holder);
+	//alert(holder);
 	holder = (JSON.parse(holder));
 	// get all party info from sessions
 	window.party = holder[0];
@@ -39,7 +38,7 @@ function gotSess(holder){
 
 function sendSession(){
 	// sends back all party info to the sessions 
-	alert("im in send, my pace is: " + pace);
+	
 	$.ajax({url:"sessionSend.php",
 	//type: 'POST',
 	data:{
@@ -68,21 +67,20 @@ function sendSession(){
 	professionIn:profession,
 	diseaseIn:disease
 	},
-	success: sendOff,
 	error: bad
 	});
-	alert("pause");
+
+	alert("Continue");	
+
 }
 
-function sendOff(ajax){
-	alert(ajax);
-}
 
 function help(){
-	alert(money);
+	alert(pace);
 	
 }
 
 function bad(){
 	alert("I died");
 }
+

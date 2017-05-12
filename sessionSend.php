@@ -28,5 +28,5 @@ $_SESSION["profession"] = $_REQUEST["professionIn"];
 $_SESSION["disease"] = $_REQUEST["diseaseIn"];
 
 
-$response = $_REQUEST["paceIn"];
+$response = $_REQUEST["locale"];
 echo $response;
