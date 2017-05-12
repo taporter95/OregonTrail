@@ -1,3 +1,30 @@
+<?php
+//profession
+$_SESSION["profession"] = $_POST["quantity"];
+echo $_SESSION["role"];
+
+//$_SESSION["money"] = -100;
+//echo $_SESSION["money"];
+
+if ($_SESSION["profession"] == 1) {
+	$_SESSION["money"] = 1600;
+	echo $_SESSION["money"];
+}
+else if($_SESSION["profession"] == 2) {
+	$_SESSION["money"] = 800;
+	echo $_SESSION["money"];
+}
+else if($_SESSION["profession"] == 3) {
+	$_SESSION["money"] = 400;
+	echo $_SESSION["money"];
+}
+else{
+	//this shouldnt happen
+	echo "wrong";
+}
+
+?>
+
 <?xml version = "1.0"?>
 <!DOCTYPE html PUBLIC "-//w3c//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
