@@ -8,8 +8,8 @@ function gotSess(holder){
 	//alert(holder);
 	holder = (JSON.parse(holder));
 	// get all party info from sessions
-	window.party = holder[0];
-	window.stats = holder[1];
+	window.party = JSON.parse(holder[0]);
+	window.stats = JSON.parse(holder[1]);
 	window.money = holder[2];
 	window.oxen = holder[3];
 	window.food = holder[4];
@@ -32,7 +32,7 @@ function gotSess(holder){
 	window.milesTraveled = holder[19];	
 	window.milesToNext = holder[20];	
 	window.profession = holder[21];
-	window.disease = holder[22];
+	window.disease = JSON.parse(holder[22]);
 }
 
 
