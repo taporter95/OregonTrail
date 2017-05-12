@@ -236,7 +236,7 @@ function river_modal(){
 		closeOnEscape: false,
 		open: function(event, ui){
 			$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
-		}
+		},
 		modal: true,
 	});
 }
