@@ -7,32 +7,94 @@
 <html xmlns = "http://www.w3.org/1999/xhtml">
   <head>
     <title>OT Game</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   </head>
   <body>
 
 	<h1> Game </h1>
+
+  <?php echo ("<label for="#date">Date: </label>
+              <p id="date">$_SESSION["date"]</p> <br>
+              <label for="#weather">Weather: </label>    
+              <p id="weather">$_SESSION["weather"]</p> <br>
+              <label for="#health">Health: </label>
+              <p id="health">$_SESSION["health"]</p> <br>
+              <label for="#Food">Food: </label>
+              <p id="food">$_SESSION["food"]<p> <br>
+              <label for="#next">Next landmark: </label>
+              <p id="next">$_SESSION["nextLandmark"]</p> <br>
+              <label for="#traveld">Miles traveled: </label>
+              <p id="traveld">$_SESSION["traveled"]</p> <br>");
+  ?>
+
+  <button id="continue" onclick="continue()">Continue</button>
+  
+  <br>
+
   <form name="info" action="options.html" method="post">
   <button type="submit">Options</button>
   </form> 
 	
-  <form name="info" action="viewTerrain.html" method="post">
+  <form name="view" action="viewTerrain.html" method="post">
   <button type="submit">view Terrain</button>
   </form>
   
-  <form name="info" action="riverInfo.html" method="post">
+  <form name="river" action="riverInfo.html" method="post">
   <button type="submit">River info</button>
   </form>
   
-  <form name="info" action="end.html" method="post">
+  <form name="end" action="end.html" method="post">
   <button type="submit">End Game</button>
   </form>
   
+  <!--
   <button id="geo"> Geo Event</button>
   <button id="rando"> Rando Event</button>
   <button id="grave"> Grave Event</button>
   <button id="divide"> Trail Divide</button>
+  -->
 
+ <script type="text/javascript">
+    
+      var date = Date.parse(document.getElementById("#date").innerHTML);
+      var weather = document.getElementById("#weather").innerHTML;
+      var health = document.getElementById("#health").innerHTML;
+      var food = parseInt(document.getElementById("#food").innerHTML);
+      var next = parseInt(document.getElementById("#nextLandmark").innerHTML);
+      var traveled = parseInt(document.getElementById("#traveled").innerHTML);
+
+      var paceVal = <?php echo $_SESSION["paceVal"]; ?>;
+
+     function continue() {
+      if (next == 0){
+        
+        if (locationType[gameStats.location] == "river"){
+        crossRiver();
+        }
+        else if (locationType[gameStats.location] == "fort"){
+          situation(true);
+        }
+      }
+
+      gameStats.milesToNext -= (gameStats.pace * 6) + 10;
+      gameStats.date.setDate(gameStats.date.getDate() + 1);
+      caravan.food -= caravan.partySize * gameStats.rationVal;
+
+      updateHealth(false);
+      updateWeather();
+
+      if (gameStats.milesToNext < 0) {
+        gameStats.milesToNext = 0;
+      }
+      var choice = prompt("would you like to take an action?");
+      if (choice == "y"){
+        situation(false);
+      }
+     }
+    
+
+  </script>
+  </body>
 
   
-  </body>
 </html>
