@@ -27,6 +27,9 @@ $_SESSION["profession"] = 0;
 $_SESSION["disease"] = ["none", "none", "none", "none", "none"];
 $_SESSION["broken"] = false;
 $_SESSION["partySize"] = 5;
+$_SESSION["month"] = 3;
+$_SESSION["day"] = 1;
+$_SESSION["year"] = 1848;
 
 ?>
 
