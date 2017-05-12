@@ -9,7 +9,7 @@ function continueTrail(){
 	var date_obj = new Date(year, month, day);
 
 	milesToNext -= (paceVal * (Math.floor(oxen / 3))) + 10;
-	milesTraveled += (paceVal * (Math.floor(oxen / 3))) + 10;
+	milesTraveled += parseInt((paceVal * (Math.floor(oxen / 3))) + 10);
 	if (milesToNext < 0) {
 		milesTraveled += milesToNext;
 		milesToNext = 0;
