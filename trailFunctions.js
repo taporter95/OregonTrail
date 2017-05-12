@@ -4,9 +4,9 @@ var travelDistances = [102, 82, 118, 250, 86, 190, 102, 57, 125, 143, 162, 57, 1
 var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landmark", "landmark", "river", "fort", "landmark", "fort", "river", "fort", "landmark", "fort"];
 var foodAndWater = [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5];
 
-var date_obj = new Date(year, month, day);
 
 function continueTrail(){
+	var date_obj = new Date(year, month, day);
 	if (milesToNext == travelDistances[locale]){
 		var message = milesToNext + " miles to " + locationNames[locale+1];
 		if (foodAndWater[locale] == 4){
@@ -56,6 +56,7 @@ function continueTrail(){
 
 
 function randomEvent(){
+	var date_obj = new Date(year, month, day);
 	var eventHappens = false;
 	var random = randomNumber(1, 100);
 	var blizzardMod = 0;
@@ -83,6 +84,9 @@ function randomEvent(){
 		if (random <= blizzardMod){
 			alert_window("severe blizzard lose a day");
 			date_obj.setDate(date_obj.getDate() + 1);
+			day = date_obj.getDay();
+			month = date_obj.getMonth();
+			year = date_obj.getFullYear();
 			food -= partySize * rationsVal;
 			updateHealth(false);
 			updateWeather();
@@ -264,6 +268,7 @@ function alert_window(text) {
 }
 
 function update_display(){
+	var date_obj = new Date(year, month, day);
 	$("#date").text(date_obj);
     $("#weather").text(weather);
     $("#health").text(health);
