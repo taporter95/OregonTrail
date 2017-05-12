@@ -7,6 +7,7 @@
 <html xmlns = "http://www.w3.org/1999/xhtml">
   <head>
     <title>OT Names</title>
+    <script type="text/javascript" src="sessions.js"> </script>
   </head>
   <body>
 
@@ -25,7 +26,7 @@
   	5. <input type="text" name="fifth" value="">
   <br>
   <br>
-  <button type="submit">Month</button>
+  <button type="submit" onclick="sendSession()">Month</button>
   </form>
     
   

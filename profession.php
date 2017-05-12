@@ -7,6 +7,7 @@
 <html xmlns = "http://www.w3.org/1999/xhtml">
   <head>
     <title>OT Profession</title>
+    <script type="text/javascript" src="sessions.js"> </script>
   </head>
   <body>
 <?php
@@ -52,7 +53,7 @@ session_start();
   What is your choice? (between 1 and 3):
   <input type="number" name="quantity" min="1" max="3" required>
   <br>
-  <button type="submit">Continue</button>
+  <button type="submit" onclick="sendSession()">Continue</button>
   </form>
     
   

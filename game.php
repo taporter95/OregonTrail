@@ -24,7 +24,7 @@
    
   </head>
 
-  <body onload="getSession()">
+  <body>
 
 	<h1> Game </h1>
 

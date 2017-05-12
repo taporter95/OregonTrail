@@ -24,11 +24,13 @@ $_SESSION["rationsVal"] = 3;
 $_SESSION["weather"] = "warm";
 $_SESSION["weatherCode"] = 4;
 $_SESSION["locale"] = 0;
-$_SESSION["inFort"] = false;
+
 $_SESSION["milesToNext"] = 0;
+$_SESSION["milesTraveled"] = 0;
 $_SESSION["profession"] = 0;
 $_SESSION["disease"] = ["none", "none", "none", "none", "none"];
 $_SESSION["broken"] = false;
+$_SESSION["inFort"] = false;
 
 ?>
 
