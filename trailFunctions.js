@@ -233,6 +233,10 @@ function randomNumber(min, max){
 function river_modal(){
 	$("#river_modal").css("visibility", "visible");
 	$("#river_modal").dialog({
+		closeOnEscape: false,
+		open: function(event, ui){
+			$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+		}
 		modal: true,
 	});
 }
