@@ -26,7 +26,7 @@ $_SESSION["milesTraveled"] = $_REQUEST["milesTraveledIn"];
 $_SESSION["milesToNext"] = $_REQUEST["milesToNextIn"];
 $_SESSION["profession"] = $_REQUEST["professionIn"];
 $_SESSION["disease"] = $_REQUEST["diseaseIn"];
-
+$_SESSION["partySize"] = $_REQUEST["partySize"];
 
 $response = $_REQUEST["locale"];
 echo $response;

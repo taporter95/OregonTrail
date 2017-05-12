@@ -26,6 +26,7 @@ $_SESSION["milesTraveled"] = 0;
 $_SESSION["profession"] = 0;
 $_SESSION["disease"] = ["none", "none", "none", "none", "none"];
 $_SESSION["broken"] = false;
+$_SESSION["partySize"] = 5;
 
 ?>
 

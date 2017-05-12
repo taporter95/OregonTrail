@@ -33,6 +33,7 @@ function gotSess(holder){
 	window.milesToNext = holder[20];	
 	window.profession = holder[21];
 	window.disease = JSON.parse(holder[22]);
+	window.partySize = holder[23];
 }
 
 
@@ -65,7 +66,8 @@ function sendSession(){
 	milesTraveledIn:milesTraveled,
 	milesToNextIn:milesToNext,
 	professionIn:profession,
-	diseaseIn:disease
+	diseaseIn:disease,
+	partySizeIn:partySize
 	},
 	error: bad
 	});

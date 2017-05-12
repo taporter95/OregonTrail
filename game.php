@@ -39,7 +39,7 @@
 <label for="next">Next landmark: </label>
 <p id="next"></p> <br>
 <label for="traveled">Miles traveled: </label>
-<p id="traveled"></p> <br>"
+<p id="traveled"></p> <br>
 
 
   <button id="continue" onclick="continueTrail()">Continue</button>
