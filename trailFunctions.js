@@ -7,16 +7,6 @@ var foodAndWater = [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5];
 
 function continueTrail(){
 	var date_obj = new Date(year, month, day);
-	if (milesToNext == travelDistances[locale]){
-		var message = milesToNext + " miles to " + locationNames[locale+1];
-		if (foodAndWater[locale] == 4){
-			message += "\n There is little food and water for your oxen.";
-		}
-		else if (foodAndWater[locale] == 5){
-			message += "\n Food and water is very scarce in these parts.";
-		}
-		alert_window(message);
-	}
 
 	milesToNext -= (paceVal * (Math.floor(oxen / 3))) + 10;
 	milesTraveled += (paceVal * (Math.floor(oxen / 3))) + 10;
@@ -52,6 +42,16 @@ function continueTrail(){
 		food = 0;
 	}
 	update_display();
+	if (milesToNext == travelDistances[locale]){
+		var message = milesToNext + " miles to " + locationNames[locale+1];
+		if (foodAndWater[locale] == 4){
+			message += "\n There is little food and water for your oxen.";
+		}
+		else if (foodAndWater[locale] == 5){
+			message += "\n Food and water is very scarce in these parts.";
+		}
+		alert_window(message);
+	}
 }
 
 
@@ -118,7 +118,7 @@ function randomEvent(){
 			var clothes_lost = randomNumber(1, 10);
 			var food_lost = randomNumber(5, 50);
 			bait -= bait_lost;
-			clothes -= clothes_lost;
+			clothing -= clothes_lost;
 			food -= food_lost;
 			alert_window("You were robbed! You lost: \n" + bait_lost + " bait\n" + clothes_lost + " pairs of clothes\n" + food_lost + " Lbs. of food");
 			eventHappens = true;
