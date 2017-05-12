@@ -32,6 +32,13 @@ $_SESSION["disease"] = ["none", "none", "none", "none", "none"];
 $_SESSION["broken"] = false;
 $_SESSION["inFort"] = false;
 
+$_SESSION["oxenBought"] = 0;
+$_SESSION["foodBought"] =0;
+$_SESSION["clothingBought"] =0;
+$_SESSION["baitBought"] = 0;
+$_SESSION["wheelsBought"] = 0;
+$_SESSION["axelsBought"] = 0;
+$_SESSION["tonguesBought"] = 0;
 ?>
 
 
@@ -43,7 +50,7 @@ $_SESSION["inFort"] = false;
 <html xmlns = "http://www.w3.org/1999/xhtml">
   <head>
     <title>OT Title</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://ajax.oogleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
