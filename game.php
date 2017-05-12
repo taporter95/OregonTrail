@@ -21,7 +21,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="sessions.js"> </script>
-   
+    <script type="text/javascript" src="trailFunctions.js"></script>
   </head>
 
   <body>
@@ -86,7 +86,7 @@
     <p id="alert_text"></p>
   </div>
 
-   <script type="text/javascript" src="trailFunctions.js"></script>
+   
     <script type="text/javascript">
       $(document).load(function(){
         update_display();

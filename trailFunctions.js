@@ -18,8 +18,8 @@ function continueTrail(){
 		alert_window(message);
 	}
 
-	milesToNext -= (paceVal * (floor(oxen / 3))) + 10;
-	milesTraveled += (paceVal * (floor(oxen / 3))) + 10;
+	milesToNext -= (paceVal * (Math.floor(oxen / 3))) + 10;
+	milesTraveled += (paceVal * (Math.floor(oxen / 3))) + 10;
 	if (milesToNext < 0) {
 		milesTraveled += milesToNext;
 		milesToNext = 0;
@@ -259,7 +259,7 @@ function alert_window(text) {
 }
 
 function update_display(){
-	$("#date").text(date_obj);
+	$("#date").text("test");
     $("#weather").text(weather);
     $("#health").text(health);
     $("#food").text(food);
