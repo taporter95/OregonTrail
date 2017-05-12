@@ -27,7 +27,7 @@ function continueTrail(){
 
 	date_obj.setDate(date_obj.getDate() + 1);
 	
-	food -= partySize * rationVal;
+	food -= partySize * rationsVal;
 	
 	updateHealth(false);
 	updateWeather();
@@ -81,7 +81,7 @@ function randomEvent(){
 		if (random <= blizzardMod){
 			alert_window("severe blizzard lose a day");
 			date_obj.setDate(date_obj.getDate() + 1);
-			food -= partySize * rationVal;
+			food -= partySize * rationsVal;
 			updateHealth(false);
 			updateWeather();
 			eventHappens = true;
@@ -95,7 +95,7 @@ function randomEvent(){
 			alert_window("impassable trail lose " + daysLost + " days");
 			for (var i = 0; i < daysLost; i++){
 				date_obj.setDate(date_obj.getDate() + 1);
-				food -= partySize * rationVal;
+				food -= partySize * rationsVal;
 				updateHealth(false);
 				updateWeather();
 			}
@@ -175,10 +175,10 @@ function updateHealth(resting){
 	for (var i = 0; i < 5; i++) {
 		if (health[i] != 0) {
 			if (diseases[i] != "none"){
-				chanceOfRecovery = 75 + weatherMod[weatherCode] + rationMod[rationVal] + paceMod + foodMod + restingBonus;
+				chanceOfRecovery = 75 + weatherMod[weatherCode] + rationMod[rationsVal] + paceMod + foodMod + restingBonus;
 			} 
 			else {
-				chanceOfRecovery = 100 + weatherMod[weatherCode] + rationMod[rationVal] + paceMod + foodMod + restingBonus;
+				chanceOfRecovery = 100 + weatherMod[weatherCode] + rationMod[rationsVal] + paceMod + foodMod + restingBonus;
 			}
 			var chance = randomNumber(1, 100);
 			if (chance <= chanceOfRecovery){
