@@ -10,33 +10,33 @@ function gotSess(holder){
 	// get all party info from sessions
 	window.party = JSON.parse(holder[0]);
 	window.stats = JSON.parse(holder[1]);
-	window.money = holder[2];
-	window.oxen = holder[3];
-	window.food = holder[4];
-	window.clothing = holder[5];
-	window.bait = holder[6];
-	window.wheels = holder[7];
-	window.axles = holder[8];
-	window.tongues = holder[9];
+	window.money = parseInt(holder[2]);
+	window.oxen = parseInt(holder[3]);
+	window.food = parseInt(holder[4]);
+	window.clothing = parseInt(holder[5]);
+	window.bait = parseInt(holder[6]);
+	window.wheels = parseInt(holder[7]);
+	window.axles = parseInt(holder[8]);
+	window.tongues = parseInt(holder[9]);
 	
 	// get all game stats
 	window.date = holder[10];
 	window.pace = holder[11];
-	window.paceVal = holder[12];
+	window.paceVal = parseInt(holder[12]);
 	window.rations = holder[13];
-	window.rationsVal = holder[14];
+	window.rationsVal = parseInt(holder[14]);
 	window.health = holder[15];
 	window.weather = holder[16];
-	window.weatherCode = holder[17];
-	window.locale = holder[18];
-	window.milesTraveled = holder[19];	
-	window.milesToNext = holder[20];	
+	window.weatherCode = parseInt(holder[17]);
+	window.locale = parseInt(holder[18]);
+	window.milesTraveled = parseInt(holder[19]);	
+	window.milesToNext = parseInt(holder[20]);	
 	window.profession = holder[21];
 	window.disease = JSON.parse(holder[22]);
-	window.partySize = holder[23];
-	window.month = holder[24];
-	window.day = holder[25];
-	window.year = holder[26];
+	window.partySize = parseInt(holder[23]);
+	window.month = parseInt(holder[24]);
+	window.day = parseInt(holder[25]);
+	window.year = parseInt(holder[26]);
 }
 
 
