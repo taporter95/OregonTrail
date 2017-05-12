@@ -1,8 +1,8 @@
 // this gets and sends to sessions with ajax
 
-function getSession(){
-	$.ajax({url:"sessionGet.php", success: gotSess, error: bad});
-}
+//function getSession(){
+$.ajax({url:"sessionGet.php", success: gotSess, error: bad});
+//}
 
 function gotSess(holder){
 	//alert(holder);
