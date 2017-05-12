@@ -88,7 +88,7 @@
 
    <script type="text/javascript" src="trailFunctions.js"></script>
     <script type="text/javascript">
-      $(document).ready(function(){
+      $(document).load(function(){
         update_display();
       });
     </script>
