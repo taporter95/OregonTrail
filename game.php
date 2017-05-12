@@ -81,7 +81,7 @@
 
    
     <script type="text/javascript">
-      $(document).ready(function(){
+      $(document).load(function(){
         update_display();
       });
     </script>
