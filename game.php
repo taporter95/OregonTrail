@@ -81,9 +81,7 @@
 
    
     <script type="text/javascript">
-      setTimeout(function(){
-      }, 1000);
-      $(document).load(function(){
+      $(document).ready(function(){
         update_display();
       });
     </script>
