@@ -65,12 +65,12 @@ function randomEvent(){
 	}
 
 	for (var i = 0; i < 5; i++){
-		if (diseases[i] == "none"){
-			diseases[i] = getDisease();
-			if (diseases[i] != "none"){
+		if (disease[i] == "none"){
+			disease[i] = getDisease();
+			if (disease[i] != "none"){
 				health[i] = 5;
 				stats[i] = "fair";
-				alert_window(party[i] + " has " + diseases[i]);
+				alert_window(party[i] + " has " + disease[i]);
 				eventHappens = true;
 				break;
 			}
@@ -174,7 +174,7 @@ function updateHealth(resting){
 
 	for (var i = 0; i < 5; i++) {
 		if (health[i] != 0) {
-			if (diseases[i] != "none"){
+			if (disease[i] != "none"){
 				chanceOfRecovery = 75 + weatherMod[weatherCode] + rationMod[rationsVal] + paceMod + foodMod + restingBonus;
 			} 
 			else {
@@ -194,10 +194,10 @@ function updateHealth(resting){
 
 			stats[i] = statuses[health[i]];
 			if (stats[i] == "dead"){
-				alert_window(party[i] + " has died of " + diseases[i]);
+				alert_window(party[i] + " has died of " + disease[i]);
 			}
 			if (health[i] == 10) {
-				diseases[i] = "none";
+				disease[i] = "none";
 			}
 		}
 	}
