@@ -1,0 +1,34 @@
+body {
+    background-color: black;
+    color: AntiqueWhite;
+    text-align: center;
+    font-family: "Courier New", Courier, monospace;
+}
+
+h1 {
+    color: SaddleBrown;
+}
+
+input[type="text"], textarea {
+
+  background-color : AntiqueWhite;
+
+}
+
+input[type="button"]{
+    background-color: SaddleBrown;
+    color: AntiqueWhite;
+    border: none;
+}
+
+button {
+    background-color: SaddleBrown;
+    color: AntiqueWhite;
+    border: none;
+
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
