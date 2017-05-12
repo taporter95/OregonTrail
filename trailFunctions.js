@@ -41,6 +41,7 @@ function continueTrail(){
 			river_modal();
 		}
 		else if (locationType[locale-1] == "fort"){
+			inFort = true;
 			fort_modal();
 		}
 
@@ -193,7 +194,7 @@ function updateHealth(resting){
 
 			status[i] = statuses[health[i]];
 			if (status[i] == "dead"){
-				alert_window(party[i] + " has died of " diseases[i]);
+				alert_window(party[i] + " has died of " + diseases[i]);
 			}
 			if (health[i] == 10) {
 				diseases[i] = "none";

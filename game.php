@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 <?xml version = "1.0"?>
 <!DOCTYPE html PUBLIC "-//w3c//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -34,7 +42,7 @@
 <p id="traveled"></p> <br>"
 
 
-  <button id="continue" onclick="continue()">Continue</button>
+  <button id="continue" onclick="continueTrail()">Continue</button>
   
   <br>
 
