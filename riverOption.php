@@ -19,7 +19,7 @@
   
   
 <script>
-  var riverWidth = 20;//randomNumber(400, 600);
+  var riverWidth = randomNumber(400, 600);
 	var riverDepth = parseFloat((Math.random() * (6 - 2) + 2).toFixed(1));
  
 
@@ -42,14 +42,23 @@
 					for (var i = 0; i < $("#waiting").val(); i++){
 						
 						// ask how update Health works???
-						
-						
-						// ?????
-						
-						
-						//updtae dtae
+						updateHealth(true);
+						date_obj.setDate(date_obj.getDate() + 1);
+						day = date_obj.getDay();
+						month = date_obj.getMonth();
+						year = date_obj.getFullYear();
+						food -= partySize * rationsVal;
 					}
 					//update weather
+					updateWeather();
+					var num = randomNumber(1, 100);
+					var change = parseFloat((Math.random() * (0.4 - 0.1) + 0.1).toFixed(1));
+					if (num <= 75){
+						riverDepth -= change;
+					}
+					else {
+						riverDepth += change;
+					}
 					$( this ).dialog( "close" );
 					}
 			}
@@ -59,10 +68,10 @@
   
 	$("#info").click(function(){
 		$("#infoBox").css("visibility","visible");
-		$("#riverInfo").innerHTML = (
+		$("#riverInfo").html (
 		"Weather: " + weather +
-		"River Width: " + riverWidth +
-		"River Depth: " + riverDepth);
+		"<br/>River Width: " + riverWidth +
+		"<br/>River Depth: " + riverDepth);
 		
 		$("#infoBox").dialog({
 			
@@ -84,10 +93,10 @@
   </script>
 			
   </head>
-  <body onload="getSession()">
+  <body>
 	<h1> River Option </h1>
 
-  <form name="info" action="crossing.html" method="post">
+  <form name="info" action="crossing.php" method="post">
   <input onclick="sendSession()" type="submit" name="choice" value="Ford">
     <input onclick="sendSession()" type="submit" name="choice" value="Caulk">
 	<input onclick="sendSession()" type="submit" name="choice" value="Ferry">
@@ -105,7 +114,7 @@
   <div id="waitBox" class="modalBox" title="Resting">
   <p> How long would you like to wait? </p>
   
-  <input id="waiting" type="upDownSpinnner" > <p> Days </p>
+ <input type="number" id="waiting" min="0" value="0">
   
 </div>
   

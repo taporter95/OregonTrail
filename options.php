@@ -1,3 +1,6 @@
+
+
+
 <?xml version = "1.0"?>
 <!DOCTYPE html PUBLIC "-//w3c//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -16,22 +19,6 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script type="text/javascript" src="sessions.js"></script>
   <script type="text/javascript" src="trailFunctions.js"> </script>
-  
-  
-      <script>
-function find(){
-	var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landmark", "landmark", "river", "fort", "landmark", "fort", "river", "fort", "landmark", "fort"];
-	console.log(locale);
-	console.log(locationType[locale]);
-	if (locationType[locale]== "fort"){
-	 $("#talk").css("visibility","visible");
-	 $("#shop").css("visibility","visible");
-	 
-	}
-	
-}
-</script>  
-
 
 <script>
  
@@ -168,14 +155,16 @@ $( function() {
 					for (var i = 0; i < $("#waiting").val(); i++){
 						
 						// ask how update Health works???
+						updateHealth(true);
 						
-						
-						// ?????
-						
-						
-						//date = setDate(date.getdate()+1);
+						date_obj.setDate(date_obj.getDate() + 1);
+						day = date_obj.getDay();
+						month = date_obj.getMonth();
+						year = date_obj.getFullYear();
+						food -= partySize * rationsVal;
+
 					}
-					// update weather
+					updateWeather();
 					$( this ).dialog( "close" );
 					}
 			}
@@ -268,17 +257,17 @@ $( function() {
   
   
   </head>
-  <body onload="getSession()">
+  <body>
   
 
 
 	<h1> Options </h1>
-  <form name="info" action="game.html" method="post">
+  <form name="info" action="game.php" method="post">
   <button type="submit" onclick="sendSession()">Game</button>
   </form>
     
 	
-  <form name="info" action="fish.html" method="post">
+  <form name="info" action="fish.php" method="post">
   <button type="submit" onclick="sendSession()">Fishing</button>
   </form>
   
@@ -296,9 +285,14 @@ $( function() {
   <!--<button id="help" onclick="startUp()">help</button>
   
   <!-- ADD IN IF IN TOWN THEN TALK TO PEOPLE??? -->
-  <button id="talk" class="town">Talk to Townsfolk</button>
-  <button id="shop" class="town">Shop from Town</button>
-  
+<?php
+ 
+if (isset($_POST['fort'])){
+ echo("<button id='talk' >Talk to Townsfolk</button>
+  <button id='shop'>Shop from Town</button>");
+}
+
+?>
   
   
   <div id="paceBox" class="modalBox" title="Pace">
@@ -320,7 +314,8 @@ $( function() {
 <div id="restBox" class="modalBox" title="Resting">
   <p> How long would you like to rest? </p>
   
-  <input id="waiting" type="upDownSpinnner" > <p> Days </p>
+ <input type="number" id="waiting" min="0" value="0">
+
   
 </div>
 
