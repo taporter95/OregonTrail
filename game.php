@@ -63,7 +63,7 @@
   -->
   <div id="river_modal" class="modalBox" title="river"> 
     <p id="rm_text"></p>
-    <form name="cross" action="riverInfo.html" method="post">
+    <form name="cross" action="riverOption.php" method="post">
       <button type="submit" onclick="sendSession()">Cross River</button>
     </form>
   </div>
