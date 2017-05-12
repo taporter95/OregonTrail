@@ -1,7 +1,7 @@
 <?php
+session_start();
 //profession
 $_SESSION["profession"] = $_POST["quantity"];
-echo $_SESSION["role"];
 
 //$_SESSION["money"] = -100;
 //echo $_SESSION["money"];
