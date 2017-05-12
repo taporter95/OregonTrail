@@ -10,22 +10,15 @@ h1 {
 }
 
 input[type="text"], textarea {
-
   background-color : AntiqueWhite;
-
 }
 
-input[type="button"]{
+button, input[type="button"]{
     background-color: SaddleBrown;
     color: AntiqueWhite;
-    border: none;
-}
-
-button {
-    background-color: SaddleBrown;
-    color: AntiqueWhite;
-    border: none;
-
+    border: black;
+    font-family: "Courier New", Courier, monospace;
+    padding: 5px 10px 5px 10px;
 }
 
 img {
