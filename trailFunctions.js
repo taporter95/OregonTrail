@@ -69,7 +69,7 @@ function randomEvent(){
 			diseases[i] = getDisease();
 			if (diseases[i] != "none"){
 				health[i] = 5;
-				status[i] = "fair";
+				stats[i] = "fair";
 				alert_window(party[i] + " has " + diseases[i]);
 				eventHappens = true;
 				break;
@@ -192,8 +192,8 @@ function updateHealth(resting){
 				health[i] = 0;
 			}
 
-			status[i] = statuses[health[i]];
-			if (status[i] == "dead"){
+			stats[i] = statuses[health[i]];
+			if (stats[i] == "dead"){
 				alert_window(party[i] + " has died of " + diseases[i]);
 			}
 			if (health[i] == 10) {
