@@ -37,6 +37,7 @@ function gotSess(holder){
 	window.month = parseInt(holder[24]);
 	window.day = parseInt(holder[25]);
 	window.year = parseInt(holder[26]);
+	alert(holder);
 }
 
 
