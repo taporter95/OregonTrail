@@ -4,7 +4,7 @@ var travelDistances = [102, 82, 118, 250, 86, 190, 102, 57, 125, 143, 162, 57, 1
 var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landmark", "landmark", "river", "fort", "landmark", "fort", "river", "fort", "landmark", "fort"];
 var foodAndWater = [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5];
 
-var date_obj = new Date();
+var date_obj = new Date(date);
 
 function continueTrail(){
 	if (milesToNext == travelDistances[locale]){
@@ -26,7 +26,7 @@ function continueTrail(){
 	}	
 
 	date_obj.setDate(date_obj.getDate() + 1);
-	
+	date = date_obj;
 	food -= partySize * rationsVal;
 	
 	updateHealth(false);
@@ -95,6 +95,7 @@ function randomEvent(){
 			alert_window("impassable trail lose " + daysLost + " days");
 			for (var i = 0; i < daysLost; i++){
 				date_obj.setDate(date_obj.getDate() + 1);
+				date = date_obj;
 				food -= partySize * rationsVal;
 				updateHealth(false);
 				updateWeather();
@@ -259,7 +260,7 @@ function alert_window(text) {
 }
 
 function update_display(){
-	$("#date").text(date);
+	$("#date").text(date_obj);
     $("#weather").text(weather);
     $("#health").text(health);
     $("#food").text(food);
