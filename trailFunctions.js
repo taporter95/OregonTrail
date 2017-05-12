@@ -36,7 +36,7 @@ function continueTrail(){
 	if (milesToNext == 0){
 		locale += 1;
 		milesToNext = travelDistances[locale];
-		document.getElementById("#next").innerHTML = milesToNext;
+		$("#next").text(milesToNext);
 		if (locationType[locale-1] == "river"){
 			river_modal();
 		}
@@ -259,10 +259,10 @@ function alert_window(text) {
 }
 
 function update_display(){
-	$("#date").text("test");
+	$("#date").text(date);
     $("#weather").text(weather);
     $("#health").text(health);
     $("#food").text(food);
     $("#next").text(milesToNext);
-    $("#traveled").text(traveled);
+    $("#traveled").text(milesTraveled);
 }
