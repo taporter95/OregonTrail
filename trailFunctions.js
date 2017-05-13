@@ -4,7 +4,7 @@ var travelDistances = [102, 82, 118, 250, 86, 190, 102, 57, 125, 143, 162, 57, 1
 var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landmark", "landmark", "river", "fort", "landmark", "fort", "river", "fort", "landmark", "fort"];
 var foodAndWater = [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5];
 
-var date_obj = new Date(year, month, day);
+var date_obj = new Date(yearVal, monthVal, dayVal);
 
 function continueTrail(){
 	//var date_obj = new Date(year, month, day);
@@ -16,10 +16,8 @@ function continueTrail(){
 		milesToNext = 0;
 	}	
 
-	date_obj.setDate(date_obj.getDate() + 1);
-	day = date_obj.getDay();
-	month = date_obj.getMonth();
-	year = date_obj.getFullYear();
+	update_date();
+
 	food -= partySize * rationsVal;
 	console.log(date_obj.getMonth() + " " + date_obj.getDay() + " " + date_obj.getFullYear());
 
@@ -87,10 +85,7 @@ function randomEvent(){
 	if (!eventHappens){
 		if (random <= blizzardMod){
 			alert_window("severe blizzard lose a day");
-			date_obj.setDate(date_obj.getDate() + 1);
-			day = date_obj.getDay();
-			month = date_obj.getMonth();
-			year = date_obj.getFullYear();
+			update_date();
 			food -= partySize * rationsVal;
 			updateHealth(false);
 			updateWeather();
@@ -104,10 +99,7 @@ function randomEvent(){
 			var daysLost = randomNumber(1, 9);
 			alert_window("impassable trail lose " + daysLost + " days");
 			for (var i = 0; i < daysLost; i++){
-				date_obj.setDate(date_obj.getDate() + 1);
-				day = date_obj.getDay();
-				month = date_obj.getMonth();
-				year = date_obj.getFullYear();
+				update_date();
 				food -= partySize * rationsVal;
 				updateHealth(false);
 				updateWeather();
@@ -285,4 +277,11 @@ function update_display(){
     $("#food").text(food);
     $("#next").text(milesToNext);
     $("#traveled").text(milesTraveled);
+}
+
+function update_date(){
+	date_obj.setDate(date_obj.getDate() + 1);
+	day = date_obj.getDay();
+	month = date_obj.getMonth();
+	year = date_obj.getFullYear();
 }

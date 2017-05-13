@@ -26,10 +26,10 @@ $_SESSION["milesTraveled"] = $_REQUEST["milesTraveledIn"];
 $_SESSION["milesToNext"] = $_REQUEST["milesToNextIn"];
 $_SESSION["profession"] = $_REQUEST["professionIn"];
 $_SESSION["disease"] = $_REQUEST["diseaseIn"];
-$_SESSION["partySize"] = $_REQUEST["partySize"];
-$_SESSION["month"] = $_REQUEST["month"];
-$_SESSION["day"] = $_REQUEST["day"];
-$_SESSION["year"] = $_REQUEST["year"];
+$_SESSION["partySize"] = $_REQUEST["partySizeIn"];
+$_SESSION["monthVal"] = $_REQUEST["monthValIn"];
+$_SESSION["dayVal"] = $_REQUEST["dayValIn"];
+$_SESSION["yearVal"] = $_REQUEST["yearValIn"];
 
 $response = $_REQUEST["locale"];
 echo $response;
