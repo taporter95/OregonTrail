@@ -34,9 +34,9 @@ function gotSess(holder){
 	window.profession = holder[21];
 	window.disease = JSON.parse(holder[22]);
 	window.partySize = holder[23];
-	window.monthV = holder[24];
-	window.dayV = holder[25];
-	window.yearV = holder[26];
+	window.month = holder[24];
+	window.day = holder[25];
+	window.year = holder[26];
 	alert(holder);
 }
 
@@ -72,9 +72,9 @@ function sendSession(){
 	professionIn:profession,
 	diseaseIn:disease,
 	partySizeIn:partySize,
-	monthVIn:monthV,
-	dayVIn:dayV,
-	yearVIn:yearV
+	monthIn:month,
+	dayIn:day,
+	yearIn:year
 	},
 	error: bad
 	});

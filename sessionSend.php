@@ -27,9 +27,9 @@ $_SESSION["milesToNext"] = $_REQUEST["milesToNextIn"];
 $_SESSION["profession"] = $_REQUEST["professionIn"];
 $_SESSION["disease"] = $_REQUEST["diseaseIn"];
 $_SESSION["partySize"] = $_REQUEST["partySizeIn"];
-$_SESSION["monthV"] = $_REQUEST["monthVIn"];
-$_SESSION["dayV"] = $_REQUEST["dayVIn"];
-$_SESSION["yearV"] = $_REQUEST["yearVIn"];
+$_SESSION["month"] = $_REQUEST["monthIn"];
+$_SESSION["day"] = $_REQUEST["dayIn"];
+$_SESSION["year"] = $_REQUEST["yearIn"];
 
 $response = $_REQUEST["locale"];
 echo $response;
