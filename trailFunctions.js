@@ -269,7 +269,7 @@ function alert_window(text) {
 
 function update_display(){
 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	$("#date").text(months[date_obj.getMonth()] + " " + date_obj.getDay() + " " + date_obj.getFullYear());
+	$("#date").text(months[date_obj.getMonth()] + " " + date_obj.getDate() + " " + date_obj.getFullYear());
     $("#weather").text(weather);
     $("#health").text(health);
     $("#food").text(food);
