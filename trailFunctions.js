@@ -281,7 +281,7 @@ function update_display(){
 
 function update_date(){
 	date_obj.setDate(date_obj.getDate() + 1);
-	day = date_obj.getDay();
-	month = date_obj.getMonth();
-	year = date_obj.getFullYear();
+	dayVal = date_obj.getDay();
+	monthVal = date_obj.getMonth();
+	yearVal = date_obj.getFullYear();
 }
