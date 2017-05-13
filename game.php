@@ -81,7 +81,9 @@
 
    
     <script type="text/javascript">
+
       $(document).ready(function(){
+      	var date_obj = new Date(year, month, day);
         update_display();
       });
     </script>
