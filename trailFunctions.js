@@ -4,10 +4,9 @@ var travelDistances = [102, 82, 118, 250, 86, 190, 102, 57, 125, 143, 162, 57, 1
 var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landmark", "landmark", "river", "fort", "landmark", "fort", "river", "fort", "landmark", "fort"];
 var foodAndWater = [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5];
 
-var date_obj = new Date(yearVal, monthVal, dayVal);
+var date_obj = new Date(yearV, monthV, dayV);
 
 function continueTrail(){
-	//var date_obj = new Date(year, month, day);
 
 	milesToNext -= (paceVal * (Math.floor(oxen / 3))) + 10;
 	milesTraveled = Number(milesTraveled += (paceVal * (Math.floor(oxen / 3))) + 10);
@@ -281,7 +280,7 @@ function update_display(){
 
 function update_date(){
 	date_obj.setDate(date_obj.getDate() + 1);
-	dayVal = date_obj.getDay();
-	monthVal = date_obj.getMonth();
-	yearVal = date_obj.getFullYear();
+	dayV = date_obj.getDay();
+	monthV = date_obj.getMonth();
+	yearV = date_obj.getFullYear();
 }
