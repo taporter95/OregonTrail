@@ -18,7 +18,7 @@ function continueTrail(){
 	update_date();
 
 	food -= partySize * rationsVal;
-	console.log(date_obj.getMonth() + " " + date_obj.getDay() + " " + date_obj.getFullYear());
+	//console.log(date_obj.getMonth() + " " + date_obj.getDay() + " " + date_obj.getFullYear());
 
 	updateHealth(false);
 	updateWeather();
