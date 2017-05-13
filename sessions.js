@@ -33,10 +33,10 @@ function gotSess(holder){
 	window.milesToNext = parseInt(holder[20]);	
 	window.profession = holder[21];
 	window.disease = JSON.parse(holder[22]);
-	window.partySize = parseInt(holder[23]);
-	window.month = parseInt(holder[24]);
-	window.day = parseInt(holder[25]);
-	window.year = parseInt(holder[26]);
+	window.partySize = holder[23];
+	window.month = holder[24];
+	window.day = holder[25];
+	window.year = holder[26];
 	alert(holder);
 }
 
