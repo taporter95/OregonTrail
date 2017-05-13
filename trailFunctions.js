@@ -4,7 +4,7 @@ var travelDistances = [102, 82, 118, 250, 86, 190, 102, 57, 125, 143, 162, 57, 1
 var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landmark", "landmark", "river", "fort", "landmark", "fort", "river", "fort", "landmark", "fort"];
 var foodAndWater = [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5];
 
-
+var date_obj = new Date(year, month, day);
 
 function continueTrail(){
 
@@ -18,7 +18,7 @@ function continueTrail(){
 	update_date();
 
 	food -= partySize * rationsVal;
-	//console.log(date_obj.getMonth() + " " + date_obj.getDay() + " " + date_obj.getFullYear());
+	console.log(date_obj.getMonth() + " " + date_obj.getDay() + " " + date_obj.getFullYear());
 
 	updateHealth(false);
 	updateWeather();
@@ -268,7 +268,6 @@ function alert_window(text) {
 }
 
 function update_display(){
-	var date_obj = new Date(year, month, day);
 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	$("#date").text(months[date_obj.getMonth()] + " " + date_obj.getDay() + " " + date_obj.getFullYear());
     $("#weather").text(weather);
@@ -279,7 +278,6 @@ function update_display(){
 }
 
 function update_date(){
-	var date_obj = new Date(year, month, day);
 	date_obj.setDate(date_obj.getDate() + 1);
 	day = date_obj.getDate();
 	month = date_obj.getMonth();
