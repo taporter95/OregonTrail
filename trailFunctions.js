@@ -10,9 +10,9 @@ function continueTrail(){
 	//var date_obj = new Date(year, month, day);
 
 	milesToNext -= (paceVal * (Math.floor(oxen / 3))) + 10;
-	milesTraveled += parseInt((paceVal * (Math.floor(oxen / 3))) + 10);
+	Number(milesTraveled) += (paceVal * (Math.floor(oxen / 3))) + 10;
 	if (milesToNext < 0) {
-		milesTraveled += milesToNext;
+		Number(milesTraveled) += milesToNext;
 		milesToNext = 0;
 	}	
 
@@ -39,9 +39,11 @@ function continueTrail(){
 		}
 
 	}
+
 	if (food < 0){
 		food = 0;
 	}
+
 	update_display();
 	if (milesToNext == travelDistances[locale]){
 		var message = milesToNext + " miles to " + locationNames[locale+1];
@@ -114,7 +116,7 @@ function randomEvent(){
 	}
 	if (!eventHappens){
 		random = randomNumber(1, 100);
-		if (random <= 5){
+		if (random <= 3){
 			var bait_lost = randomNumber(20, 200);
 			var clothes_lost = randomNumber(1, 10);
 			var food_lost = randomNumber(5, 50);
@@ -127,7 +129,7 @@ function randomEvent(){
 	}
 	if (!eventHappens){
 		random = randomNumber(1, 100);
-		if (random <= 5){
+		if (random <= 3){
 			food += 50;
 			alert_window("Some friendly locals help you forage for food!");
 			eventHappens = true;
@@ -135,14 +137,14 @@ function randomEvent(){
 	}
 	if (!eventHappens){
 		random = randomNumber(1, 100);
-		if (random <= 5){
+		if (random <= 3){
 			alert_window("A part has broken on the wagon would you like to fix it?")
 			eventHappens = true;
 		}
 	}
 	if (!eventHappens){
 		random = randomNumber(1, 100);
-		if (random <= 5 + foodAndWater[locale]){
+		if (random <= 3 + foodAndWater[locale]){
 			alert_window("One of your oxen has died");
 			oxen -= 1;
 			eventHappens = true;
@@ -154,7 +156,7 @@ function randomEvent(){
 function getDisease(){
 	var diseases = ["the measles", "a snakebite", "dysentery", "typhoid", "cholera", "exaustion", "a broken leg"];
 	var num = randomNumber(1, 100);
-	if (num <= 5){
+	if (num <= 3){
 		return diseases[randomNumber(0, 6)];
 	}
 	else {
@@ -234,10 +236,10 @@ function randomNumber(min, max){
 function river_modal(){
 	$("#river_modal").css("visibility", "visible");
 	$("#river_modal").dialog({
-		closeOnEscape: false,
-		open: function(event, ui){
-			$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
-		},
+		//closeOnEscape: false,
+		//open: function(event, ui){
+			//$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+		//},
 		modal: true,
 	});
 }
@@ -275,7 +277,8 @@ function alert_window(text) {
 
 function update_display(){
 	//var date_obj = new Date(year, month, day);
-	$("#date").text(date_obj);
+	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	$("#date").text(months[date_obj.getMonth()] + " " + date_obj.getDay() + " " + date_obj.getFullYear());
     $("#weather").text(weather);
     $("#health").text(health);
     $("#food").text(food);
