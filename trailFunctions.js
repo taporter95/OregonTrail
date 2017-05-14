@@ -173,6 +173,11 @@ function updateHealth(resting){
 	}
 
 	var chanceOfRecovery = 100;
+	console.log(weatherCode);
+	console.log(rationsVal);
+	console.log(paceMod);
+	console.log(foodMod);
+	console.log(restingBonus);
 
 	for (var i = 0; i < 5; i++) {
 		if (disease[i] != "dead") {
