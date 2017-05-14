@@ -175,7 +175,7 @@ function updateHealth(resting){
 	var chanceOfRecovery = 100;
 	console.log(weatherMod[weatherCode]);
 	console.log(rationMod[rationsVal]);
-	console.log(rationMod[paceMod]);
+	console.log(paceMods[paceVal]);
 	console.log(foodMod);
 	console.log(restingBonus);
 
@@ -197,7 +197,9 @@ function updateHealth(resting){
 			else {
 				stats[i] -= 1;
 			}
-
+			if (stats[i] > 10){
+				stats[i] = 10;
+			}
 			if (stats[i] < 0){
 				stats[i] = 0;
 			}
