@@ -12,7 +12,7 @@ function gotSess(holder){
 	window.tempStats = JSON.parse(holder[1]);
 	window.stats = [];
 	for (var i = 0; i < 5; i++){
-		window.stats.push_back(parseInt(window.tempStats[i]));
+		window.stats.push(parseInt(window.tempStats[i]));
 	}
 	window.money = parseInt(holder[2]);
 	window.oxen = parseInt(holder[3]);
