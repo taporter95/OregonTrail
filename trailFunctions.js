@@ -183,6 +183,9 @@ function updateHealth(resting){
 				chanceOfRecovery = 100 + weatherMod[weatherCode] + rationMod[rationsVal] + paceMod + foodMod + restingBonus;
 			}
 			var chance = randomNumber(1, 100);
+			console.log(stats[i]);
+			console.log(chance + " over " chanceOfRecovery);
+			console.log(stats[i]);
 			if (chance <= chanceOfRecovery){
 				stats[i] += 1;
 			}
