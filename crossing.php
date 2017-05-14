@@ -13,8 +13,7 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script type="text/javascript" src="trailFunctions.js"> </script>
-	<script type="text/javascript" src="trailFunctions.js"> </script>
+	<script type="text/javascript" src="trailFunctions.js"></script>
   </head>
   <body>
 
@@ -22,8 +21,7 @@
 
 	<?php 
 	session_start();
-	
-	
+
 	$deep = $_POST["depth"];
 	$chose = $_POST["choice"];
 	echo("$deep $chose <br/>");
@@ -84,27 +82,28 @@
 	}
 	
 	elseif (($chose == "caulk") && ($deep <= 2.5)){
-		// if % chance tipping
 		
 		if ($chance < 60){
 			$msg.= "Your wagon tipped over <br/>";
 		
-			$msg .= "You lost 1 oxen<br/>";			
-			$_SESSION["oxen"] = $_SESSION["oxen"] -1;
+			if ($_SESSION["oxen"] > 0){
+				$msg .= "You lost 1 oxen<br/>";			
+				$_SESSION["oxen"] = $_SESSION["oxen"] -1;
+			}
 		
 			$msg .= "You lost ".ceil($_SESSION['bait']/4). " bait<br/>";			
 			$_SESSION["bait"] = floor( $_SESSION["bait"]*3/4);
-			if ($chance < 10){
+			if (($chance < 10) && ($_SESSION["wheels"]> 0)){
 				
 				$msg .= "You lost 1 wheel<br/>";			
 				$_SESSION["wheels"] = $_SESSION["wheels"] -1;
 			}
-			else if ($chance < 20){
+			else if (($chance < 20)&& ($_SESSION["axles"] > 0)){
 				
 				$msg .= "You lost 1 axle<br/>";			
 				$_SESSION["axles"] =$_SESSION["axles"]-1;
 			}
-			else if ($chance < 30){
+			else if (($chance < 30) && ($_SESSION["tongues"] > 0)){
 				
 				$msg .= "You lost 1 tongues<br/>";			
 				$_SESSION["tongues"] = $_SESSION["tongues"]-1;
@@ -129,22 +128,24 @@
 		if ($chance < 25){
 			$msg.= "Your wagon tipped over <br/>";
 		
-			$msg .= "You lost 1 oxen<br/>";			
-			$_SESSION["oxen"] = $_SESSION["oxen"] -1;
+			if ($_SESSION["oxen"] > 0){
+				$msg .= "You lost 1 oxen<br/>";			
+				$_SESSION["oxen"] = $_SESSION["oxen"] -1;
+			}
 		
 			$msg .= "You lost ".ceil($_SESSION['bait']/4). " bait<br/>";			
 			$_SESSION["bait"] = floor( $_SESSION["bait"]*3/4);
-			if ($chance < 10){
+			if (($chance < 10) && ($_SESSION["wheels"]> 0)){
 				
 				$msg .= "You lost 1 wheel<br/>";			
 				$_SESSION["wheels"] = $_SESSION["wheels"] -1;
 			}
-			else if ($chance < 20){
+			else if (($chance < 20)&& ($_SESSION["axles"] > 0)){
 				
 				$msg .= "You lost 1 axle<br/>";			
 				$_SESSION["axles"] =$_SESSION["axles"]-1;
 			}
-			else if ($chance < 30){
+			else if (($chance < 30) && ($_SESSION["tongues"] > 0)){
 				
 				$msg .= "You lost 1 tongues<br/>";			
 				$_SESSION["tongues"] = $_SESSION["tongues"]-1;
@@ -170,22 +171,25 @@
 		if ($chance < 40){
 			$msg.= "Your wagon tipped over <br/>";
 		
-			$msg .= "You lost 1 oxen<br/>";			
-			$_SESSION["oxen"] = $_SESSION["oxen"] -1;
-		
+			if ($_SESSION["oxen"] > 0){
+				$msg .= "You lost 1 oxen<br/>";			
+				$_SESSION["oxen"] = $_SESSION["oxen"] -1;
+			}
+			
 			$msg .= "You lost ".ceil($_SESSION['bait']/4). " bait<br/>";			
 			$_SESSION["bait"] = floor( $_SESSION["bait"]*3/4);
-			if ($chance < 10){
+			
+			if (($chance < 10) && ($_SESSION["wheels"]> 0)){
 				
 				$msg .= "You lost 1 wheel<br/>";			
 				$_SESSION["wheels"] = $_SESSION["wheels"] -1;
 			}
-			else if ($chance < 20){
+			else if (($chance < 20)&& ($_SESSION["axles"] > 0)){
 				
 				$msg .= "You lost 1 axle<br/>";			
 				$_SESSION["axles"] =$_SESSION["axles"]-1;
 			}
-			else if ($chance < 30){
+			else if (($chance < 30) && ($_SESSION["tongues"] > 0)){
 				
 				$msg .= "You lost 1 tongues<br/>";			
 				$_SESSION["tongues"] = $_SESSION["tongues"]-1;
@@ -210,6 +214,7 @@
 	elseif ($chose == "ferry"){
 	// wait round(chance/10) days, with health updates
 		$chance = rand(1,5);
+		
 		echo("<script>
 		for (var i = 0; i < $chance; i++){
 			update_date();
@@ -219,6 +224,14 @@
 		updateWeather();
 		</script>");
 		$msg .= "You waited $chance days<br/>";
+		if ($_SESSION["locale"] > 3){
+			$msg .= "It costed you 3 clothes<br/>";
+			$_SESSION["clothing"] =$_SESSION["clothing"]-3;
+		}
+		else{
+			$msg .= "It costed you 5 dollars<br/>";
+			$_SESSION["money"] =$_SESSION["money"]-5;
+		}
 		$msg .= "You crossed fine<br/>";
 	}
 	

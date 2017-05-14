@@ -20,7 +20,6 @@
 <script>
 	var riverWidth = randomNumber(400, 600);
 	var riverDepth = parseFloat((Math.random() * (10 - 2) + 2).toFixed(1));
-
 </script>
   
   
@@ -66,10 +65,18 @@
   
 	$("#info").click(function(){
 		$("#infoBox").css("visibility","visible");
+		var msg = "";
+		if (locale > 3){
+			msg = "<br/> Native's Guidance Fee: 3 clothes";
+		}
+		else{
+			msg = "<br/> Ferry Fee: 5 dollars";
+		}
+		
 		$("#riverInfo").html (
 		"Weather: " + weather +
 		"<br/>River Width: " + riverWidth +
-		"<br/>River Depth: " + riverDepth);
+		"<br/>River Depth: " + riverDepth + msg);
 		
 		$("#infoBox").dialog({
 			
@@ -99,6 +106,23 @@
 	  $("#depth").val(riverDepth); 
   });
   
+  $("#crossForm").submit(function(event){
+	 if ((locale > 3) && (clothing < 3)){
+		alert("You do not have enough clothes for the fee. Choose another option.");
+		event.preventDefault();
+	}
+	else if ((locale < 3) && (money < 5)){
+		alert("You do not have enough money for the ferry. Choose another option.");
+		event.preventDefault();
+	}
+	else{
+		return true;
+	}
+	
+	console.log("Help I shouldn't get here on submit");
+
+  });
+  
   } );
   </script>
 			
@@ -106,11 +130,11 @@
   <body>
 	<h1> River Option </h1>
 
-  <form name="info" action="crossing.php" method="post">
+  <form name="crossForm" id="crossForm" action="crossing.php" method="post">
   
   <input type="hidden" name="depth" id="depth" >
   
-  <input id="choose1" onclick="sendSession()" type="submit" name="choice" value="ford">
+	<input id="choose1" onclick="sendSession()" type="submit" name="choice" value="ford">
     <input id="choose2" onclick="sendSession()" type="submit" name="choice" value="caulk">
 	<input id="choose3" onclick="sendSession()" type="submit" name="choice" value="ferry">
  

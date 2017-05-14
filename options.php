@@ -19,8 +19,20 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   
+<script> 
+var talkin = ["The trail is tough, be careful.",
+"Be careful Fording deep rivers, all my friends died all at once.",
+"Keep spare parts around, never know when something will go wrong.",
+"If you wait around too long, winter will strike hard later in your travels",
+"I hear that fish are plentiful almost anywhere you go.",
+"Ya know, Natives round these parts love tradin'. Keep some spare clothes and parts for 'em.",
+"If the river is deep, dont risk it. Take the ferry or follow the Natives.",
+"Remember, time heals all wounds",
+"If ya arn't feelin' too good, eat up to keep ya strength up.",
+"There are many stops on the way, remember to keep some cash."];
+ </script>  
+  
 <script>
- 
 $( function() {
   
 	$("#pace").click(function(){
@@ -169,10 +181,10 @@ $( function() {
 	});
   
   
-  	$("#talk").click(function(){
+  	$("#talk").click(function(){		
+		$("#talking").html(talkin[randomNumber(0,10)]);
 		$("#talkBox").css("visibility","visible");
 		$("#talkBox").dialog({
-
 			modal: true,
 			buttons: [
 			{
@@ -296,7 +308,7 @@ if (isset($_POST['fort'])){
 </div>
 
 <div id="talkBox" class="modalBox" title="Talking">
-  <p> Decide what to say</p>
+  <p id="talking"> Decide what to say</p>
 </div>
 
 <div id="shopBox" class="modalBox" title="Shopping">
@@ -308,7 +320,6 @@ if (isset($_POST['fort'])){
 </div>
 
 <p onload="find()"> </p>
-
 
  
   <script type="text/javascript" src="trailFunctions.js"> </script>  
