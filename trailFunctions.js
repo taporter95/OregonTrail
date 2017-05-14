@@ -72,8 +72,7 @@ function randomEvent(){
 		if (disease[i] == "none"){
 			disease[i] = getDisease();
 			if (disease[i] != "none"){
-				health[i] = 5;
-				stats[i] = "fair";
+				stats[i] = 5;
 				alert_window(party[i] + " has " + disease[i]);
 				eventHappens = true;
 				break;
