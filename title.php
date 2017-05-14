@@ -14,8 +14,8 @@ $_SESSION["axels"] = 0;
 $_SESSION["tongues"] = 0;
 
 $_SESSION["party"] = [];
-$_SESSION["stats"] = ["good", "good", "good", "good", "good"];
-$_SESSION["health"] = 0;
+$_SESSION["stats"] = [10, 10, 10, 10, 10];
+$_SESSION["health"] = "good";
 $_SESSION["date"] = date("Y/m/d");
 $_SESSION["pace"] = "steady";
 $_SESSION["paceVal"] = 1;
