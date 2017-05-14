@@ -142,7 +142,6 @@ function randomEvent(){
 			eventHappens = true;
 		}	
 	}
-
 }
 
 function getDisease(){
@@ -177,7 +176,7 @@ function updateHealth(resting){
 	var chanceOfRecovery = 100;
 
 	for (var i = 0; i < 5; i++) {
-		if (health[i] != 0) {
+		if (disease[i] != "dead") {
 			if (disease[i] != "none"){
 				chanceOfRecovery = 75 + weatherMod[weatherCode] + rationMod[rationsVal] + paceMod + foodMod + restingBonus;
 			} 
@@ -186,29 +185,34 @@ function updateHealth(resting){
 			}
 			var chance = randomNumber(1, 100);
 			if (chance <= chanceOfRecovery){
-				health[i] += 1;
+				stats[i] += 1;
 			}
 			else {
-				health[i] -= 1;
+				stats[i] -= 1;
 			}
 
-			if (health[i] < 0){
-				health[i] = 0;
+			if (stats[i] < 0){
+				stats[i] = 0;
 			}
 
-			stats[i] = statuses[health[i]];
-			if (stats[i] == "dead"){
+			if (stats[i] <= 0){
 				alert_window(party[i] + " has died of " + disease[i]);
+				disease[i] = "dead";
+				partySize -= 1;
+				if (partySize == 0){
+					alert_window("Everyone is dead!");
+				}
 			}
-			if (health[i] == 10) {
+			if (health[i] == 10 && disease[i] != "none") {
+				alert_window(party[i] + " has recovered!")
 				disease[i] = "none";
 			}
 		}
 	}
 
-	var totalHealth = health[0] + health[1] + health[2] + health[3] + health[4];
+	var totalHealth = stats[0] + stats[1] + stats[2] + stats[3] + stats[4];
 	totalHealth = Math.floor(totalHealth / 5);
-	partyHealth = statuses[totalHealth];
+	health = statuses[totalHealth];
 }
 
 function updateWeather(){
