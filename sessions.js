@@ -5,7 +5,7 @@ $.ajax({url:"sessionGet.php", success: gotSess, error: bad});
 //}
 
 function gotSess(holder){
-	//alert(holder);
+	alert(holder);
 	holder = (JSON.parse(holder));
 	// get all party info from sessions
 	window.party = JSON.parse(holder[0]);
@@ -41,7 +41,7 @@ function gotSess(holder){
 	window.month = parseInt(holder[24]);
 	window.day = parseInt(holder[25]);
 	window.year = parseInt(holder[26]);
-	alert(JSON.parse(holder));
+	alert(holder);
 }
 
 
