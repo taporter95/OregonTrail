@@ -169,35 +169,6 @@ $( function() {
 	});
   
   
-    
-	$("#trade").click(function(){
-		$("#tradeBox").css("visibility","visible");
-		$("#tradeBox").dialog({
-
-			modal: true,
-			buttons: [
-			{
-				text: "Trade",
-				click: function() {
-					// trade items with whoever
-					
-					
-					
-					$( this ).dialog( "close" );
-					}
-			},
-			{
-				text: "Quit",
-				click: function() {
-					
-					$( this ).dialog( "close" );
-					}
-			}
-			]
-		});
-	});
-  
-  
   	$("#talk").click(function(){
 		$("#talkBox").css("visibility","visible");
 		$("#talkBox").dialog({
@@ -277,7 +248,7 @@ $( function() {
   <button id="map">Show Map</button>
   <button id="rations">Change Rations</button>
   <button id="rest">Rest Up</button>
-  <button id="trade">Trade with Locals</button>
+  <button id="trade" onclick="open_trade()">Trade with Locals</button>
   <!--<button id="help" onclick="startUp()">help</button>
   
   <!-- ADD IN IF IN TOWN THEN TALK TO PEOPLE??? -->
@@ -316,7 +287,12 @@ if (isset($_POST['fort'])){
 </div>
 
 <div id="tradeBox" class="modalBox" title="Trading">
-  <p> Logic for trading here. Do you trade?</p>
+  <p>You meet a man wanting to trade, he offers you</p>
+  <p id="trade_string"></p>
+  <input type="hidden" id="q_for">
+  <input type="hidden" id="i_for">
+  <input type="hidden" id="q_to">
+  <input type="hidden" id="i_to">
 </div>
 
 <div id="talkBox" class="modalBox" title="Talking">
@@ -325,6 +301,10 @@ if (isset($_POST['fort'])){
 
 <div id="shopBox" class="modalBox" title="Shopping">
   <p> Buy shit or get out.</p>
+</div>
+
+<div id="alert" class="modalBox" title="alert">
+  <p id="alert_text"></p>
 </div>
 
 <p onload="find()"> </p>

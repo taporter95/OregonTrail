@@ -196,14 +196,14 @@ function updateHealth(resting){
 			else {
 				stats[i] -= 1;
 			}
-			console.log(stats[i]);
+			
 			if (stats[i] > 10){
 				stats[i] = 10;
 			}
 			if (stats[i] < 0){
 				stats[i] = 0;
 			}
-
+			console.log(stats[i]);
 			if (stats[i] <= 0){
 				alert_window(party[i] + " has died of " + disease[i]);
 				disease[i] = "dead";
@@ -213,7 +213,8 @@ function updateHealth(resting){
 				}
 			}
 			if (health[i] == 10 && disease[i] != "none") {
-				alert_window(party[i] + " has recovered!")
+				console.log("recovered");
+				alert_window(party[i] + " has recovered!");
 				disease[i] = "none";
 			}
 		}
@@ -233,6 +234,176 @@ function updateWeather(){
 	weather = weatherTypes[weatherCode];
 }
 
+function open_trade(){
+	var items = ["Oxen", "Food", "Clothing", "Bait", "Wheel", "Axle", "Tongue"];
+	var trade_to = randomNumber(0, 6);
+	var trade_for = randomNumber(0, 6);
+	while (trade_to == trade_for) {
+		trade_for = randomNumber(0, 6);
+	}
+	switch (trade_to) {
+		case 0:
+			var quantity_to = 1;
+			var you_have = oxen;
+			break;
+		case 1:
+			var quantity_to = randomNumber(20, 100);
+			var you_have = food;
+			break;
+		case 2:
+			var quantity_to = randomNumber(2, 10);
+			var you_have = clothing;
+			break;
+		case 3:
+			var quantity_to = randomNumber(10, 30);
+			var you_have = bait;
+			break;
+		case 4:
+			var quantity_to = 1;
+			var you_have = wheels;
+			break;
+		case 5:
+			var quantity_to = 1;
+			var you_have = axles;
+			break;
+		case 6:
+			var quantity_to = 1;
+			var you_have = tongues;
+			break;
+		default:
+			var quantity_to = "Bad num";
+	}
+	switch (trade_for) {
+		case 0:
+			var quantity_for = 1;
+			break;
+		case 1:
+			var quantity_for = randomNumber(20, 100);
+			break;
+		case 2:
+			var quantity_for = randomNumber(2, 10);
+			break;
+		case 3:
+			var quantity_for = randomNumber(10, 30);
+			break;
+		case 4:
+			var quantity_for = 1;
+			break;
+		case 5:
+			var quantity_for = 1;
+			break;
+		case 6:
+			var quantity_for = 1;
+			break;
+		default:
+			var quantity_to = "Bad num";
+	}
+	$("q_for").val(quantity_for);
+	$("i_for").val(trade_for);
+	$("q_to").val(quantity_to);
+	$("i_to").val(trade_to);
+	var trade_string = quantity_for + " " + items[trade_for] + " for " + quantity_to + " " + items[trade_to] + ". You have " + you_have;
+	trade_window(trade_string);
+}
+
+
+function close_trade(){
+	var quantity_for = $("q_for").val();
+	var trade_for = $("i_for").val();
+	var quantity_to = $("q_to").val();
+	var trade_to = $("i_to").val();
+
+	var can_trade = false;
+
+	switch (trade_to) {
+		case 0:
+			if (quantity_to > oxen)
+				alert_window("You do not have enough oxen to complete this trade");
+			else {
+				oxen -= quantity_to;
+				can_trade = true;
+			}
+			break;
+		case 1:
+			if (quantity_to > food)
+				alert_window("You do not have enough food to complete this trade");
+			else {
+				food -= quantity_to;
+				can_trade = true;
+			}
+			break;
+		case 2:
+			if (quantity_to > clothing)
+				alert_window("You do not have enough pairs of clothes to complete this trade");
+			else {
+				clothing -= quantity_to;
+				can_trade = true;
+			}
+			break;
+		case 3:
+			if (quantity_to > bait)
+				alert_window("You do not have enough bait to complete this trade");
+			else {
+				bait -= quantity_to;
+				can_trade = true;
+			}
+			break;
+		case 4:
+			if (quantity_to > wheels)
+				alert_window("You do not have enough wheels to complete this trade");
+			else {
+				wheels -= quantity_to;
+				can_trade = true;
+			}
+			break;
+		case 5:
+			if (quantity_to > axles)
+				alert_window("You do not have enough axles to complete this trade");
+			else {
+				axles -= quantity_to;
+				can_trade = true;
+			}
+			break;
+		case 6:
+			if (quantity_to > tongues)
+				alert_window("You do not have enough tongues to complete this trade");
+			else {
+				tongues -= quantity_to;
+				can_trade = true;
+			}
+			break;
+		default:
+			alert_window("bad trade_to value");
+	}
+	if (can_trade){
+		switch (trade_for) {
+			case 0:
+				oxen += quantity_for;
+				break;
+			case 1:
+				food += quantity_for;
+				break;
+			case 2:
+				clothing += quantity_for;
+				break;
+			case 3:
+				bait += quantity_for;
+				break;
+			case 4:
+				wheels += quantity_for;
+				break;
+			case 5:
+				axles += quantity_for;
+				break;
+			case 6:
+				axles += quantity_for;
+				break;
+			default:
+				alert_window("bad trade_for value");
+		}
+	}
+
+}
 
 function randomNumber(min, max){
 	return Math.floor(Math.random() * (max - min)) + min;
@@ -278,6 +449,33 @@ function alert_window(text) {
 		]
 	});
 	$("#alert_text").text(text);
+}
+
+function trade_window(text) {
+	$("#tradeBox").css("visibility","visible");
+	$("#tradeBox").dialog({
+
+		modal: true,
+		buttons: [
+		{
+			text: "Trade",
+			click: function() {
+				// trade items with whoever
+				$( this ).dialog( "close" );
+				close_trade();
+				}
+
+		},
+		{
+			text: "Walk Away",
+			click: function() {
+				$( this ).dialog( "close" );
+				}
+		}
+		]
+	});
+	$("#trade_string").text(text);
+	
 }
 
 function update_display(){
