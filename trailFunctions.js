@@ -7,7 +7,7 @@ var foodAndWater = [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5];
 var date_obj = new Date(year, month, day);
 
 function continueTrail(){
-
+	locale = parseInt(locale);
 	milesToNext -= (paceVal * (Math.floor(oxen / 3))) + 10;
 	milesTraveled = parseInt(milesTraveled) + (paceVal * (Math.floor(oxen / 3))) + 10;
 	if (milesToNext < 0) {
