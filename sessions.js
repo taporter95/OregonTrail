@@ -25,7 +25,7 @@ function gotSess(holder){
 
 	// get all game stats
 	window.date = holder[10];
-	window.pace = JSON.parse(holder[11]);
+	window.pace = holder[11];
 	window.paceVal = JSON.parse(holder[12]);
 	window.rations = JSON.parse(holder[13]);
 	window.rationsVal = JSON.parse(holder[14]);
