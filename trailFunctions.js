@@ -173,11 +173,11 @@ function updateHealth(resting){
 	}
 
 	var chanceOfRecovery = 100;
-	console.log(weatherMod[weatherCode]);
+	/*console.log(weatherMod[weatherCode]);
 	console.log(rationMod[rationsVal]);
 	console.log(paceMods[paceVal]);
 	console.log(foodMod);
-	console.log(restingBonus);
+	console.log(restingBonus);*/
 
 	for (var i = 0; i < 5; i++) {
 		if (disease[i] != "dead") {
@@ -190,13 +190,13 @@ function updateHealth(resting){
 			var chance = randomNumber(1, 100);
 			console.log(stats[i]);
 			console.log(chance + " over " + chanceOfRecovery);
-			console.log(stats[i]);
 			if (chance <= chanceOfRecovery){
 				stats[i] += 1;
 			}
 			else {
 				stats[i] -= 1;
 			}
+			console.log(stats[i]);
 			if (stats[i] > 10){
 				stats[i] = 10;
 			}
