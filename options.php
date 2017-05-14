@@ -61,7 +61,7 @@ var talkin = ["The trail is tough, be careful.",
   <button id="supplies">View Supplies</button>
   <button id="map">Show Map</button>
   <button id="rations">Change Rations</button>
-  <button id="rest">Rest Up</button>
+  <button id="rest" onclick="rest()">Rest Up</button>
   <button id="trade" onclick="open_trade()">Trade with Locals</button>
   <!--<button id="help" onclick="startUp()">help</button>
   
@@ -246,32 +246,6 @@ $( function() {
 		});
 	});
   
-  
-	$("#rest").click(function(){
-		$("#restBox").css("visibility","visible");
-		$("#restBox").dialog({
-			modal: true,
-			buttons: [
-			{
-				text: "Wait",
-				click: function() {
-					// make time pass, heal people, and the such
-					for (var i = 0; i < $("#waiting").val(); i++){
-						
-						// ask how update Health works???
-						update_date();
-						food -= partySize * rationsVal;
-						updateHealth(true);
-
-					}
-					if ($("#waiting").val() > 0)
-						updateWeather();
-					$( this ).dialog( "close" );
-					}
-			}
-			]
-		});
-	});
   
   
   	$("#talk").click(function(){		

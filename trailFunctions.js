@@ -475,8 +475,33 @@ function trade_window(text) {
 		]
 	});
 	$("#trade_string").text(text);
-	
 }
+
+function rest(){
+	$("#restBox").css("visibility","visible");
+	$("#restBox").dialog({
+		modal: true,
+		buttons: [
+		{
+			text: "Wait",
+			click: function() {
+				// make time pass, heal people, and the such
+				for (var i = 0; i < $("#waiting").val(); i++){
+					
+					// ask how update Health works???
+					update_date();
+					food -= partySize * rationsVal;
+					updateHealth(true);
+
+				}
+				if ($("#waiting").val() > 0)
+					updateWeather();
+				$( this ).dialog( "close" );
+				}
+		}
+		]
+	});
+}	
 
 function update_display(){
 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
