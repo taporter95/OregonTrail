@@ -14,33 +14,33 @@ function gotSess(holder){
 	for (var i = 0; i < 5; i++){
 		window.stats.push(parseInt(window.tempStats[i]));
 	}
-	window.money = JSON.parse(holder[2]);
-	window.oxen = JSON.parse(holder[3]);
-	window.food = JSON.parse(holder[4]);
-	window.clothing = JSON.parse(holder[5]);
-	window.bait = JSON.parse(holder[6]);
-	window.wheels = JSON.parse(holder[7]);
-	window.axles = JSON.parse(holder[8]);
-	window.tongues = JSON.parse(holder[9]);
+	window.money = holder[2];
+	window.oxen = holder[3];
+	window.food = holder[4];
+	window.clothing = holder[5];
+	window.bait = holder[6];
+	window.wheels = holder[7];
+	window.axles = holder[8];
+	window.tongues = holder[9];
 
 	// get all game stats
 	window.date = holder[10];
 	window.pace = holder[11];
-	window.paceVal = JSON.parse(holder[12]);
-	window.rations = JSON.parse(holder[13]);
-	window.rationsVal = JSON.parse(holder[14]);
-	window.health = JSON.parse(holder[15]);
-	window.weather = JSON.parse(holder[16]);
-	window.weatherCode = JSON.parse(holder[17]);
-	window.locale = JSON.parse(holder[18]);
-	window.milesTraveled = JSON.parse(holder[19]);	
-	window.milesToNext = JSON.parse(holder[20]);	
-	window.profession = JSON.parse(holder[21]);
+	window.paceVal = holder[12];
+	window.rations = holder[13];
+	window.rationsVal = holder[14];
+	window.health = holder[15];
+	window.weather = holder[16];
+	window.weatherCode = holder[17];
+	window.locale = holder[18];
+	window.milesTraveled = holder[19];	
+	window.milesToNext = holder[20];	
+	window.profession = holder[21];
 	window.disease = JSON.parse(holder[22]);
-	window.partySize = JSON.parse(holder[23]);
-	window.month = JSON.parse(holder[24]);
-	window.day = JSON.parse(holder[25]);
-	window.year = JSON.parse(holder[26]);
+	window.partySize = holder[23];
+	window.month = holder[24];
+	window.day = holder[25];
+	window.year = holder[26];
 
 	alert(holder);
 	console.log("got session vars");
