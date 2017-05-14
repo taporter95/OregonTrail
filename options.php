@@ -32,6 +32,99 @@ var talkin = ["The trail is tough, be careful.",
 "There are many stops on the way, remember to keep some cash."];
  </script>  
   
+
+  
+  
+  
+  
+  </head>
+  <body>
+  
+
+
+	<h1> Options </h1>
+  <form name="info" action="game.php" method="post">
+  <button type="submit" onclick="sendSession()">Game</button>
+  </form>
+    
+	
+  <form name="info" action="fish.php" method="post">
+  <button type="submit" onclick="sendSession()">Fishing</button>
+  </form>
+  
+  <form name="info" action="options.php" method="post">
+  <button type="submit" onclick="sendSession()">  Reset </button>
+  </form>
+  
+
+  <button id="pace">Change Pace</button>
+  <button id="supplies">View Supplies</button>
+  <button id="map">Show Map</button>
+  <button id="rations">Change Rations</button>
+  <button id="rest">Rest Up</button>
+  <button id="trade" onclick="open_trade()">Trade with Locals</button>
+  <!--<button id="help" onclick="startUp()">help</button>
+  
+  <!-- ADD IN IF IN TOWN THEN TALK TO PEOPLE??? -->
+<?php
+ 
+if (isset($_POST['fort'])){
+ echo("<button id='talk' >Talk to Townsfolk</button>
+  <button id='shop'>Shop from Town</button>");
+}
+
+?>
+  
+  
+  <div id="paceBox" class="modalBox" title="Pace">
+  <p>Please choose which paceat which you would like to travel.</p>
+</div>
+
+<div id="supplyBox" class="modalBox" title="Supplies">
+  <p id="supplyList"> This is a list of your supplies.</p>
+</div>
+
+<div id="mapBox" class="modalBox" title="Map">
+  <p> I'm going to be replaced with a map.</p>
+</div>
+
+<div id="rationBox" class="modalBox" title="Rations">
+  <p> How would you like to change your rations amount?</p>
+</div>
+
+<div id="restBox" class="modalBox" title="Resting">
+  <p> How long would you like to rest? </p>
+  
+ <input type="number" id="waiting" min="0" value="0">
+
+  
+</div>
+
+<div id="tradeBox" class="modalBox" title="Trading">
+  <p>You meet a man wanting to trade, he offers you</p>
+  <p id="trade_string"></p>
+  <input type="hidden" id="q_for">
+  <input type="hidden" id="i_for">
+  <input type="hidden" id="q_to">
+  <input type="hidden" id="i_to">
+</div>
+
+<div id="talkBox" class="modalBox" title="Talking">
+  <p id="talking"> Decide what to say</p>
+</div>
+
+<div id="shopBox" class="modalBox" title="Shopping">
+  <p> Buy shit or get out.</p>
+</div>
+
+<div id="alert" class="modalBox" title="alert">
+  <p id="alert_text"></p>
+</div>
+
+
+
+ 
+  <script type="text/javascript" src="trailFunctions.js"> </script>  
 <script>
 $( function() {
   
@@ -231,97 +324,6 @@ $( function() {
 
 
 </script>
-  
-  
-  
-  
-  </head>
-  <body>
-  
 
-
-	<h1> Options </h1>
-  <form name="info" action="game.php" method="post">
-  <button type="submit" onclick="sendSession()">Game</button>
-  </form>
-    
-	
-  <form name="info" action="fish.php" method="post">
-  <button type="submit" onclick="sendSession()">Fishing</button>
-  </form>
-  
-  <form name="info" action="options.php" method="post">
-  <button type="submit" onclick="sendSession()">  Reset </button>
-  </form>
-  
-
-  <button id="pace">Change Pace</button>
-  <button id="supplies">View Supplies</button>
-  <button id="map">Show Map</button>
-  <button id="rations">Change Rations</button>
-  <button id="rest">Rest Up</button>
-  <button id="trade" onclick="open_trade()">Trade with Locals</button>
-  <!--<button id="help" onclick="startUp()">help</button>
-  
-  <!-- ADD IN IF IN TOWN THEN TALK TO PEOPLE??? -->
-<?php
- 
-if (isset($_POST['fort'])){
- echo("<button id='talk' >Talk to Townsfolk</button>
-  <button id='shop'>Shop from Town</button>");
-}
-
-?>
-  
-  
-  <div id="paceBox" class="modalBox" title="Pace">
-  <p>Please choose which paceat which you would like to travel.</p>
-</div>
-
-<div id="supplyBox" class="modalBox" title="Supplies">
-  <p id="supplyList"> This is a list of your supplies.</p>
-</div>
-
-<div id="mapBox" class="modalBox" title="Map">
-  <p> I'm going to be replaced with a map.</p>
-</div>
-
-<div id="rationBox" class="modalBox" title="Rations">
-  <p> How would you like to change your rations amount?</p>
-</div>
-
-<div id="restBox" class="modalBox" title="Resting">
-  <p> How long would you like to rest? </p>
-  
- <input type="number" id="waiting" min="0" value="0">
-
-  
-</div>
-
-<div id="tradeBox" class="modalBox" title="Trading">
-  <p>You meet a man wanting to trade, he offers you</p>
-  <p id="trade_string"></p>
-  <input type="hidden" id="q_for">
-  <input type="hidden" id="i_for">
-  <input type="hidden" id="q_to">
-  <input type="hidden" id="i_to">
-</div>
-
-<div id="talkBox" class="modalBox" title="Talking">
-  <p id="talking"> Decide what to say</p>
-</div>
-
-<div id="shopBox" class="modalBox" title="Shopping">
-  <p> Buy shit or get out.</p>
-</div>
-
-<div id="alert" class="modalBox" title="alert">
-  <p id="alert_text"></p>
-</div>
-
-<p onload="find()"> </p>
-
- 
-  <script type="text/javascript" src="trailFunctions.js"> </script>  
   </body>
 </html>
