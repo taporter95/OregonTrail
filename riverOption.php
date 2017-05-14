@@ -8,20 +8,18 @@
   <head>
     <title>OT River Option</title>
 
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <link rel="stylesheet" href="boxStyle.css">
- 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script type="text/javascript" src="sessions.js"></script> 
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="boxStyle.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script type="text/javascript" src="trailFunctions.js"> </script>
   
   
 <script>
-  var riverWidth = randomNumber(400, 600);
-	var riverDepth = parseFloat((Math.random() * (6 - 2) + 2).toFixed(1));
- 
+	var riverWidth = randomNumber(400, 600);
+	var riverDepth = parseFloat((Math.random() * (10 - 2) + 2).toFixed(1));
 
 </script>
   
@@ -42,15 +40,14 @@
 					for (var i = 0; i < $("#waiting").val(); i++){
 						
 						// ask how update Health works???
-						updateHealth(true);
-						date_obj.setDate(date_obj.getDate() + 1);
-						day = date_obj.getDay();
-						month = date_obj.getMonth();
-						year = date_obj.getFullYear();
+						update_date();
 						food -= partySize * rationsVal;
+						updateHealth(true);
+						
 					}
 					//update weather
-					updateWeather();
+					if ($("#waiting").val() > 0){
+						updateWeather();
 					var num = randomNumber(1, 100);
 					var change = parseFloat((Math.random() * (0.4 - 0.1) + 0.1).toFixed(1));
 					if (num <= 75){
@@ -58,6 +55,7 @@
 					}
 					else {
 						riverDepth += change;
+					}
 					}
 					$( this ).dialog( "close" );
 					}
@@ -89,6 +87,18 @@
 	});  
   
   
+  $("#choose1").click(function(){
+	  $("#depth").val(riverDepth); 
+  });
+  
+    $("#choose2").click(function(){
+	  $("#depth").val(riverDepth); 
+  });
+  
+    $("#choose3").click(function(){
+	  $("#depth").val(riverDepth); 
+  });
+  
   } );
   </script>
 			
@@ -97,9 +107,12 @@
 	<h1> River Option </h1>
 
   <form name="info" action="crossing.php" method="post">
-  <input onclick="sendSession()" type="submit" name="choice" value="Ford">
-    <input onclick="sendSession()" type="submit" name="choice" value="Caulk">
-	<input onclick="sendSession()" type="submit" name="choice" value="Ferry">
+  
+  <input type="hidden" name="depth" id="depth" >
+  
+  <input id="choose1" onclick="sendSession()" type="submit" name="choice" value="ford">
+    <input id="choose2" onclick="sendSession()" type="submit" name="choice" value="caulk">
+	<input id="choose3" onclick="sendSession()" type="submit" name="choice" value="ferry">
  
   </form>
   
