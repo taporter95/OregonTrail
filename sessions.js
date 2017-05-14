@@ -22,7 +22,7 @@ function gotSess(holder){
 	window.wheels = parseInt(holder[7]);
 	window.axles = parseInt(holder[8]);
 	window.tongues = parseInt(holder[9]);
-	
+
 	// get all game stats
 	window.date = holder[10];
 	window.pace = holder[11];
@@ -37,11 +37,11 @@ function gotSess(holder){
 	window.milesToNext = parseInt(holder[20]);	
 	window.profession = holder[21];
 	window.disease = JSON.parse(holder[22]);
-	window.partySize = holder[23];
-	window.month = holder[24];
-	window.day = holder[25];
-	window.year = holder[26];
-	alert(holder);
+	window.partySize = parseInt(holder[23]);
+	window.month = parseInt(holder[24]);
+	window.day = parseInt(holder[25]);
+	window.year = parseInt(holder[26]);
+	alert(JSON.parse(holder));
 }
 
 
