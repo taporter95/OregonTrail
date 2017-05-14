@@ -10,7 +10,7 @@ $_SESSION["food"] = $_REQUEST["foodIn"];
 $_SESSION["clothing"] = $_REQUEST["clothingIn"];
 $_SESSION["bait"] = $_REQUEST["baitIn"];
 $_SESSION["wheels"] = $_REQUEST["wheelsIn"];
-$_SESSION["axles"] = $_REQUEST["axlesIn"];
+$_SESSION["axels"] = $_REQUEST["axlesIn"];
 $_SESSION["tongues"] = $_REQUEST["tonguesIn"];
 
 $_SESSION["date"] = $_REQUEST["dateIn"];

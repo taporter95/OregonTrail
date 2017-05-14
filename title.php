@@ -31,6 +31,10 @@ $_SESSION["profession"] = 0;
 $_SESSION["disease"] = ["none", "none", "none", "none", "none"];
 $_SESSION["broken"] = false;
 $_SESSION["inFort"] = false;
+$_SESSION["partySize"] = 5;
+$_SESSION["month"] = 2;
+$_SESSION["day"] = 1;
+$_SESSION["year"] = 1848;
 
 $_SESSION["oxenBought"] = 0;
 $_SESSION["foodBought"] =0;
