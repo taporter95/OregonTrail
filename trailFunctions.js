@@ -312,10 +312,6 @@ function close_trade(){
 	var trade_for = parseInt($("#i_for").val());
 	var quantity_to = parseInt($("#q_to").val());
 	var trade_to = parseInt($("#i_to").val());
-	console.log(quantity_for);
-	console.log(trade_for);
-	console.log(quantity_to);
-	console.log(trade_to);
 
 	var can_trade = false;
 
@@ -382,25 +378,25 @@ function close_trade(){
 	if (can_trade){
 		switch (trade_for) {
 			case 0:
-				oxen += quantity_for;
+				oxen = parseInt(oxen) + quantity_for;
 				break;
 			case 1:
-				food += quantity_for;
+				food = parseInt(food) + quantity_for;
 				break;
 			case 2:
-				clothing += quantity_for;
+				clothing = parseInt(clothing) + quantity_for;
 				break;
 			case 3:
-				bait += quantity_for;
+				bait = parseInt(bait) + quantity_for;
 				break;
 			case 4:
-				wheels += quantity_for;
+				wheels = parseInt(wheels) + quantity_for;
 				break;
 			case 5:
-				axles += quantity_for;
+				axles = parseInt(axles) + quantity_for;
 				break;
 			case 6:
-				axles += quantity_for;
+				tongues = parseInt(tongues) + quantity_for;
 				break;
 			default:
 				alert_window("bad trade_for value");
