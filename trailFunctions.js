@@ -308,10 +308,10 @@ function open_trade(){
 
 
 function close_trade(){
-	var quantity_for = $("q_for").val();
-	var trade_for = $("i_for").val();
-	var quantity_to = $("q_to").val();
-	var trade_to = $("i_to").val();
+	var quantity_for = parseInt($("q_for").val());
+	var trade_for = parseInt($("i_for").val());
+	var quantity_to = parseInt($("q_to").val());
+	var trade_to = parseInt($("i_to").val());
 
 	var can_trade = false;
 
