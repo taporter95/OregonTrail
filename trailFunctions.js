@@ -159,8 +159,8 @@ function updateHealth(resting){
 	var statuses = ["dead", "very poor", "very poor", "poor", "poor", "fair", "fair", "fair", "fair", "good", "good"];
 	//weather types: very cold, cold, cool, good, warm, hot, very hot, rainy, very rainy, snowy
 	var weatherMod = [-25, -15, -5, 0, -5, -15, -25, -15, -20, -20];
-	var rationMod = [-15, -5, 0];
-	var paceMods = [-10, -15, -20];
+	var rationMod = [0, -15, -5, 0];
+	var paceMods = [0, -10, -15, -20];
 	var paceMod = 0;
 	var foodMod = 0;
 
@@ -173,9 +173,9 @@ function updateHealth(resting){
 	}
 
 	var chanceOfRecovery = 100;
-	console.log(weatherCode);
-	console.log(rationsVal);
-	console.log(paceMod);
+	console.log(weatherMod[weatherCode]);
+	console.log(rationMod[rationsVal]);
+	console.log(rationMod[paceMod]);
 	console.log(foodMod);
 	console.log(restingBonus);
 
