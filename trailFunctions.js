@@ -312,6 +312,10 @@ function close_trade(){
 	var trade_for = parseInt($("i_for").val());
 	var quantity_to = parseInt($("q_to").val());
 	var trade_to = parseInt($("i_to").val());
+	console.log(quantity_for);
+	console.log(trade_for);
+	console.log(quantity_to);
+	console.log(trade_to);
 
 	var can_trade = false;
 
