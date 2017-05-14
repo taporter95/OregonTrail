@@ -298,20 +298,20 @@ function open_trade(){
 		default:
 			var quantity_to = "Bad num";
 	}
-	$("q_for").val(quantity_for);
-	$("i_for").val(trade_for);
-	$("q_to").val(quantity_to);
-	$("i_to").val(trade_to);
+	$("#q_for").val(quantity_for);
+	$("#i_for").val(trade_for);
+	$("#q_to").val(quantity_to);
+	$("#i_to").val(trade_to);
 	var trade_string = quantity_for + " " + items[trade_for] + " for " + quantity_to + " " + items[trade_to] + ". You have " + you_have;
 	trade_window(trade_string);
 }
 
 
 function close_trade(){
-	var quantity_for = parseInt($("q_for").val());
-	var trade_for = parseInt($("i_for").val());
-	var quantity_to = parseInt($("q_to").val());
-	var trade_to = parseInt($("i_to").val());
+	var quantity_for = parseInt($("#q_for").val());
+	var trade_for = parseInt($("#i_for").val());
+	var quantity_to = parseInt($("#q_to").val());
+	var trade_to = parseInt($("#i_to").val());
 	console.log(quantity_for);
 	console.log(trade_for);
 	console.log(quantity_to);
