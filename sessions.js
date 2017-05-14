@@ -11,7 +11,7 @@ function gotSess(holder){
 	window.party = JSON.parse(holder[0]);
 	window.tempStats = JSON.parse(holder[1]);
 	window.stats = [];
-	for (var i = 0; i < 5; ++){
+	for (var i = 0; i < 5; i++){
 		window.stats.push_back(parseInt(window.tempStats[i]));
 	}
 	window.money = parseInt(holder[2]);
