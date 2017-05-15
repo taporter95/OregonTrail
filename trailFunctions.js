@@ -50,8 +50,8 @@ function update_location(modifier){
 		else
 			var locale_mod = 1;
 
-		locale += locale_mod;
-		milesToNext = travelDistances[locale];
+		milesToNext = travelDistances[locale + modifier];
+		locale += locale_mod + modifier;
 		$("#next").text(milesToNext);
 		if (locationType[locale-locale_mod] == "river"){
 			river_modal();
@@ -60,7 +60,7 @@ function update_location(modifier){
 			inFort = true;
 			fort_modal();
 		}
-		alert_window("From " + locationNames[locale - modifier - locale_mod] + ", it is " + milesToNext + " miles to " + locationNames[locale + 1 - locale_mod]);
+		alert_window("From " + locationNames[locale - modifier - locale_mod] + ", it is " + milesToNext + " miles to " + locationNames[locale + locale_mod]);
 	}
 }
 
@@ -520,7 +520,6 @@ function split_trail(location_1, location_2) {
 				text: location_2,
 				click: function(){
 					$(this).dialog("close");
-					locale += 1;
 					update_location(1);
 				}
 			}
