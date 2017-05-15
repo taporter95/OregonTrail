@@ -36,7 +36,30 @@ var talkin = ["The trail is tough, be careful.",
 
   </head>
   <body>
-  
+  <table>
+  	<tr>
+    	<td>Date: </td>
+    	<td id="date"></td>
+  	</tr>
+  	<tr>
+    	<td>Weather: </td>
+    	<td id="weather"></td>
+  	</tr>
+  	<tr>
+    	<td>Health: </td>
+    	<td id="health"></td>
+  	</tr>
+  	<tr>
+   		<td>Pace: </td>
+   		<td id="pace"></td>
+  	</tr>
+  	<tr>
+    	<td>Rations: </td>
+    	<td id="rations"></td>
+  	</tr>
+</table>
+
+<!--
   <label for="date">Date: </label>
 <p id="date"></p>
 <label for="weather">Weather: </label>    
@@ -47,7 +70,7 @@ var talkin = ["The trail is tough, be careful.",
 <p id="pace"><p>
 <label for="rations">Rations: </label>
 <p id="rations"></p>
-
+-->
 
 	<h1> Options </h1>
   <form name="info" action="game.php" method="post">

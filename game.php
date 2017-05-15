@@ -83,7 +83,7 @@
   <div id="river_modal" class="modalBox" title="River Crossing"> 
     <p id="rm_text"></p>
     <form id="river_form" name="cross" action="riverOption.php" method="post">
-      <button type="river_button" style="visibility: hidden;" onclick="sendSession()">Cross River</button>
+      <button id="river_button" type="submit" style="visibility: hidden;" onclick="sendSession()">Cross River</button>
     </form>
   </div>
 
