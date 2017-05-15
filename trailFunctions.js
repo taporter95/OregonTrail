@@ -61,8 +61,8 @@ function update_location(){
 			fort_modal();
 		}
 	}
-	else if (milesToNext == travelDistances[locale]){
-		var message = "From" + locationNames[locale] + milesToNext + " miles to " + locationNames[locale+1];
+	if (milesToNext == travelDistances[locale]){
+		var message = "From " + locationNames[locale] + ", it is " + milesToNext + " miles to " + locationNames[locale+1];
 		if (foodAndWater[locale] == 4){
 			message += "\n There is little food and water for your oxen.";
 		}
