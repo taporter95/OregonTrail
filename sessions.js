@@ -9,11 +9,6 @@ function gotSess(holder){
 	holder = (JSON.parse(holder));
 	// get all party info from sessions
 	window.party = JSON.parse(holder[0]);
-	/*window.tempStats = JSON.parse(holder[1]);
-	window.stats = [];
-	for (var i = 0; i < 5; i++){
-		window.stats.push(parseInt(window.tempStats[i]));
-	}*/
 	window.stats = JSON.parse(holder[1]);
 	window.money = holder[2];
 	window.oxen = holder[3];
