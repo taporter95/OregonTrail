@@ -83,14 +83,14 @@
   <div id="river_modal" class="modalBox" title="River Crossing"> 
     <p id="rm_text"></p>
     <form id="river_form" name="cross" action="riverOption.php" method="post">
-      <button type="river_button" style="{visibility: hidden;}" onclick="sendSession()">Cross River</button>
+      <button type="river_button" style="visibility: hidden;" onclick="sendSession()">Cross River</button>
     </form>
   </div>
 
   <div id="fort_modal" class="modalBox" title="Fort">
     <p id="fm_text"></p>
     <form id="fort_form" name="options" action="options.php" method="post">
-      <button id="fort_button" type="submit" style="{visibility: hidden;}" name="fort" onclick="sendSession()">Go to Fort</button>
+      <button id="fort_button" type="submit" style="visibility: hidden;" name="fort" onclick="sendSession()">Go to Fort</button>
     </form>
   </div>
 
