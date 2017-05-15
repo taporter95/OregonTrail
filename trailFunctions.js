@@ -611,7 +611,8 @@ function broken_wagon_2(){
 }
 
 $("#wait").click(function(){
-	var date_obj = new Date(year, month, day);
+	console.log("waiting");
+	date_obj = new Date(year, month, day);
 	$("#waitBox").css("visibility","visible");
 	$("#waitBox").dialog({
 		modal: true,
