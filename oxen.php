@@ -1,3 +1,8 @@
+<?php
+session_start();
+$_SESSION["canBuy"] = 9 - $_SESSION["oxen"];
+
+?>
 <?xml version = "1.0"?>
 <!DOCTYPE html PUBLIC "-//w3c//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -19,10 +24,10 @@
   I charge $40 a yoke.
   </p>
   <form name="info" action="genStore.php" method="post">
-  How many yoke do you want? (between 1 and 9):
-  <input type="number" name="oxenNum" min="1" max="9" required>
+  How many yoke do you want? (up to 9):
+  <input type="number" name="oxenNum" min="0" max="<?php echo $_SESSION["canBuy"]?>" required>
   <br>
-  <img src="yoke.jpg" alt="oxen" style="width:250px;height:300px;">
+  <img src="images/ox.png" alt="oxen" style="width:250px;height:300px;margin: 20px;">
   <br>
   <button type="submit">Back to Store</button>
   </form>

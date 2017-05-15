@@ -1,3 +1,9 @@
+<?php
+session_start();
+$_SESSION["canBuy"] = 99 - $_SESSION["clothing"];
+
+?>
+
 <?xml version = "1.0"?>
 <!DOCTYPE html PUBLIC "-//w3c//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -20,7 +26,9 @@
   </p>
   <form name="info" action="genStore.php" method="post">
   How many sets of clothes do you want? (up to 99):
-  <input type="number" name="clothingNum" min="0" max="99" required>
+  <input type="number" name="clothingNum" min="0" max="<?php echo $_SESSION["canBuy"]?>" required>
+  <br>
+  <img src="images/boots.png" alt="boots" style="width:200px;height:200px;">
   <br>
   <button type="submit">Back to Store</button>
   </form>
