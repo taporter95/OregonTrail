@@ -45,27 +45,32 @@ function update_location(){
 	console.log(locationNames[locale]);
 	console.log(milesToNext);
 	if (milesToNext == 0){
-		if (locationNames[locale] == "Green River Crossing")
-			var locale_mod = 2;
-		else
-			var locale_mod = 1;
+		if (locationNames[locale] == "Green River Crossing"){
+			var locale_mod_1 = 2;
+			var locale_mod_2 = 1;
+		}
+		else{
+			var locale_mod_1 = 1;
+			var locale_mod_2 = 0;
+		}
 
-		milesToNext = travelDistances[locale];
+
+		milesToNext = travelDistances[locale+locale_mod_2];
 		locale += locale_mod;
-		$("#next").text(milesToNext);
-		if (locationType[locale-locale_mod] == "river"){
+		//$("#next").text(milesToNext);
+		if (locationType[locale-locale_mod_1] == "river"){
 			river_modal();
 		}
-		else if (locationType[locale-locale_mod] == "fort"){
+		else if (locationType[locale-locale_mod_1] == "fort"){
 			inFort = true;
 			fort_modal();
 		}
 
-		if (locationNames[locale-locale_mod] == "South Pass"){
+		if (locationNames[locale-locale_mod_1] == "South Pass"){
 			split_trail(locationNames[locale], locationNames[locale+1]);
 		}
 		else{
-			alert_window("From " + locationNames[locale - locale_mod] + ", it is " + milesToNext + " miles to " + locationNames[locale - 1 + locale_mod]);
+			alert_window("From " + locationNames[locale - locale_mod_1] + ", it is " + milesToNext + " miles to " + locationNames[locale - 1 + locale_mod + locale_mod_2]);
 		}
 	}
 }
