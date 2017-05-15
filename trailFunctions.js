@@ -45,7 +45,7 @@ function update_location(){
 	console.log(locationNames[locale]);
 	console.log(milesToNext);
 	if (milesToNext == 0){
-		if (locationNames[locale-1] == "Green River Crossing")
+		if (locationNames[locale] == "Green River Crossing")
 			var locale_mod = 2;
 		else
 			var locale_mod = 1;
@@ -74,6 +74,7 @@ function update_split(modifier){
 	locale += modifier;
 	milesToNext = travelDistances[locale];
 	alert_window("From " + locationNames[locale - 1 - modifier] + ", it is " + milesToNext + " miles to " + locationNames[locale]);
+	update_display();
 }
 
 function randomEvent(){
