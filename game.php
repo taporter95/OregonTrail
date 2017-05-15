@@ -82,6 +82,7 @@
   -->
   <div id="river_modal" class="modalBox" title="River Crossing"> 
     <p id="rm_text"></p>
+    <img id="river_image" src=""/>
     <form id="river_form" name="cross" action="riverOption.php" method="post">
       <button id="river_button" type="submit" style="visibility: hidden;" onclick="sendSession()">Cross River</button>
     </form>
@@ -89,6 +90,7 @@
 
   <div id="fort_modal" class="modalBox" title="Fort">
     <p id="fm_text"></p>
+    <img id="fort_image" src=""/>
     <form id="fort_form" name="options" action="options.php" method="post">
       <button id="fort_button" type="submit" style="visibility: hidden;" name="fort" onclick="sendSession()">Go to Fort</button>
     </form>

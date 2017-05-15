@@ -2,22 +2,30 @@
 var locationNames = ["Independence", "Kansas River", "Big Blue River", "Fort Kearney", "Chimney Rock", "Fort Laramie", "Independence Rock", "South Pass", "Green River Crossing", "Fort Bridger", "Soda Springs", "Fort Hall", "Snake River Crossing", "Fort Boise", "Blue Mountains", "Fort Walla Walla", "The Dalles", "The Willamette Valley"];
 var travelDistances = [102, 82, 118, 250, 86, 190, 102, 57, 125, 143, 162, 57, 182, 113, 160, 55, 125, 100, 113];
 var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landmark", "landmark", "river", "fort", "landmark", "fort", "river", "fort", "landmark", "fort"];
-var foodAndWater = [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5];
+var danger = [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5, 5, 5];
+
+//there is an inverse relationship between this variable and the amount of food and water, the larger the variable, the worse it is
+var foodAndWater = 0;
 
 var date_obj = new Date(year, month, day);
-if (typeof date_obj == 'undefined'){
-	console.log("undefined reloading");
-	location.reload();
-}
 
+//Step forward on the trail, updates distances, checks random events, updates stats and equipment
 function continueTrail(){
+	
 	broken = parseInt(broken);
 	//if the wagon is not broken
 	if (broken == 0){
 		locale = parseInt(locale);
 		//get the next mile number and update distance info
-		milesToNext -= (paceVal * (Math.floor(oxen / 3))) + 10;
-		milesTraveled = parseInt(milesTraveled) + (paceVal * (Math.floor(oxen / 3))) + 10;
+		//move very slowly if you have no oxen
+		if (oxen <= 0){
+			milesToNext -= 5;
+			milesTraveled = parseInt(milesTraveled) + 5;
+		}
+		else {
+			milesToNext -= (paceVal * (Math.floor(oxen / 3))) + 10;
+			milesTraveled = parseInt(milesTraveled) + (paceVal * (Math.floor(oxen / 3))) + 10;
+		}
 		if (milesToNext < 0) {
 			milesTraveled = parseInt(milesTraveled) + parseInt(milesToNext);
 			milesToNext = 0;
@@ -46,11 +54,13 @@ function continueTrail(){
 	}
 }
 
+//update the locale variable and tell the player where they are. split trail when necessary
 function update_location(){
 	//if at new destination
 	if (milesToNext == 0){
 		//these locations are part of splits
 		if (locationNames[locale] == "Green River Crossing" || locationNames[locale] == "Fort Walla Walla"){
+			//variable need if the first option was chosen during a split
 			var locale_mod = 2;
 		}
 		else{
@@ -61,9 +71,11 @@ function update_location(){
 		milesToNext = travelDistances[locale];
 		locale += locale_mod;
 
+		//if the player reached a river, force them to cross it
 		if (locationType[locale-locale_mod] == "river"){
 			river_modal();
 		}
+		//if the player reached a fort, give them the option to go to it
 		else if (locationType[locale-locale_mod] == "fort"){
 			inFort = true;
 			fort_modal();
@@ -131,7 +143,7 @@ function randomEvent(){
 				break;	
 			//impassable trail
 			case 2:
-				if (random <= 5){
+				if (random <= 3 + danger[locale]){
 					var daysLost = randomNumber(1, 9);
 					alert_window("impassable trail lose " + daysLost + " days");
 					for (var i = 0; i < daysLost; i++){
@@ -144,26 +156,32 @@ function randomEvent(){
 				break;
 			//stolen goods
 			case 3:
-				if (random <= 5){
+				if (random <= 3 + danger[locale]){
 					var bait_lost = randomNumber(20, 200);
 					var clothes_lost = randomNumber(1, 10);
 					var food_lost = randomNumber(5, 50);
 					bait -= bait_lost;
+					if (bait < 0)
+						bait = 0;
 					clothing -= clothes_lost;
+					if (clothing < 0)
+						clothing = 0;
 					food -= food_lost;
+					if (food < 0)
+						food = 0;
 					alert_window("You were robbed! You lost: \n" + bait_lost + " bait\n" + clothes_lost + " pairs of clothes\n" + food_lost + " Lbs. of food");
 				}
 				break;
 			//friendly locals
 			case 4:
-				if (random <= 5){
+				if (random <= 3 + danger[locale]){
 					food += 50;
 					alert_window("Some friendly locals help you forage for food!");
 				}
 				break;
 			//broken part
 			case 5:
-				if (random <= 5){
+				if (random <= 3 + danger[locale]){
 					var parts = ["error", "wheel", "axle", "tongue"];
 					var broken_part = randomNumber(1, 3);
 					broken = broken_part;
@@ -172,11 +190,19 @@ function randomEvent(){
 				break;
 			//dead oxen
 			case 6:
-				if (random <= 3 + foodAndWater[locale]){
+				if (random <= 3 + danger[locale]){
 					alert_window("One of your oxen has died");
 					oxen -= 1;
+					if (oxen < 0)
+						oxen = 0;
 				}
 				break;
+			//increase hazard for oxen
+			case 7:
+				if (random <= (danger[locale] + foodAndWater + danger[locale])){
+					alert_window("There is little food or water in this area");
+					foodAndWater += 1;
+				}
 			default:
 				alert_window("bad roll");
 
@@ -188,7 +214,7 @@ function getDisease(){
 	//diseases
 	var diseases = ["the measles", "a snakebite", "dysentery", "typhoid", "cholera", "exaustion", "a broken leg"];
 	var num = randomNumber(1, 100);
-	if (num <= 3){
+	if (num <= 3 + danger[locale]){
 		return diseases[randomNumber(0, 6)];
 	}
 	else {
@@ -200,7 +226,7 @@ function updateHealth(resting){
 	var restingBonus = 15;
 	var statuses = ["dead", "very poor", "very poor", "poor", "poor", "fair", "fair", "fair", "fair", "good", "good"];
 	//weather types: very cold, cold, cool, good, warm, hot, very hot, rainy, very rainy, snowy
-	//party health is influenced by the weather, rations, pace, and if they are resting or not
+	//party health is influenced by the weather, rations, pace, if they are resting or not, and the strain of treveling for a long time
 	var weatherMod = [-25, -15, -5, 0, -5, -15, -25, -15, -20, -20];
 	var rationMod = [0, -15, -5, 0];
 	var paceMods = [0, -10, -15, -20];
@@ -222,10 +248,10 @@ function updateHealth(resting){
 		if (disease[i] != "dead") {
 			if (disease[i] != "none"){
 				//party members will have a greater chance of losing health if they are sick
-				chanceOfRecovery = 75 + weatherMod[weatherCode] + rationMod[rationsVal] + paceMod + foodMod + restingBonus;
+				chanceOfRecovery = 75 + weatherMod[weatherCode] + rationMod[rationsVal] + paceMod + foodMod + restingBonus - danger[locale];
 			} 
 			else {
-				chanceOfRecovery = 100 + weatherMod[weatherCode] + rationMod[rationsVal] + paceMod + foodMod + restingBonus;
+				chanceOfRecovery = 100 + weatherMod[weatherCode] + rationMod[rationsVal] + paceMod + foodMod + restingBonus - danger[locale];
 			}
 			var chance = randomNumber(1, 100);
 			if (chance <= chanceOfRecovery){
@@ -524,6 +550,9 @@ function river_modal(){
 		}
 		]
 	});
+	var image_source = "images/" + locationNames[locale] + ".jpg";
+	$("#river_image").attr("src", image_source);
+}
 }
 
 function fort_modal(){
@@ -546,6 +575,8 @@ function fort_modal(){
 			}
 		]
 	});
+	var image_source = "images/" + locationNames[locale] + ".jpg";
+	$("#fort_image").attr("src", image_source);
 }
 
 function alert_window(text) {
@@ -735,6 +766,10 @@ function update_display(){
 }
 
 function update_date(){
+	if (typeof date_obj == 'undefined'){
+		console.log("undefined reloading");
+		location.reload();
+	}
 	date_obj.setDate(date_obj.getDate() + 1);
 	day = date_obj.getDate();
 	month = date_obj.getMonth();
