@@ -8,7 +8,7 @@ var date_obj = new Date(year, month, day);
 
 function continueTrail(){
 	broken = parseInt(broken);
-	if (broken = 0){
+	if (broken == 0){
 		locale = parseInt(locale);
 		milesToNext -= (paceVal * (Math.floor(oxen / 3))) + 10;
 		milesTraveled = parseInt(milesTraveled) + (paceVal * (Math.floor(oxen / 3))) + 10;
