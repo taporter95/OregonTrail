@@ -610,6 +610,42 @@ function broken_wagon_2(){
 	$("#broken_wagon_text_2").text("You must trade for a part to fix the wagon.");
 }
 
+$("#wait").click(function(){
+	$("#waitBox").css("visibility","visible");
+	$("#waitBox").dialog({
+		modal: true,
+		buttons: [
+		{
+			text: "Wait",
+			click: function() {
+				// make time pass, heal people, and the such
+				for (var i = 0; i < $("#waiting").val(); i++){
+					
+					// ask how update Health works???
+					update_date();
+					food -= partySize * rationsVal;
+					updateHealth(true);
+					
+				}
+				//update weather
+				if ($("#waiting").val() > 0){
+					updateWeather();
+				var num = randomNumber(1, 100);
+				var change = parseFloat((Math.random() * (0.4 - 0.1) + 0.1).toFixed(1));
+				if (num <= 75){
+					riverDepth -= change;
+				}
+				else {
+					riverDepth += change;
+				}
+				}
+				$( this ).dialog( "close" );
+				}
+		}
+		]
+	});
+}
+
 function rest(){
 	$("#restBox").css("visibility","visible");
 	$("#restBox").dialog({
