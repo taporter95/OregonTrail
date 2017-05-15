@@ -301,6 +301,7 @@ function open_trade(){
 		default:
 			var quantity_to = "Bad num";
 	}
+	update_display();
 	$("#q_for").val(quantity_for);
 	$("#i_for").val(trade_for);
 	$("#q_to").val(quantity_to);
