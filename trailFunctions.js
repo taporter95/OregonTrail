@@ -551,6 +551,7 @@ function river_modal(){
 		]
 	});
 	var image_source = "images/" + locationNames[locale] + ".jpg";
+	$("#river_modal").attr("title", locationNames[locale]);
 	$("#river_image").attr("src", image_source);
 }
 
@@ -576,6 +577,7 @@ function fort_modal(){
 		]
 	});
 	var image_source = "images/" + locationNames[locale] + ".jpg";
+	$("#fort_modal").attr("title", locationNames[locale]);
 	$("#fort_image").attr("src", image_source);
 }
 
