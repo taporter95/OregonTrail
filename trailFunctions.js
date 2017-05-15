@@ -26,35 +26,17 @@ function continueTrail(){
 		updateWeather();
 		randomEvent();
 
-		if (milesToNext == 0){
-			if (locationNames[locale] == "Green River Crossing")
-				var locale_mod = 2;
-			else
-				var locale_mod = 1;
-
-			locale += locale_mod;
-			milesToNext = travelDistances[locale];
-			$("#next").text(milesToNext);
-			if (locationType[locale-locale_mod] == "river"){
-				river_modal();
-			}
-			else if (locationType[locale-locale_mod] == "fort"){
-				inFort = true;
-				fort_modal();
-			}
-
-		}
-
 		if (food < 0){
 			food = 0;
 		}
 
-		update_display();
 		if (locationNames[locale] == "South Pass")
 			split_trail(locationNames[locale+1], locationNames[locale+2]);
 		else {
 			update_location();
 		}
+		update_display();
+
 	}
 	else{
 		fix_wagon(false);
@@ -62,7 +44,24 @@ function continueTrail(){
 }
 
 function update_location(){
-	if (milesToNext == travelDistances[locale]){
+	if (milesToNext == 0){
+		if (locationNames[locale] == "Green River Crossing")
+			var locale_mod = 2;
+		else
+			var locale_mod = 1;
+
+		locale += locale_mod;
+		milesToNext = travelDistances[locale];
+		$("#next").text(milesToNext);
+		if (locationType[locale-locale_mod] == "river"){
+			river_modal();
+		}
+		else if (locationType[locale-locale_mod] == "fort"){
+			inFort = true;
+			fort_modal();
+		}
+	}
+	else if (milesToNext == travelDistances[locale]){
 		var message = "From" + locationNames[locale] + milesToNext + " miles to " + locationNames[locale+1];
 		if (foodAndWater[locale] == 4){
 			message += "\n There is little food and water for your oxen.";
