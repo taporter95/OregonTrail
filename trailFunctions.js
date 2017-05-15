@@ -553,7 +553,7 @@ function river_modal(){
 	var image_source = "images/" + locationNames[locale] + ".jpg";
 	$("#river_image").attr("src", image_source);
 }
-}
+
 
 function fort_modal(){
 	$("#fort_modal").css("visibility", "visible");
