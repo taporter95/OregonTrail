@@ -128,7 +128,7 @@ function randomEvent(){
 				break;
 			case 5:
 				if (random <= 100){
-					var parts = ["wheel", "axle", "tongue"];
+					var parts = ["error", "wheel", "axle", "tongue"];
 					var broken_part = randomNumber(1, 3);
 					broken = broken_part;
 					broken_wagon_1("A " + parts[broken_part] + " has broken on the wagon, would you like to fix it?");
