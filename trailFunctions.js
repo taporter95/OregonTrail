@@ -5,6 +5,9 @@ var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landm
 var foodAndWater = [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5];
 
 var date_obj = new Date(year, month, day);
+if (typeof date_obj == 'undefined'){
+	location.reload();
+}
 
 function continueTrail(){
 	broken = parseInt(broken);
