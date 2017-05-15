@@ -56,7 +56,7 @@ function update_location(){
 
 
 		milesToNext = travelDistances[locale+locale_mod_2];
-		locale += locale_mod;
+		locale += locale_mod_1;
 		//$("#next").text(milesToNext);
 		if (locationType[locale-locale_mod_1] == "river"){
 			river_modal();
