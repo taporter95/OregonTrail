@@ -49,7 +49,7 @@
   
   
 <script>
-	$(document).ready(function{
+	$(document).ready(function(){
 		var riverWidth = randomNumber(400, 600);
 		var riverDepth = parseFloat((Math.random() * (10 - 2) + 2).toFixed(1));
 	});
