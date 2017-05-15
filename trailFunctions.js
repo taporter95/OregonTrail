@@ -550,8 +550,8 @@ function river_modal(){
 		}
 		]
 	});
-	var image_source = "images/" + locationNames[locale] + ".jpg";
-	$("#river_modal").attr("title", locationNames[locale]);
+	var image_source = "images/" + locationNames[locale-1] + ".jpg";
+	$("#river_modal").dialog('option', 'title', locationNames[locale-1]);
 	$("#river_image").attr("src", image_source);
 }
 
@@ -576,8 +576,8 @@ function fort_modal(){
 			}
 		]
 	});
-	var image_source = "images/" + locationNames[locale] + ".jpg";
-	$("#fort_modal").attr("title", locationNames[locale]);
+	var image_source = "images/" + locationNames[locale-1] + ".jpg";
+	$("#fort_modal").dialog('option', 'title', locationNames[locale-1]);
 	$("#fort_image").attr("src", image_source);
 }
 
