@@ -47,7 +47,7 @@ function update_location(){
 	if (milesToNext == 0){
 		if (locationNames[locale] == "Green River Crossing"){
 			var locale_mod_1 = 2;
-			var locale_mod_2 = 1;
+			var locale_mod_2 = 0;
 		}
 		else{
 			var locale_mod_1 = 1;
@@ -70,7 +70,7 @@ function update_location(){
 			split_trail(locationNames[locale], locationNames[locale+1]);
 		}
 		else{
-			alert_window("From " + locationNames[locale - locale_mod_1] + ", it is " + milesToNext + " miles to " + locationNames[locale - 1 + locale_mod_1 + locale_mod_2]);
+			alert_window("From " + locationNames[locale - locale_mod_1] + ", it is " + milesToNext + " miles to " + locationNames[locale]);
 		}
 	}
 }
