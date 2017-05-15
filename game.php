@@ -74,14 +74,6 @@
   <button type="submit">view Terrain</button>
   </form>
   
-  <form name="river" action="riverInfo.html" method="post">
-  <button type="submit">River info</button>
-  </form>
-  
-  <form name="end" action="end.html" method="post">
-  <button type="submit">End Game</button>
-  </form>
-  
   <!--
   <button id="geo"> Geo Event</button>
   <button id="rando"> Rando Event</button>
@@ -90,20 +82,19 @@
   -->
   <div id="river_modal" class="modalBox" title="River Crossing"> 
     <p id="rm_text"></p>
-    <form name="cross" action="riverOption.php" method="post">
-      <button type="submit" onclick="sendSession()">Cross River</button>
+    <form id="river_form" name="cross" action="riverOption.php" method="post">
+      <button type="river_button" style="{visibility: hidden;}" onclick="sendSession()">Cross River</button>
     </form>
   </div>
 
   <div id="fort_modal" class="modalBox" title="Fort">
     <p id="fm_text"></p>
-    <form name="options" action="options.php" method="post">
-      <button type="submit" name="fort" onclick="sendSession()">Go to Fort</button>
+    <form id="fort_form" name="options" action="options.php" method="post">
+      <button id="fort_button" type="submit" style="{visibility: hidden;}" name="fort" onclick="sendSession()">Go to Fort</button>
     </form>
   </div>
 
   <div id="tradeBox" class="modalBox" title="Trading">
-    <p>You spend the day finding someone willing to trade with you, eventually you meet a man willing to make a deal, he offers you</p>
     <p id="trade_string"></p>
     <input type="hidden" id="q_for">
     <input type="hidden" id="i_for">

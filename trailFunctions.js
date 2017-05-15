@@ -514,6 +514,15 @@ function river_modal(){
 			$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
 		},
 		modal: true,
+		buttons: [
+		{
+			text: "Cross the river",
+			click: function(){
+				$(this).dialog("close");
+				$("#river_button").trigger();
+			}
+		}
+		]
 	});
 }
 
@@ -522,6 +531,13 @@ function fort_modal(){
 	$("#fort_modal").dialog({
 		modal: true,
 		buttons: [
+			{
+				text: "Go to town",
+				click: function(){
+					$(this).dialog("close");
+					$("#fort_button").trigger();
+				}
+			},
 			{
 				text: "Close",
 				click: function() {
@@ -601,7 +617,7 @@ function trade_window(text) {
 		}
 		]
 	});
-	$("#trade_string").text(text);
+	$("#trade_string").text("You spend the day finding someone willing to trade with you, eventually you meet a man willing to make a deal, he offers you");
 }
 
 function broken_wagon_1(text){
