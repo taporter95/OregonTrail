@@ -30,8 +30,8 @@ if (isset($_POST['wheelsNum'])){
 $_SESSION["wheelsBought"] = $_POST["wheelsNum"];
 }
 
-if (isset($_POST['axelsNum'])){
-$_SESSION["axelsBought"] = $_POST["axelsNum"];
+if (isset($_POST['axlesNum'])){
+$_SESSION["axlesBought"] = $_POST["axlesNum"];
 }
 
 if (isset($_POST['tonguesNum'])){
@@ -59,8 +59,8 @@ if (isset($_SESSION['wheelsBought'])){
 $_SESSION["bill"] = $_SESSION["bill"] + $_SESSION["wheelsBought"] * 10;
 }
 
-if (isset($_SESSION['axelsBought'])){
-$_SESSION["bill"] = $_SESSION["bill"] + $_SESSION["axelsBought"] * 10;
+if (isset($_SESSION['axlesBought'])){
+$_SESSION["bill"] = $_SESSION["bill"] + $_SESSION["axlesBought"] * 10;
 }
 
 if (isset($_SESSION['tonguesBought'])){
@@ -148,9 +148,9 @@ var code = e.keyCode || e.which;
   <?php echo str_pad(money_format("$%i", $_SESSION["wheelsBought"] * 10),10,".",STR_PAD_LEFT);?>
   </form>
   
-  <form name="wagonAxel" action="wagonAxel.php" method="post">
+  <form name="wagonaxle" action="wagonAxle.php" method="post">
   <button type="submit">Axles</button>
-  <?php echo str_pad(money_format("$%i", $_SESSION["axelsBought"] * 10),10,".", STR_PAD_LEFT);?>
+  <?php echo str_pad(money_format("$%i", $_SESSION["axlesBought"] * 10),10,".", STR_PAD_LEFT);?>
   </form>
   
   <form name="wagonTongue" action="wagonTongue.php" method="post">
