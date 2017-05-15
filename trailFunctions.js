@@ -554,6 +554,8 @@ function river_modal(){
 	$("#river_modal").dialog('option', 'title', locationNames[locale-1]);
 	$("#river_image").attr("src", image_source);
 	$("#river_image").css("visibility", "visible");
+	$("#river_image").css("width", "250px");
+	$("#river_image").css("height", "200px");
 }
 
 
@@ -581,6 +583,8 @@ function fort_modal(){
 	$("#fort_modal").dialog('option', 'title', locationNames[locale-1]);
 	$("#fort_image").attr("src", image_source);
 	$("#fort_image").css("visibility", "visible");
+	$("#fort_image").css("width", "250px");
+	$("#fort_image").css("height", "250px");
 }
 
 function alert_window(text) {
@@ -770,10 +774,10 @@ function update_display(){
 }
 
 function update_date(){
-	if (typeof date_obj == 'undefined'){
+	/*if (typeof date_obj == 'undefined'){
 		console.log("undefined reloading");
 		location.reload();
-	}
+	}*/
 	date_obj.setDate(date_obj.getDate() + 1);
 	day = date_obj.getDate();
 	month = date_obj.getMonth();

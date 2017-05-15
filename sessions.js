@@ -3,7 +3,7 @@
 //function getSession(){
 $.ajax({url:"sessionGet.php", success: gotSess, error: bad});
 //}
-
+//see title.php for descriptions of these variables
 function gotSess(holder){
 	alert(holder);
 	holder = (JSON.parse(holder));
