@@ -44,6 +44,9 @@ function continueTrail(){
 }
 
 function update_location(){
+	console.log(locale);
+	console.log(locationNames[locale]);
+	console.log(milesToNext);
 	if (milesToNext == 0){
 		if (locationNames[locale] == "Green River Crossing")
 			var locale_mod = 2;
@@ -201,8 +204,8 @@ function updateHealth(resting){
 				chanceOfRecovery = 100 + weatherMod[weatherCode] + rationMod[rationsVal] + paceMod + foodMod + restingBonus;
 			}
 			var chance = randomNumber(1, 100);
-			console.log(stats[i]);
-			console.log(chance + " over " + chanceOfRecovery);
+			//console.log(stats[i]);
+			//console.log(chance + " over " + chanceOfRecovery);
 			if (chance <= chanceOfRecovery){
 				stats[i] += 1;
 			}
@@ -216,7 +219,7 @@ function updateHealth(resting){
 			if (stats[i] < 0){
 				stats[i] = 0;
 			}
-			console.log(stats[i]);
+			//console.log(stats[i]);
 			if (stats[i] <= 0){
 				alert_window(party[i] + " has died of " + disease[i]);
 				disease[i] = "dead";
