@@ -30,6 +30,7 @@ $_SESSION["partySize"] = $_REQUEST["partySizeIn"];
 $_SESSION["month"] = $_REQUEST["monthIn"];
 $_SESSION["day"] = $_REQUEST["dayIn"];
 $_SESSION["year"] = $_REQUEST["yearIn"];
+$_SESSION["broken"] = $_REQUEST["brokenIn"];
 
 $response = $_REQUEST["locale"];
 echo $response;

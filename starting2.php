@@ -30,6 +30,7 @@ $_SESSION["partySize"] = 5;
 $_SESSION["month"] = 2;
 $_SESSION["day"] = 1;
 $_SESSION["year"] = 1848;
+$_SESSION["broken"] = 0;
 
 ?>
 

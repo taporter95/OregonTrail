@@ -75,6 +75,23 @@
     </form>
   </div>
 
+  <div id="tradeBox" class="modalBox" title="Trading">
+    <p>You spend the day finding someone willing to trade with you, eventually you meet a man willing to make a deal, he offers you</p>
+    <p id="trade_string"></p>
+    <input type="hidden" id="q_for">
+    <input type="hidden" id="i_for">
+    <input type="hidden" id="q_to">
+    <input type="hidden" id="i_to">
+  </div>
+
+  <div id="broken_wagon_1" class="modalBox" title="broken_1">
+    <p id="broken_wagon_text_1"></p>
+  </div>
+
+  <div id="broken_wagon_2" class="modalBox" title="broken_2">
+    <p id="broken_wagon_text_2"></p>
+  </div>
+
   <div id="alert" class="modalBox" title="alert">
     <p id="alert_text"></p>
   </div>
