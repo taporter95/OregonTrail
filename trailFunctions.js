@@ -6,13 +6,16 @@ var foodAndWater = [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5];
 
 var date_obj = new Date(year, month, day);
 if (typeof date_obj == 'undefined'){
+	console.log("undefined reloading");
 	location.reload();
 }
 
 function continueTrail(){
 	broken = parseInt(broken);
+	//if the wagon is not broken
 	if (broken == 0){
 		locale = parseInt(locale);
+		//get the next mile number and update distance info
 		milesToNext -= (paceVal * (Math.floor(oxen / 3))) + 10;
 		milesTraveled = parseInt(milesTraveled) + (paceVal * (Math.floor(oxen / 3))) + 10;
 		if (milesToNext < 0) {
@@ -23,7 +26,6 @@ function continueTrail(){
 		update_date();
 
 		food -= partySize * rationsVal;
-		//console.log(date_obj.getMonth() + " " + date_obj.getDay() + " " + date_obj.getFullYear());
 
 		updateHealth(false);
 		updateWeather();
@@ -38,16 +40,16 @@ function continueTrail(){
 		update_display();
 
 	}
+	//if wagon is broken try to fix but force spare part usage
 	else{
 		fix_wagon(false);
 	}
 }
 
 function update_location(){
-	console.log(locale);
-	console.log(locationNames[locale]);
-	console.log(milesToNext);
+	//if at new destination
 	if (milesToNext == 0){
+		//these locations are part of splits
 		if (locationNames[locale] == "Green River Crossing" || locationNames[locale] == "Fort Walla Walla"){
 			var locale_mod = 2;
 		}
@@ -55,10 +57,10 @@ function update_location(){
 			var locale_mod = 1;
 		}
 
-
+		//get new info
 		milesToNext = travelDistances[locale];
 		locale += locale_mod;
-		//$("#next").text(milesToNext);
+
 		if (locationType[locale-locale_mod] == "river"){
 			river_modal();
 		}
@@ -66,7 +68,7 @@ function update_location(){
 			inFort = true;
 			fort_modal();
 		}
-
+		//check for split path, these happen at south pass and the blue mountains
 		if (locationNames[locale-locale_mod] == "South Pass" || locationNames[locale-locale_mod] == "Blue Mountains"){
 			split_trail(locationNames[locale], locationNames[locale+1]);
 		}
@@ -77,12 +79,15 @@ function update_location(){
 }
 
 function update_split(modifier){
-	console.log("in update split");
-	console.log(travelDistances[locale]);
+	//if there is a jump
 	if (modifier == 1){
 		locale += modifier;
 		milesToNext = travelDistances[locale];
+		split = 1;
 	}
+	else 
+		split = 0;
+
 	alert_window("From " + locationNames[locale - 1 - modifier] + ", it is " + milesToNext + " miles to " + locationNames[locale]);
 	update_display();
 }
@@ -97,6 +102,7 @@ function randomEvent(){
 	else if (weather == "very cold"){
 		blizzardMod = 50;
 	}
+	//prioritize blizzard
 	if (random <= blizzardMod){
 		alert_window("severe blizzard lose a day");
 		update_date();
@@ -106,10 +112,11 @@ function randomEvent(){
 		blizzard = true;
 	}
 
+	//pick an event
 	var role_event = randomNumber(1, 6);
-	//var role_event = 5;
 	if (!blizzard){
 		switch (role_event){
+			//disease
 			case 1:
 				for (var i = 0; i < 5; i++){
 					if (disease[i] == "none"){
@@ -122,6 +129,7 @@ function randomEvent(){
 					}
 				}	
 				break;	
+			//impassable trail
 			case 2:
 				if (random <= 5){
 					var daysLost = randomNumber(1, 9);
@@ -134,6 +142,7 @@ function randomEvent(){
 					}
 				}
 				break;
+			//stolen goods
 			case 3:
 				if (random <= 5){
 					var bait_lost = randomNumber(20, 200);
@@ -145,12 +154,14 @@ function randomEvent(){
 					alert_window("You were robbed! You lost: \n" + bait_lost + " bait\n" + clothes_lost + " pairs of clothes\n" + food_lost + " Lbs. of food");
 				}
 				break;
+			//friendly locals
 			case 4:
 				if (random <= 5){
 					food += 50;
 					alert_window("Some friendly locals help you forage for food!");
 				}
 				break;
+			//broken part
 			case 5:
 				if (random <= 5){
 					var parts = ["error", "wheel", "axle", "tongue"];
@@ -159,6 +170,7 @@ function randomEvent(){
 					broken_wagon_1("A " + parts[broken_part] + " has broken on the wagon, would you like to fix it?");
 				}
 				break;
+			//dead oxen
 			case 6:
 				if (random <= 3 + foodAndWater[locale]){
 					alert_window("One of your oxen has died");
@@ -173,6 +185,7 @@ function randomEvent(){
 }
 
 function getDisease(){
+	//diseases
 	var diseases = ["the measles", "a snakebite", "dysentery", "typhoid", "cholera", "exaustion", "a broken leg"];
 	var num = randomNumber(1, 100);
 	if (num <= 3){
@@ -187,6 +200,7 @@ function updateHealth(resting){
 	var restingBonus = 15;
 	var statuses = ["dead", "very poor", "very poor", "poor", "poor", "fair", "fair", "fair", "fair", "good", "good"];
 	//weather types: very cold, cold, cool, good, warm, hot, very hot, rainy, very rainy, snowy
+	//party health is influenced by the weather, rations, pace, and if they are resting or not
 	var weatherMod = [-25, -15, -5, 0, -5, -15, -25, -15, -20, -20];
 	var rationMod = [0, -15, -5, 0];
 	var paceMods = [0, -10, -15, -20];
@@ -204,30 +218,31 @@ function updateHealth(resting){
 	var chanceOfRecovery = 100;
 
 	for (var i = 0; i < 5; i++) {
+		//only if not dead
 		if (disease[i] != "dead") {
 			if (disease[i] != "none"){
+				//party members will have a greater chance of losing health if they are sick
 				chanceOfRecovery = 75 + weatherMod[weatherCode] + rationMod[rationsVal] + paceMod + foodMod + restingBonus;
 			} 
 			else {
 				chanceOfRecovery = 100 + weatherMod[weatherCode] + rationMod[rationsVal] + paceMod + foodMod + restingBonus;
 			}
 			var chance = randomNumber(1, 100);
-			//console.log(stats[i]);
-			//console.log(chance + " over " + chanceOfRecovery);
 			if (chance <= chanceOfRecovery){
 				stats[i] += 1;
 			}
 			else {
 				stats[i] -= 1;
 			}
-			
+			//max 10 health
 			if (stats[i] > 10){
 				stats[i] = 10;
 			}
+			//min 0 health
 			if (stats[i] < 0){
 				stats[i] = 0;
 			}
-			//console.log(stats[i]);
+			//check for death
 			if (stats[i] <= 0){
 				alert_window(party[i] + " has died of " + disease[i]);
 				disease[i] = "dead";
@@ -236,6 +251,7 @@ function updateHealth(resting){
 					alert_window("Everyone is dead!");
 				}
 			}
+			//if a sick person recovers
 			if (health[i] == 10 && disease[i] != "none") {
 				console.log("recovered");
 				alert_window(party[i] + " has recovered!");
@@ -243,14 +259,13 @@ function updateHealth(resting){
 			}
 		}
 	}
-
+	//average health
 	var totalHealth = stats[0] + stats[1] + stats[2] + stats[3] + stats[4];
 	totalHealth = Math.floor(totalHealth / 5);
 	health = statuses[totalHealth];
 }
 
 function updateWeather(){
-	//date_obj = new Date(year, month, day);
 	// weather codes: very cold => 0, cold => 1, cool => 2, good => 3, warm => 4, hot => 5, very hot => 6, rainy => 7, very rainy => 8, snowy => 9
 	var weatherTypes = ["very cold", "cold", "cool", "good", "warm", "hot", "very hot", "rainy", "very rainy", "snowy"];
 	var weatherCodes = [[0, 0, 0, 0, 0, 0, 1, 9, 9, 9], [0, 0, 0, 0, 0, 1, 1, 1, 9, 9], [1, 1, 1, 1, 2, 2, 2, 3, 3, 4], [1, 1, 2, 2, 3, 3, 4, 7, 7, 8], [1, 1, 3, 3, 3, 3, 4, 4, 7, 7], [2, 3, 3, 4, 4, 4, 5, 5, 5, 7], [3, 3, 4, 4, 4, 4, 5, 5, 6, 7], [3, 4, 4, 4, 5, 5, 5, 6, 6, 6], [2, 2, 3, 3, 4, 4, 5, 5, 7], [1, 2, 2, 2, 3, 3, 3, 4, 7, 7], [0, 1, 1, 1, 1, 1, 2, 3, 7, 7], [0, 0, 0, 0, 1, 1, 1, 1, 9, 9]];
@@ -259,12 +274,15 @@ function updateWeather(){
 }
 
 function open_trade(){
+	//trading takes a day
 	update_date();
 	updateHealth(false);
 	updateWeather();
 	food -= partySize * rationsVal;
 	var items = ["Oxen", "Food", "Clothing", "Bait", "Wheel", "Axle", "Tongue"];
+	//what you give
 	var trade_to = randomNumber(0, 6);
+	//what you get
 	var trade_for = randomNumber(0, 6);
 	while (trade_to == trade_for) {
 		trade_for = randomNumber(0, 6);
@@ -437,8 +455,10 @@ function close_trade(){
 function fix_wagon(by_hand){
 	var random = randomNumber(1, 100);
 	var modifier = 0;
+	//if you can fix without using a part
 	if (by_hand = true)
 		modifier = 50;
+	//50/50 chance of fixing the wagon
 	if (random < modifier){
 		broken = 0;
 		alert_window("You managed to fix the wagon!");
@@ -481,6 +501,7 @@ function fix_wagon(by_hand){
 	}
 }
 
+//random number generator
 function randomNumber(min, max){
 	return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -488,10 +509,10 @@ function randomNumber(min, max){
 function river_modal(){
 	$("#river_modal").css("visibility", "visible");
 	$("#river_modal").dialog({
-		//closeOnEscape: false,
-		//open: function(event, ui){
-			//$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
-		//},
+		closeOnEscape: false,
+		open: function(event, ui){
+			$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+		},
 		modal: true,
 	});
 }
@@ -530,6 +551,10 @@ function alert_window(text) {
 function split_trail(location_1, location_2) {
 	$("#split_trail").css("visibility", "visible");
 	$("#split_trail").dialog({
+		closeOnEscape: false,
+		open: function(event, ui){
+			$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+		},
 		modal: true,
 		buttons: [
 			{
@@ -582,6 +607,10 @@ function trade_window(text) {
 function broken_wagon_1(text){
 	$("#broken_wagon_1").css("visibility", "visible");
 	$("#broken_wagon_1").dialog({
+		closeOnEscape: false,
+		open: function(event, ui){
+			$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+		},
 		modal: true,
 		buttons: [
 		{

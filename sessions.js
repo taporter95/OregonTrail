@@ -43,6 +43,7 @@ function gotSess(holder){
 	window.day = holder[25];
 	window.year = holder[26];
 	window.broken = holder[27];
+	window.split = holder[28];
 
 	alert(holder);
 	console.log("got session vars");
@@ -83,7 +84,8 @@ function sendSession(){
 	monthIn:month,
 	dayIn:day,
 	yearIn:year,
-	brokenIn:broken
+	brokenIn:broken,
+	splitIn:split
 	},
 	error: bad
 	});

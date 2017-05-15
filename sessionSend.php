@@ -31,6 +31,7 @@ $_SESSION["month"] = $_REQUEST["monthIn"];
 $_SESSION["day"] = $_REQUEST["dayIn"];
 $_SESSION["year"] = $_REQUEST["yearIn"];
 $_SESSION["broken"] = $_REQUEST["brokenIn"];
+$_SESSION["split"] = $_REQUEST["splitIn"];
 
 $response = $_REQUEST["locale"];
 echo $response;
