@@ -237,6 +237,7 @@ function open_trade(){
 	update_date();
 	updateHealth(false);
 	updateWeather();
+	food -= partySize * rationsVal;
 	var items = ["Oxen", "Food", "Clothing", "Bait", "Wheel", "Axle", "Tongue"];
 	var trade_to = randomNumber(0, 6);
 	var trade_for = randomNumber(0, 6);
@@ -404,7 +405,7 @@ function close_trade(){
 				alert_window("bad trade_for value");
 		}
 	}
-
+	update_display();
 }
 
 function fix_wagon(by_hand){
