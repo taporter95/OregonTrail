@@ -70,7 +70,7 @@ function update_location(){
 			split_trail(locationNames[locale], locationNames[locale+1]);
 		}
 		else{
-			alert_window("From " + locationNames[locale - locale_mod_1] + ", it is " + milesToNext + " miles to " + locationNames[locale - 1 + locale_mod + locale_mod_2]);
+			alert_window("From " + locationNames[locale - locale_mod_1] + ", it is " + milesToNext + " miles to " + locationNames[locale - 1 + locale_mod_1 + locale_mod_2]);
 		}
 	}
 }
