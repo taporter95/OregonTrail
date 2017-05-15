@@ -21,6 +21,33 @@
 
 	<h1> Game </h1>
 
+<table>
+  <tr>
+    <td>Date: </td>
+    <td id="date"></td>
+  </tr>
+  <tr>
+    <td>Weather: </td>
+    <td id="weather"></td>
+  </tr>
+  <tr>
+    <td>Health: </td>
+    <td id="health"></td>
+  </tr>
+  <tr>
+    <td>Food: </td>
+    <td id="food"></td>
+  </tr>
+  <tr>
+    <td>Next landmark: </td>
+    <td id="next"></td>
+  </tr>
+  <tr>
+    <td>Miles traveled: </td>
+    <td id="traveled"></td>
+  </tr>
+</table>
+<!--
 <label for="date">Date: </label>
 <p id="date"></p> <br>
 <label for="weather">Weather: </label>    
@@ -33,7 +60,7 @@
 <p id="next"></p> <br>
 <label for="traveled">Miles traveled: </label>
 <p id="traveled"></p> <br>
-
+-->
 
   <button id="continue" onclick="continueTrail()">Continue</button>
   
