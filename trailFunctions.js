@@ -553,7 +553,7 @@ function river_modal(){
 	var image_source = "images/" + locationNames[locale-1] + ".jpg";
 	$("#river_modal").dialog('option', 'title', locationNames[locale-1]);
 	$("#river_image").attr("src", image_source);
-	$("#river_image").attr("visible", "initial");
+	$("#river_image").css("visibility", "visible");
 }
 
 
@@ -580,7 +580,7 @@ function fort_modal(){
 	var image_source = "images/" + locationNames[locale-1] + ".jpg";
 	$("#fort_modal").dialog('option', 'title', locationNames[locale-1]);
 	$("#fort_image").attr("src", image_source);
-	$("#fort_image").attr("visible", "initial");
+	$("#fort_image").css("visibility", "visible");
 }
 
 function alert_window(text) {
