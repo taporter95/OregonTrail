@@ -73,11 +73,11 @@
 			$msg .= "You crossed fine<br/>";
 		}
 	}
-	elseif (($chose == "ford") && ($deep < 6)){
+	elseif (($chose == "ford") && ($deep > 6)){
 		//kill them all
 		for ($i = 0; $i < $_SESSION["partySize"]; $i++){
-			$msg .= $_SESSION["party"][i]." has died.<br/>";
-			$_SESSION["stats"][[i]] = 0;
+			$msg .= $_SESSION["party"][$i]." has died.<br/>";
+			$_SESSION["stats"][$i] = 0;
 		}
 		$_SESSION["partySize"] = 0;
 	}

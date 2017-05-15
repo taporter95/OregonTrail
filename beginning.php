@@ -9,7 +9,7 @@ $_SESSION["food"] = $_SESSION["food"] + $_SESSION["foodBought"];
 $_SESSION["clothing"] = $_SESSION["clothing"] + $_SESSION["clothingBought"];
 $_SESSION["bait"] = $_SESSION["bait"] + $_SESSION["baitBought"];
 $_SESSION["wheels"] = $_SESSION["wheels"] + $_SESSION["wheelsBought"];
-$_SESSION["axels"] = $_SESSION["axels"] + $_SESSION["axelsBought"];
+$_SESSION["axles"] = $_SESSION["axles"] + $_SESSION["axlesBought"];
 $_SESSION["tongues"] = $_SESSION["tongues"] + $_SESSION["tonguesBought"];
 
 
@@ -21,7 +21,7 @@ $_SESSION["clothingBought"] =0;
 $_SESSION["baitBought"] = 0;
 
 $_SESSION["wheelsBought"] = 0;
-$_SESSION["axelsBought"] = 0;
+$_SESSION["axlesBought"] = 0;
 $_SESSION["tonguesBought"] = 0;
 /*
 echo $_SESSION["oxen"] . "<br />\n";
