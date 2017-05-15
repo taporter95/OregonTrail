@@ -76,6 +76,8 @@ function update_location(){
 }
 
 function update_split(modifier){
+	console.log("in update split");
+	console.log(travelDistances[locale-modifier]);
 	milesToNext = travelDistances[locale-modifier];
 	locale += modifier;
 	alert_window("From " + locationNames[locale - 1 - modifier] + ", it is " + milesToNext + " miles to " + locationNames[locale]);
