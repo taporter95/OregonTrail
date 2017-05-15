@@ -62,7 +62,7 @@ function update_location(){
 		}
 
 		if (locationNames[locale-locale_mod] == "South Pass"){
-			split_trail(locationNames[locale+1], locationNames[locale+2]);
+			split_trail(locationNames[locale], locationNames[locale+1]);
 		}
 		else{
 			alert_window("From " + locationNames[locale - locale_mod] + ", it is " + milesToNext + " miles to " + locationNames[locale - 1 + locale_mod]);
