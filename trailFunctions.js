@@ -519,7 +519,7 @@ function river_modal(){
 			text: "Cross the river",
 			click: function(){
 				$(this).dialog("close");
-				$("#river_button").trigger();
+				$("#river_button").trigger("click");
 			}
 		}
 		]
@@ -535,7 +535,7 @@ function fort_modal(){
 				text: "Go to town",
 				click: function(){
 					$(this).dialog("close");
-					$("#fort_button").trigger();
+					$("#fort_button").trigger("click");
 				}
 			},
 			{
