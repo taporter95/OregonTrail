@@ -30,7 +30,7 @@
  
   </form>
   
-  <button id="wait"> Wait</button>
+  <button id="wait" onclick="wait()"> Wait</button>
   
   <button id="info"> River Information</button>
   

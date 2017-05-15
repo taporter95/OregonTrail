@@ -610,7 +610,7 @@ function broken_wagon_2(){
 	$("#broken_wagon_text_2").text("You must trade for a part to fix the wagon.");
 }
 
-$("#wait").click(function(){
+function wait(){
 	console.log("waiting");
 	date_obj = new Date(year, month, day);
 	$("#waitBox").css("visibility","visible");
@@ -646,7 +646,7 @@ $("#wait").click(function(){
 		}
 		]
 	});
-});
+}
 
 function rest(){
 	$("#restBox").css("visibility","visible");
