@@ -70,8 +70,8 @@
 
   <div id="fort_modal" class="modalBox" title="fort">
     <p id="fm_text"></p>
-    <form name="cross" action="options.php" method="post">
-      <button type="submit" onclick="sendSession()">Go to Fort</button>
+    <form name="options" action="options.php" method="post">
+      <button type="submit" name="fort" onclick="sendSession()">Go to Fort</button>
     </form>
   </div>
 

@@ -52,9 +52,15 @@ var talkin = ["The trail is tough, be careful.",
   <button type="submit" onclick="sendSession()">Fishing</button>
   </form>
   
-  <form name="info" action="options.php" method="post">
-  <button type="submit" onclick="sendSession()">  Reset </button>
-  </form>
+  <form action="genStore.php" method="post">
+  <?php
+ 
+if (isset($_POST['fort'])){
+ echo("<button type='submit' onclick='sendSession()'>  Buy from Shop </button> ");
+}
+?>
+
+</form>
   
 
   <button id="pace">Change Pace</button>
@@ -69,8 +75,7 @@ var talkin = ["The trail is tough, be careful.",
 <?php
  
 if (isset($_POST['fort'])){
- echo("<button id='talk' >Talk to Townsfolk</button>
-  <button id='shop'>Shop from Town</button>");
+ echo("<button id='talk' >Talk to Townsfolk</button>");
 }
 
 ?>
@@ -113,9 +118,6 @@ if (isset($_POST['fort'])){
   <p id="talking"> Decide what to say</p>
 </div>
 
-<div id="shopBox" class="modalBox" title="Shopping">
-  <p> Buy shit or get out.</p>
-</div>
 
 <div id="alert" class="modalBox" title="alert">
   <p id="alert_text"></p>
@@ -265,32 +267,6 @@ $( function() {
 		});
 	});
 	
-	$("#shop").click(function(){
-		$("#shopBox").css("visibility","visible");
-		$("#shopBox").dialog({
-
-			modal: true,
-			buttons: [
-			{
-				text: "buy",
-				click: function() {
-					// buy things
-					
-					
-					
-					$( this ).dialog( "close" );
-					}
-			},
-			{
-				text: "Quit",
-				click: function() {
-					
-					$( this ).dialog( "close" );
-					}
-			}
-			]
-		});
-	});
   
 	
   
