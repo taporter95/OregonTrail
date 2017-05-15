@@ -10,7 +10,7 @@ $_SESSION["food"] = 0;
 $_SESSION["clothing"] = 0;
 $_SESSION["bait"] = 0;
 $_SESSION["wheels"] = 0;
-$_SESSION["axels"] = 0;
+$_SESSION["axles"] = 0;
 $_SESSION["tongues"] = 0;
 
 $_SESSION["party"] = [];
@@ -43,7 +43,7 @@ $_SESSION["foodBought"] =0;
 $_SESSION["clothingBought"] =0;
 $_SESSION["baitBought"] = 0;
 $_SESSION["wheelsBought"] = 0;
-$_SESSION["axelsBought"] = 0;
+$_SESSION["axlesBought"] = 0;
 $_SESSION["tonguesBought"] = 0;
 ?>
 
