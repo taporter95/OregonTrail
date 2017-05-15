@@ -644,7 +644,7 @@ $("#wait").click(function(){
 		}
 		]
 	});
-}
+});
 
 function rest(){
 	$("#restBox").css("visibility","visible");
