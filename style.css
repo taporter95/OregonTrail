@@ -11,14 +11,32 @@ h1 {
 
 input[type="text"], textarea {
   background-color : AntiqueWhite;
+  font-family: "Courier New", Courier, monospace;
 }
 
 button, input[type="button"]{
     background-color: SaddleBrown;
-    color: AntiqueWhite;
-    border: black;
+    color: black;
     font-family: "Courier New", Courier, monospace;
-    padding: 5px 10px 5px 10px;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    border: 1px solid black;
+}
+
+button:hover, input[type="button"]:hover{
+    background-color: #e06f1f;
+}
+
+button:active, input[type="button"]:active{
+    background-color: #e06f1f;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
 
 img {
