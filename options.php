@@ -40,6 +40,16 @@ var talkin = ["The trail is tough, be careful.",
   </head>
   <body>
   
+  <label for="date">Date: </label>
+<p id="date"></p>
+<label for="weather">Weather: </label>    
+<p id="weather"></p>
+<label for="health">Health: </label>
+<p id="health"></p>
+<label for="pace">Pace: </label>
+<p id="pace"><p>
+<label for="rations">Rations: </label>
+<p id="rations"></p>
 
 
 	<h1> Options </h1>

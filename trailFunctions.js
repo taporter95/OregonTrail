@@ -682,6 +682,8 @@ function update_display(){
     $("#food").text(food);
     $("#next").text(milesToNext);
     $("#traveled").text(milesTraveled);
+    $("#pace").text(pace);
+    $("#rations").text(rations);
 }
 
 function update_date(){
