@@ -60,7 +60,7 @@ function update_location(modifier){
 			inFort = true;
 			fort_modal();
 		}
-		alert_window("From " + locationNames[locale - modifier - locale_mod] + ", it is " + milesToNext + " miles to " + locationNames[locale + locale_mod]);
+		alert_window("From " + locationNames[locale - modifier - locale_mod] + ", it is " + milesToNext + " miles to " + locationNames[locale - 1 + locale_mod]);
 	}
 }
 
