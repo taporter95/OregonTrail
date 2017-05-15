@@ -33,7 +33,7 @@ function continueTrail(){
 		if (locationNames[locale] == "South Pass")
 			split_trail(locationNames[locale+1], locationNames[locale+2]);
 		else {
-			update_location(0);
+			update_location();
 		}
 		update_display();
 
@@ -43,15 +43,15 @@ function continueTrail(){
 	}
 }
 
-function update_location(modifier){
+function update_location(){
 	if (milesToNext == 0){
 		if (locationNames[locale] == "Green River Crossing")
 			var locale_mod = 2;
 		else
 			var locale_mod = 1;
 
-		milesToNext = travelDistances[locale + modifier];
-		locale += locale_mod + modifier;
+		milesToNext = travelDistances[locale];
+		locale += locale_mod;
 		$("#next").text(milesToNext);
 		if (locationType[locale-locale_mod] == "river"){
 			river_modal();
@@ -60,8 +60,20 @@ function update_location(modifier){
 			inFort = true;
 			fort_modal();
 		}
-		alert_window("From " + locationNames[locale - modifier - locale_mod] + ", it is " + milesToNext + " miles to " + locationNames[locale - 1 + locale_mod]);
+
+		if (locationNames[locale-locale_mod] == "South Pass"){
+			split_trail(locationNames[locale+1], locationNames[locale+2]);
+		}
+		else{
+			alert_window("From " + locationNames[locale - locale_mod] + ", it is " + milesToNext + " miles to " + locationNames[locale - 1 + locale_mod]);
+		}
 	}
+}
+
+function update_split(modifier){
+	locale += modifier;
+	milesToNext = travelDistances[locale];
+	alert_window("From " + locationNames[locale - 1 - modifier] + ", it is " + milesToNext + " miles to " + locationNames[locale]);
 }
 
 function randomEvent(){
@@ -513,14 +525,16 @@ function split_trail(location_1, location_2) {
 				text: location_1,
 				click: function(){
 					$(this).dialog("close");
-					update_location(0);
+					//update_location(0);
+					update_split(0);
 				}
 			},
 			{
 				text: location_2,
 				click: function(){
 					$(this).dialog("close");
-					update_location(1);
+					//update_location(1);
+					update_split(1);
 				}
 			}
 		]
