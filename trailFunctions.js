@@ -20,7 +20,7 @@ function continueTrail(){
 		update_date();
 
 		food -= partySize * rationsVal;
-		console.log(date_obj.getMonth() + " " + date_obj.getDay() + " " + date_obj.getFullYear());
+		//console.log(date_obj.getMonth() + " " + date_obj.getDay() + " " + date_obj.getFullYear());
 
 		updateHealth(false);
 		updateWeather();
@@ -30,11 +30,8 @@ function continueTrail(){
 			food = 0;
 		}
 
-		if (locationNames[locale] == "South Pass")
-			split_trail(locationNames[locale+1], locationNames[locale+2]);
-		else {
-			update_location();
-		}
+		update_location();
+		
 		update_display();
 
 	}
