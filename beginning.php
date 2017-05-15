@@ -8,6 +8,9 @@ $_SESSION["oxen"] = $_SESSION["oxen"] + $_SESSION["oxenBought"];
 $_SESSION["food"] = $_SESSION["food"] + $_SESSION["foodBought"];
 $_SESSION["clothing"] = $_SESSION["clothing"] + $_SESSION["clothingBought"];
 $_SESSION["bait"] = $_SESSION["bait"] + $_SESSION["baitBought"];
+$_SESSION["wheels"] = $_SESSION["wheels"] + $_SESSION["wheelsBought"];
+$_SESSION["axels"] = $_SESSION["axels"] + $_SESSION["axelsBought"];
+$_SESSION["tongues"] = $_SESSION["tongues"] + $_SESSION["tonguesBought"];
 
 
 //clear the bought vars
@@ -17,6 +20,9 @@ $_SESSION["foodBought"] =0;
 $_SESSION["clothingBought"] =0;
 $_SESSION["baitBought"] = 0;
 
+$_SESSION["wheelsBought"] = 0;
+$_SESSION["axelsBought"] = 0;
+$_SESSION["tonguesBought"] = 0;
 /*
 echo $_SESSION["oxen"] . "<br />\n";
 echo $_SESSION["food"] . "<br />\n";
@@ -34,13 +40,14 @@ echo $_SESSION["bait"] . "<br />\n";
 <html xmlns = "http://www.w3.org/1999/xhtml">
   <head>
     <title>OT Beginning</title>
+	<link href="style.css" rel="stylesheet">
   </head>
   <body>
 
-  <h1>Beginning</h1>
-  <p>Well then you're ready to start. Good Luck!
+  <h1>Oregon Trail</h1>
+  <p>Thanks for shopping! Your items have been bought.
   <br>
-  You have a long and difficult journey ahead of you.
+  Click Below to return to Options.
   </p>
   <form name="info" action="options.php" method="post">
   <button type="submit">Options</button>
