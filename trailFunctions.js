@@ -7,6 +7,7 @@ var foodAndWater = [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5];
 var date_obj = new Date(year, month, day);
 
 function continueTrail(){
+	broken = parseInt(broken);
 	if (broken = 0){
 		locale = parseInt(locale);
 		milesToNext -= (paceVal * (Math.floor(oxen / 3))) + 10;
@@ -56,7 +57,7 @@ function continueTrail(){
 		}
 	}
 	else{
-		fix_wagon();
+		fix_wagon(false);
 	}
 }
 
@@ -129,8 +130,8 @@ function randomEvent(){
 				if (random <= 100){
 					var parts = ["wheel", "axle", "tongue"];
 					var broken_part = randomNumber(1, 3);
-					broken = 1;
-					broken_wagon("A " + parts[broken_part] + " has broken on the wagon, would you like to fix it?", broken_part);
+					broken = broken_part;
+					broken_wagon_1("A " + parts[broken_part] + " has broken on the wagon, would you like to fix it?");
 				}
 				break;
 			case 6:
@@ -406,7 +407,7 @@ function close_trade(){
 
 }
 
-function fix_wagon(by_hand, part){
+function fix_wagon(by_hand){
 	var random = randomNumber(1, 100);
 	var modifier = 0;
 	if (by_hand = true)
@@ -416,7 +417,7 @@ function fix_wagon(by_hand, part){
 		alert_window("You managed to fix the wagon!");
 	}
 	else {
-		switch (part){
+		switch (broken){
 			case 1:
 				if (wheels > 0){
 					wheels -= 1;
@@ -525,7 +526,7 @@ function trade_window(text) {
 	$("#trade_string").text(text);
 }
 
-function broken_wagon_1(text, part){
+function broken_wagon_1(text){
 	$("#broken_wagon_1").css("visibility", "visible");
 	$("#broken_wagon_1").dialog({
 		modal: true,
@@ -534,7 +535,7 @@ function broken_wagon_1(text, part){
 			text: "Fix",
 			click: function() {
 				$( this ).dialog( "close" );
-				fix_wagon(true, part);
+				fix_wagon(true);
 				}
 		}
 		]
