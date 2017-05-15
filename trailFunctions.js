@@ -1,6 +1,6 @@
 	
-var locationNames = ["Independence", "Kansas River", "Big Blue River", "Fort Kearney", "Chimney Rock", "Fort Laramie", "Independence Rock", "South Pass", "Green River Crossing", "Fort Bridger", "Soda Springs", "Fort Hall", "Snake River Crossing", "Fort Boise", "Blue Mountains", "Fort Walla Walla"];
-var travelDistances = [102, 82, 118, 250, 86, 190, 102, 57, 125, 143, 162, 57, 182, 113, 160, 55];
+var locationNames = ["Independence", "Kansas River", "Big Blue River", "Fort Kearney", "Chimney Rock", "Fort Laramie", "Independence Rock", "South Pass", "Green River Crossing", "Fort Bridger", "Soda Springs", "Fort Hall", "Snake River Crossing", "Fort Boise", "Blue Mountains", "Fort Walla Walla", "The Dalles", "The Willamette Valley"];
+var travelDistances = [102, 82, 118, 250, 86, 190, 102, 57, 125, 143, 162, 57, 182, 113, 160, 55, 125, 100, 113];
 var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landmark", "landmark", "river", "fort", "landmark", "fort", "river", "fort", "landmark", "fort"];
 var foodAndWater = [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5];
 
@@ -45,7 +45,7 @@ function update_location(){
 	console.log(locationNames[locale]);
 	console.log(milesToNext);
 	if (milesToNext == 0){
-		if (locationNames[locale] == "Green River Crossing"){
+		if (locationNames[locale] == "Green River Crossing" || locationNames[locale] == "Fort Walla Walla"){
 			var locale_mod_1 = 2;
 			var locale_mod_2 = 0;
 		}
@@ -66,7 +66,7 @@ function update_location(){
 			fort_modal();
 		}
 
-		if (locationNames[locale-locale_mod_1] == "South Pass"){
+		if (locationNames[locale-locale_mod_1] == "South Pass" || locationNames[locale-locale_mod_1] == "Blue Mountains"){
 			split_trail(locationNames[locale], locationNames[locale+1]);
 		}
 		else{
