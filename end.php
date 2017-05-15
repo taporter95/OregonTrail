@@ -17,7 +17,7 @@
   <br>
   Click below to see how many points you have recieved!
   </p>
-  <form name="info" action="tally.html" method="post">
+  <form name="info" action="tally.php" method="post">
   <button type="submit">Tally</button>
   </form> 
 

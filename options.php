@@ -33,10 +33,6 @@ var talkin = ["The trail is tough, be careful.",
  </script>  
   
 
-  
-  
-  
-  
   </head>
   <body>
   
