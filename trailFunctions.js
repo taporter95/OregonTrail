@@ -27,13 +27,18 @@ function continueTrail(){
 		randomEvent();
 
 		if (milesToNext == 0){
-			locale += 1;
+			if (locationNames[locale] == "Green River Crossing")
+				var locale_mod = 2;
+			else
+				var locale_mod = 1;
+
+			locale += locale_mod;
 			milesToNext = travelDistances[locale];
 			$("#next").text(milesToNext);
-			if (locationType[locale-1] == "river"){
+			if (locationType[locale-locale_mod] == "river"){
 				river_modal();
 			}
-			else if (locationType[locale-1] == "fort"){
+			else if (locationType[locale-locale_mod] == "fort"){
 				inFort = true;
 				fort_modal();
 			}
@@ -45,15 +50,10 @@ function continueTrail(){
 		}
 
 		update_display();
-		if (milesToNext == travelDistances[locale]){
-			var message = milesToNext + " miles to " + locationNames[locale+1];
-			if (foodAndWater[locale] == 4){
-				message += "\n There is little food and water for your oxen.";
-			}
-			else if (foodAndWater[locale] == 5){
-				message += "\n Food and water is very scarce in these parts.";
-			}
-			alert_window(message);
+		if (locationNames[locale] == "South Pass")
+			split_trail(locationNames[locale+1], locationNames[locale+2]);
+		else {
+			update_location();
 		}
 	}
 	else{
@@ -61,6 +61,18 @@ function continueTrail(){
 	}
 }
 
+function update_location(){
+	if (milesToNext == travelDistances[locale]){
+		var message = "From" + locationNames[locale] + milesToNext + " miles to " + locationNames[locale+1];
+		if (foodAndWater[locale] == 4){
+			message += "\n There is little food and water for your oxen.";
+		}
+		else if (foodAndWater[locale] == 5){
+			message += "\n Food and water is very scarce in these parts.";
+		}
+		alert_window(message);
+	}
+}
 
 function randomEvent(){
 	var blizzard = false;
@@ -81,8 +93,8 @@ function randomEvent(){
 		blizzard = true;
 	}
 
-	//var role_event = randomNumber(1, 6);
-	var role_event = 5;
+	var role_event = randomNumber(1, 6);
+	//var role_event = 5;
 	if (!blizzard){
 		switch (role_event){
 			case 1:
@@ -110,7 +122,7 @@ function randomEvent(){
 				}
 				break;
 			case 3:
-				if (random <= 3){
+				if (random <= 5){
 					var bait_lost = randomNumber(20, 200);
 					var clothes_lost = randomNumber(1, 10);
 					var food_lost = randomNumber(5, 50);
@@ -121,13 +133,13 @@ function randomEvent(){
 				}
 				break;
 			case 4:
-				if (random <= 3){
+				if (random <= 5){
 					food += 50;
 					alert_window("Some friendly locals help you forage for food!");
 				}
 				break;
 			case 5:
-				if (random <= 100){
+				if (random <= 5){
 					var parts = ["error", "wheel", "axle", "tongue"];
 					var broken_part = randomNumber(1, 3);
 					broken = broken_part;
@@ -500,6 +512,31 @@ function alert_window(text) {
 		]
 	});
 	$("#alert_text").text(text);
+}
+
+function split_trail(location_1, location_2) {
+	$("#split_trail").css("visibility", "visible");
+	$("#split_trail").dialog({
+		modal: true,
+		buttons: [
+			{
+				text: location_1,
+				click: function(){
+					$(this).dialog("close");
+					update_location();
+				}
+			},
+			{
+				text: location_2,
+				click: function(){
+					$(this).dialog("close");
+					locale += 1;
+					update_location();
+				}
+			}
+		]
+	});
+	$("#split_trail_text").text("The trail splits here, would you like to go to " + location_1 + " or " + location_2 + "?");
 }
 
 function trade_window(text) {
