@@ -43,8 +43,9 @@ function continueTrail(){
 	}
 }
 
-function update_location(){
+function update_location(modifier){
 	if (milesToNext == 0){
+		alert_window("From " + locationNames[locale - modifier] + ", it is " + milesToNext + " miles to " + locationNames[locale+1]);
 		if (locationNames[locale] == "Green River Crossing")
 			var locale_mod = 2;
 		else
@@ -60,16 +61,6 @@ function update_location(){
 			inFort = true;
 			fort_modal();
 		}
-	}
-	if (milesToNext == travelDistances[locale]){
-		var message = "From " + locationNames[locale] + ", it is " + milesToNext + " miles to " + locationNames[locale+1];
-		if (foodAndWater[locale] == 4){
-			message += "\n There is little food and water for your oxen.";
-		}
-		else if (foodAndWater[locale] == 5){
-			message += "\n Food and water is very scarce in these parts.";
-		}
-		alert_window(message);
 	}
 }
 
@@ -522,7 +513,7 @@ function split_trail(location_1, location_2) {
 				text: location_1,
 				click: function(){
 					$(this).dialog("close");
-					update_location();
+					update_location(0);
 				}
 			},
 			{
@@ -530,7 +521,7 @@ function split_trail(location_1, location_2) {
 				click: function(){
 					$(this).dialog("close");
 					locale += 1;
-					update_location();
+					update_location(1);
 				}
 			}
 		]
