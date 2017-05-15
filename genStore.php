@@ -40,7 +40,8 @@ $_SESSION["tonguesBought"] = $_POST["tonguesNum"];
 
 //add up the bill
 if (isset($_SESSION['oxenBought'])){
-$_SESSION["bill"] = $_SESSION["bill"] + $_SESSION["oxenBought"] * 40;
+//made it per oxen instead of per yoke
+$_SESSION["bill"] = $_SESSION["bill"] + $_SESSION["oxenBought"] * 20;
 }
 
 if (isset($_SESSION['foodBought'])){
@@ -124,7 +125,7 @@ var code = e.keyCode || e.which;
   <br>Hit enter to continue when you are finished shopping</p>
   <form name="oxen" action="oxen.php" method="post">
   <button type="submit" class="test">Oxen</button>
-  <?php echo str_pad(money_format("$%i", $_SESSION["oxenBought"] * 40),10, ".", STR_PAD_LEFT);?>
+  <?php echo str_pad(money_format("$%i", $_SESSION["oxenBought"] * 20),10, ".", STR_PAD_LEFT);?>
   </form>
   
   <form name="food" action="food.php" method="post">

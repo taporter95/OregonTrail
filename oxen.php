@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION["canBuy"] = 9 - $_SESSION["oxen"];
+$_SESSION["canBuy"] = 18 - $_SESSION["oxen"];
 
 ?>
 <?xml version = "1.0"?>
@@ -19,12 +19,12 @@ $_SESSION["canBuy"] = 9 - $_SESSION["oxen"];
   <h1> Oxen </h1>
   <p>There are two oxen in a yoke.
   <br>
-  I recommend at least 3 yoke.
+  I recommend at least 3 yoke or 6 oxen.
   <br>
-  I charge $40 a yoke.
+  I charge $20 per oxen.
   </p>
   <form name="info" action="genStore.php" method="post">
-  How many yoke do you want? (up to 9):
+  How many yoke do you want? (up to 18):
   <input type="number" name="oxenNum" min="0" max="<?php echo $_SESSION["canBuy"]?>" required>
   <br>
   <img src="images/ox.png" alt="oxen" style="width:250px;height:300px;margin: 20px;">
