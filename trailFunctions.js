@@ -33,7 +33,7 @@ function continueTrail(){
 		if (locationNames[locale] == "South Pass")
 			split_trail(locationNames[locale+1], locationNames[locale+2]);
 		else {
-			update_location();
+			update_location(0);
 		}
 		update_display();
 
@@ -45,7 +45,6 @@ function continueTrail(){
 
 function update_location(modifier){
 	if (milesToNext == 0){
-		alert_window("From " + locationNames[locale - modifier] + ", it is " + milesToNext + " miles to " + locationNames[locale+1]);
 		if (locationNames[locale] == "Green River Crossing")
 			var locale_mod = 2;
 		else
@@ -61,6 +60,7 @@ function update_location(modifier){
 			inFort = true;
 			fort_modal();
 		}
+		alert_window("From " + locationNames[locale - modifier - locale_mod] + ", it is " + milesToNext + " miles to " + locationNames[locale + 1 - locale_mod]);
 	}
 }
 
