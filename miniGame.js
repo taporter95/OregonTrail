@@ -20,10 +20,37 @@ function updateGame(){
 		if (!blinking){
 			blinking = true;
 			setTimeout('changeBlink()', 125);
-			// update materials lost/ people dying
-			alert("you lost x materials");
-			// check if all are dead, end game -> load Gameover screen
-			alert("Bob died");
+			// announce lost materials
+			alert("You lost: " +
+			Math.round(money*1/5) + " dollars, " +
+			Math.round(oxen*1/5) + " oxen, " +
+			Math.round(food*1/5) + " food, " +
+			Math.round(clothing*1/5) + " clothes, " +
+			Math.round(bait*1/5) + " bait, " +
+			Math.round(wheels*1/3) + " wheels, " +			
+			Math.round(axles*1/3) + " axles, " +
+			Math.round(tongues*1/3) + " tongues");
+			
+			//lose the materials
+			money = Math.round(money*4/5);
+			oxen = Math.round(oxen*4/5);
+			food = Math.round(food*4/5);
+			clothing = Math.round(clothing*4/5);
+			bait = Math.round(bait*4/5);
+			wheels = Math.round(wheels*2/3);
+			axles = Math.round(axles*2/3);
+			tongues = Math.round(tongues*2/3);
+			
+			if (partySize >0){
+				stats[partySize-1] = 0;
+				alert(party[partySize-1] + " is dead");
+				partySize--;
+			}
+			if (partySize <= 0){
+				alert("everyone died");
+				//REDIRECT TO GAMEOVER
+				window.location.replace("gameOver.php");
+			}
 			
 		}
 		else if(blinking && blinkCount < 10){
@@ -49,9 +76,17 @@ function updateGame(){
 		$("#end").css('top', endzoneTop);
 		$("#end").css('visibility', 'visible');
 		if ( ((boatBottom >= endzoneTop +60) && (boatBottom - 50 <= endzoneTop + 510))  && (boatRight > 820) ){
-			alert("You win!");
-			//redirect to end.php
+			sendSession();
+			alert("You made it!");
+			//REDIRECT TO WINNER
+			window.location.replace("end.php");
+
 		}
+		if (endzoneTop+510 < 200){
+			endzoneTop = 650;
+			$("#end").css('top', endzoneTop);
+		}
+			
 	}
 }
 
