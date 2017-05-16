@@ -57,7 +57,7 @@ $_SESSION["split"] = 0;
 
 	<h1> Map </h1>
 
-  <canvas id="map" width="1050" height="550" style="background-color:AntiqueWhite">
+  <canvas id="map" width="1050" height="550" style="background-color:AntiqueWhite"></canvas>
   <script>
 
     //location names, distances, and offset for label
@@ -227,12 +227,15 @@ for(var i = 0; i < locationNames.length; i++){
   }, 1000);
 
 
+function goto(){
+  window.location.href='options.php';
+}
+
   </script>
 
   <br>
   <br>
-  <button type="submit">Month</button>
-  </form>
+  <button onclick="goto()">Options</button>
     
   
   </body>
