@@ -59,21 +59,14 @@ function update_location(){
 	//if at new destination
 	if (milesToNext == 0){
 		//these locations are part of splits
-		/*
-		if (locationNames[locale] == "Green River Crossing"){
-			//variable need if the first option was chosen during a split
-			var locale_mod = 2;
-		}
-		else{
-			var locale_mod = 1;
-		}*/
+		
 		locale_mod = 1;
-
+		if (locationNames[locale-1] == "Green River Crossing")
+			locale += 1;
 		//get new info
 		milesToNext = travelDistances[locale];
 		locale += locale_mod;
-		if (locationNames[locale-1] == "Green River Crossing")
-			locale += 1;
+
 
 		//if the player reached a river, force them to cross it
 		if (locationType[locale-locale_mod] == "river"){
