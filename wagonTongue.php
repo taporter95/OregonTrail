@@ -1,4 +1,14 @@
 <?php
+/*
+Wagon Tongue File for the Oregon Trail Game
+This file is linked from the general store when a player
+is attempting to buy wagon tongues.
+The canBuy variable is the maximum amount of wagon tongues a player
+can have subtracted from the amount of wagon tongues they already have.
+The input is validated and the result is returned as a post
+to the general store page.
+The maximum number of wagon tongues is 3.
+*/
 session_start();
 $_SESSION["canBuy"] = 3 - $_SESSION["tongues"];
 
