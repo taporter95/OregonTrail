@@ -59,23 +59,29 @@ function update_location(){
 	//if at new destination
 	if (milesToNext == 0){
 		//these locations are part of splits
-		
-		locale_mod = 1;
-		if (locationNames[locale-1] == "Green River Crossing")
+		var gr_mod = 0;
+		var locale_mod = 1;
+		if (locationNames[locale-1] == "Green River Crossing"){
 			locale_mod += 1;
+			gr_mod = 1;
+		}
+
 		//get new info
 		milesToNext = travelDistances[locale];
 		locale += locale_mod;
 
 
 		//if the player reached a river, force them to cross it
-		if (locationType[locale-locale_mod] == "river"){
+		if (locationType[locale-locale_mod+gr_mod] == "river"){
 			river_modal();
 		}
 		//if the player reached a fort, give them the option to go to it
-		else if (locationType[locale-locale_mod] == "fort"){
+		else if (locationType[locale-locale_mod+gr_mod] == "fort"){
 			inFort = true;
 			fort_modal();
+		}
+		else if (locationType[locale-locale_mod] == "landmark"){
+			landmark_modal();
 		}
 		//check for split path, these happen at south pass and the blue mountains
 		if (locationNames[locale-locale_mod] == "South Pass" || locationNames[locale-locale_mod] == "Blue Mountains"){
@@ -164,26 +170,30 @@ function randomEvent(){
 			//stolen goods
 			case 3:
 				if (random <= 3 + danger[locale]){
-					var bait_lost = randomNumber(20, 200);
+					var bait_lost = randomNumber(10, 100);
 					var clothes_lost = randomNumber(1, 10);
 					var food_lost = randomNumber(5, 50);
 					var money_lost = randomNumber(20, 150);
 					bait -= bait_lost;
-					if (bait < 0)
+					if (bait < 0){
 						bait_lost = bait_lost + bait;
 						bait = 0;
+					}
 					clothing -= clothes_lost;
-					if (clothing < 0)
+					if (clothing < 0){
 						clothes_lost = clothes_lost + clothing;
 						clothing = 0;
+					}
 					food -= food_lost;
-					if (food < 0)
+					if (food < 0){
 						food_lost = food_lost + food;
 						food = 0;
+					}
 					money -= money_lost;
-					if (money < 0)
+					if (money < 0){
 						money_lost = money_lost + money;
 						money = 0;
+					}
 					alert_window("You were robbed! You lost: \n" + bait_lost + " bait\n" + clothes_lost + " pairs of clothes\n" + food_lost + " Lbs. of food, and " + "$" + money_lost);
 				}
 				break;
@@ -629,6 +639,27 @@ function fort_modal(){
 	$("#fort_image").css("visibility", "visible");
 	$("#fort_image").css("width", "275px");
 	$("#fort_image").css("height", "250px");
+}
+
+function landmark_modal(){
+	$("#landmark_modal").css("visibility", "visible");
+	$("#landmark_modal").dialog({
+		modal: true,
+		buttons: [
+			{
+				text: "Close",
+				click: function() {
+					$(this).dialog("close");
+				}
+			}
+		]
+	});
+	var image_source = "images/" + locationNames[locale-1] + ".jpg";
+	$("#landmark_modal").dialog('option', 'title', locationNames[locale-1]);
+	$("#landmark_image").attr("src", image_source);
+	$("#landmark_image").css("visibility", "visible");
+	$("#landmark_image").css("width", "275px");
+	$("#landmark_image").css("height", "250px");
 }
 
 function alert_window(text) {

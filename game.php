@@ -73,6 +73,10 @@
     </form>
   </div>
 
+  <div id="landmark_modal" class="modalBox" title="River Crossing"> 
+    <img id="landmark_image" style="height: 200px; width: 250px; visibility: hidden;"/>
+  </div>
+
   <div id="fort_modal" class="modalBox" title="Fort">
     <p id="fm_text"></p>
     <img id="fort_image" visible="hidden" style="height: 200px; width: 250px; visibility: hidden;"/>
