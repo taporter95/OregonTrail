@@ -27,7 +27,6 @@
 
 	$deep = $_POST["depth"];
 	$chose = $_POST["choice"];
-	echo("$deep $chose <br/>");
 	$msg = "";
 	$chance = rand(0,100);
 	

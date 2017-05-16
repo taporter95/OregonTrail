@@ -95,6 +95,6 @@ function help(){
 }
 
 function bad(){
-	alert("I died");
+	alert("AJAX request failed. Please reload the page.");
 }
 
