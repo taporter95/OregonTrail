@@ -16,26 +16,25 @@ if (isset($_POST['month'])){
 $_SESSION["month"] = $_POST["month"];
 }
 
-//print_r ($_POST);
-
+//update items attempting to buy from the other pages
 if (isset($_POST['oxenNum'])){
 $_SESSION["oxenBought"] = $_POST["oxenNum"];
-//$_SESSION["bill"] = $_SESSION["bill"] . $_SESSION["oxen"] * 40;
+
 }
 
 if (isset($_POST['foodNum'])){
 $_SESSION["foodBought"] = $_POST["foodNum"];
-//$_SESSION["bill"] = $_SESSION["bill"] . $_SESSION["food"] * .20;
+
 }
 
 if (isset($_POST['clothingNum'])){
 $_SESSION["clothingBought"] = $_POST["clothingNum"];
-//$_SESSION["bill"] = $_SESSION["bill"] . $_SESSION["clothing"] * 10;
+
 }
 
 if (isset($_POST['baitNum'])){
 $_SESSION["baitBought"] = $_POST["baitNum"];
-//$_SESSION["bill"] = $_SESSION["bill"] . $_SESSION["bait"] * 2;
+
 }
 if (isset($_POST['wheelsNum'])){
 $_SESSION["wheelsBought"] = $_POST["wheelsNum"];
@@ -64,7 +63,7 @@ $_SESSION["bill"] = $_SESSION["bill"] + $_SESSION["clothingBought"] * 10;
 }
 
 if (isset($_SESSION['baitBought'])){
-$_SESSION["bill"] = $_SESSION["bill"] + $_SESSION["baitBought"] * 2;
+$_SESSION["bill"] = $_SESSION["bill"] + $_SESSION["baitBought"] * .10;
 }
 if (isset($_SESSION['wheelsBought'])){
 $_SESSION["bill"] = $_SESSION["bill"] + $_SESSION["wheelsBought"] * 10;
@@ -78,21 +77,20 @@ if (isset($_SESSION['tonguesBought'])){
 $_SESSION["bill"] = $_SESSION["bill"] + $_SESSION["tonguesBought"] * 10;
 }
 
-//echo $_SESSION["oxen"] . "<br>";
-//echo $_SESSION["bill"];
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script type="text/javascript" src="sessions.js"></script>
 <link href="style.css" rel="stylesheet">
 <script>
-//getSession();
+//on enter press function
 $(document).keypress(function(e) {
 console.log("in function");
 var code = e.keyCode || e.which;
  if(code == 13) { //Enter keycode
    //Do something
    console.log("in function if");
-   //console.log(<?php echo $_SESSION["bill"]; ?>);
+  
+  //variables for the bill and number of oxen
    var bill = parseInt(document.getElementById("bill").innerHTML);
    var money = parseInt(document.getElementById("money").innerHTML);
    var oxen = parseInt(document.getElementById("ox1").innerHTML);
@@ -101,14 +99,18 @@ var code = e.keyCode || e.which;
    console.log(bill);
    console.log(money);
    console.log(oxTot);
+   //if trying to buy too much
    if(bill > money)
    {
 	   console.log("bill too high change items");
+	   alert("bill too high change items");
 	   document.getElementById("enoughMoney").innerHTML = "you have insufficient funds";
    }
+   //if the user doesn't have one oxen
    else if(oxTot <= 0)
    {
 	   console.log("you need at least one yoke of oxen");
+	   alert("you need at least one yoke of oxen");
 	   document.getElementById("enoughMoney").innerHTML = "you need at least one yoke of oxen";
    }
    else
@@ -123,8 +125,6 @@ var code = e.keyCode || e.which;
 <!DOCTYPE html PUBLIC "-//w3c//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 
-<!-- dynamic.html 
- -->
 <html xmlns = "http://www.w3.org/1999/xhtml">
   <head>
     <title>OT General Store</title>
@@ -151,7 +151,7 @@ var code = e.keyCode || e.which;
   
   <form name="bait" action="bait.php" method="post">
   <button type="submit">Bait</button>
-  <?php echo str_pad(money_format("$%i", $_SESSION["baitBought"] * 2),10,".", STR_PAD_LEFT);?>
+  <?php echo str_pad(money_format("$%i", $_SESSION["baitBought"] * .10),10,".", STR_PAD_LEFT);?>
   </form>
   
   <form name="wagonWheel" action="wagonWheel.php" method="post">
@@ -169,9 +169,6 @@ var code = e.keyCode || e.which;
   <?php echo str_pad(money_format("$%i", $_SESSION["tonguesBought"] * 10),10,".", STR_PAD_LEFT);?>
   </form>
   
-  <!--<form name="info" action="options.html" method="post">
-  <button type="submit">Options</button>
-  </form>-->
   
   <p>Current Bill: <?php echo money_format("$%i", $_SESSION["bill"]);?></p>
   <p>Current Funds: <?php echo money_format("$%i", $_SESSION["money"]);?></p>

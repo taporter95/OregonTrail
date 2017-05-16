@@ -12,7 +12,7 @@ to the general store page.
 The maximum amount of bait is 20 boxes.
 */
 session_start();
-$_SESSION["canBuy"] = 99 - $_SESSION["bait"];
+$_SESSION["canBuy"] = 1980 - $_SESSION["bait"];
 
 ?>
 <?xml version = "1.0"?>
@@ -31,13 +31,13 @@ $_SESSION["canBuy"] = 99 - $_SESSION["bait"];
   <h1> Bait </h1>
   <p>I sell fishing bait in boxes of 20 worms. 
   <br>
-  Each box costs $2.00.
+  Each worm costs $.10
   </p>
   <form name="info" action="genStore.php" method="post">
-  How many boxes do you want? (up to 99):
+  How much bait do you want? (up to 1980):
   <input type="number" name="baitNum" min="0" max="<?php echo $_SESSION["canBuy"]?>" required>
   <br>
-  <img src="images/bait.png" alt="bait" style="width:250px;height:250px;margin: 20px;">
+  <img src="images/bait.png" alt="bait" style="width:250px;height:250px;">
   <br>
   <button type="submit">Back to Store</button>
   </form>
