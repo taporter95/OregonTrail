@@ -1,9 +1,21 @@
 <?php
-session_start();
-//echo $_SESSION["money"] . "<br />\n";
+/*
+Beginning Page of the Game
+Updates items bought from the store and adds
+values to the session varaiables
+reduces the money the player has by the items
+bought. 
 
+Initially accessed before starting the game
+can be accessed again from the options menu
+at towns.
+*/
+session_start();
+
+//decrease money by the cost of items
 $_SESSION["money"] = $_SESSION["money"] - $_SESSION["bill"];
 
+//update the items the user has
 $_SESSION["oxen"] = $_SESSION["oxen"] + $_SESSION["oxenBought"];
 $_SESSION["food"] = $_SESSION["food"] + $_SESSION["foodBought"];
 $_SESSION["clothing"] = $_SESSION["clothing"] + $_SESSION["clothingBought"];
@@ -23,12 +35,7 @@ $_SESSION["baitBought"] = 0;
 $_SESSION["wheelsBought"] = 0;
 $_SESSION["axlesBought"] = 0;
 $_SESSION["tonguesBought"] = 0;
-/*
-echo $_SESSION["oxen"] . "<br />\n";
-echo $_SESSION["food"] . "<br />\n";
-echo $_SESSION["clothing"] . "<br />\n";
-echo $_SESSION["bait"] . "<br />\n";
-*/
+
 ?>
 
 <?xml version = "1.0"?>
@@ -50,7 +57,7 @@ echo $_SESSION["bait"] . "<br />\n";
   Click Below to return to Options.
   </p>
   <form name="info" action="options.php" method="post">
-  <button type="submit">Options</button>
+  <button type="submit">Fort</button>
   </form>
     
   

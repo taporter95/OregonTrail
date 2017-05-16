@@ -15,6 +15,8 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script type="text/javascript" src="trailFunctions.js"></script>
 	<link rel="stylesheet" href="style.css">
+	  	<script type="text/javascript" src="trailFunctions.js"></script>
+
   </head>
   <body>
 
@@ -60,13 +62,6 @@
 						
 			$msg .= "You lost ".ceil($_SESSION['money']/3). "money<br/>";			
 			$_SESSION["money"] =floor( $_SESSION["money"]*2/3);
-			
-			//kill someone sometimes
-			if ($chance <15){
-				$msg .= $_SESSION['party'][$_SESSION['partySize']-1]. " has died<br/>";			
-				$_SESSION["stats"][[$_SESSION['partySize']-1]] = 0;
-				$_SESSION["partySize"]--;
-			}
 			
 		}
 		else{
@@ -216,14 +211,10 @@
 	// wait round(chance/10) days, with health updates
 		$chance = rand(1,5);
 		
-		echo("<script>
-		for (var i = 0; i < $chance; i++){
-			update_date();
-			food -= partySize * rationsVal;
-			updateHealth(true);
-		}
-		updateWeather();
-		</script>");
+		echo "<script language='javascript' type='text/javascript'>";
+		echo "ferryDate($chance);";
+		echo "</script>";
+		
 		$msg .= "You waited $chance days<br/>";
 		if ($_SESSION["locale"] > 3){
 			$msg .= "It costed you 3 clothes<br/>";
@@ -243,6 +234,5 @@
   <form name="info" action="game.php" method="post">
   	<button onclick="sendSession()" type="submit">Game </button>
   </form>
-  
   </body>
 </html>

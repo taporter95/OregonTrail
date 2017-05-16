@@ -82,6 +82,9 @@ var talkin = ["The trail is tough, be careful.",
   <button type="submit" onclick="sendSession()">Fishing</button>
   </form>
   
+  <form name="info" action="map.php" method="post">
+   <button type="submit" onclick="sendSession()">Show Map</button>
+	</form>  
   <form action="genStore.php" method="post">
   <?php
  
@@ -95,7 +98,6 @@ if (isset($_POST['fort'])){
 
   <button id="paceBut">Change Pace</button>
   <button id="supplies">View Supplies</button>
-  <button id="map">Show Map</button>
   <button id="rationsBut">Change Rations</button>
   <button id="rest" onclick="rest()">Rest Up</button>
   <button id="trade" onclick="open_trade()">Trade with Locals</button>
@@ -119,9 +121,7 @@ if (isset($_POST['fort'])){
   <p id="supplyList"> This is a list of your supplies.</p>
 </div>
 
-<div id="mapBox" class="modalBox" title="Map">
-  <p> I'm going to be replaced with a map.</p>
-</div>
+
 
 <div id="rationBox" class="modalBox" title="Rations">
   <p> How would you like to change your rations amount?</p>
@@ -230,25 +230,6 @@ $( function() {
 		});
 	});
   
- 
-	$("#map").click(function(){
-		$("#mapBox").css("visibility","visible");
-		$("#mapBox").dialog({
-			
-			modal: true,
-			buttons: [
-			{
-				text: "Close",
-				click: function() {
-					
-					$( this ).dialog( "close" );
-					}
-			}
-			]
-		});
-	});
-  
-
 	$("#rationsBut").click(function(){
 		$("#rationsBox").css("visibility","visible");
 		
