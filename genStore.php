@@ -1,4 +1,15 @@
 <?php
+/*
+General Store File for the Oregon Trail Game
+This file links to several other php pages when buttons are clicked
+and those pages update the number of each item that the user is 
+attempting to buy.
+
+These values are sent back as a post and added to the bill.
+This page will head to a new page where the values are updated
+when the bill is less than the amount of money the user has and 
+after it has been confirmed that the user has at least one oxen.
+*/
 session_start();
 $_SESSION["bill"] = 0;
 if (isset($_POST['month'])){
