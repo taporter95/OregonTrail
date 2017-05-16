@@ -167,7 +167,7 @@
 		
 	
 	}
-	elseif (($chose == "caulk") && ($deep < 6)){
+	elseif (($chose == "caulk") && ($deep > 6)){
 		
 		if ($chance < 40){
 			$msg.= "Your wagon tipped over <br/>";

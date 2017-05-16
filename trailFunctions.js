@@ -785,6 +785,8 @@ function rest(){
 				}
 				if ($("#waiting").val() > 0)
 					updateWeather();
+				
+				update_display();
 				$( this ).dialog( "close" );
 				}
 		}
