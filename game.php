@@ -82,7 +82,7 @@
 
   <div id="end_game" class="modalBox" title="Almost There!">
     <p id="end_game_text"></p>
-    <form id="end_game_form" name="minigame" action="minigame.html" method="post">
+    <form id="end_game_form" name="minigame" action="miniGame.html" method="post">
       <button id="take_river_button" type="submit" style="visibility: hidden;" name="end" onclick="sendSession()">Go to game</button>
     </form>
   </div>
