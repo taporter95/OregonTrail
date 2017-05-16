@@ -53,7 +53,7 @@ $_SESSION["split"] = 0;
 <script type="text/javascript" src="sessions.js"></script>
 
   </head>
-  <body onload="getSession()">
+  <body>
 
 	<h1> Map </h1>
 
