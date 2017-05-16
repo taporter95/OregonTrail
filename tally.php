@@ -1,4 +1,12 @@
-<?php session_start(); ?>
+<?php 
+/*
+Tally Page of the Oregon Trail Game
+This page is calculates the score of a player
+if they cleared the game. It stores these values 
+in a database to be used by TopTen.
+*/
+session_start(); 
+?>
 
 <?xml version = "1.0"?>
 <!DOCTYPE html PUBLIC "-//w3c//DTD XHTML 1.1//EN"
