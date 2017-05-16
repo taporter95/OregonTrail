@@ -56,16 +56,11 @@
     <button type="submit" onclick="sendSession()">Options</button>
   </form> 
   
-  <!--
-  <button id="geo"> Geo Event</button>
-  <button id="rando"> Rando Event</button>
-  <button id="grave"> Grave Event</button>
-  <button id="divide"> Trail Divide</button>
-  -->
-  <div id="game_over_modal" class="modalBox" title="Game Over"> 
+  
+  <div id="game_over_modal" class="modalBox" title="Game Over, Everyone Is Dead"> 
     <img id="skull" style="height: 200px; width: 250px; visibility: hidden;"/>
-    <form id="game_over_form" name="cross" action="title.php" method="post">
-      <button id="game_over_button" type="submit" style="visibility: hidden;">game over</button>
+    <form id="game_over_form" name="gameOver" action="gameOver.php" method="post">
+      <button id="game_over_button" type="submit" style="visibility: hidden;" onclick="sendSession()">game over</button>
     </form>
   </div>
 
@@ -82,6 +77,20 @@
     <img id="fort_image" visible="hidden" style="height: 200px; width: 250px; visibility: hidden;"/>
     <form id="fort_form" name="options" action="options.php" method="post">
       <button id="fort_button" type="submit" style="visibility: hidden;" name="fort" onclick="sendSession()">Go to Fort</button>
+    </form>
+  </div>
+
+  <div id="end_game" class="modalBox" title="Almost There!">
+    <p id="end_game_text"></p>
+    <form id="end_game_form" name="minigame" action="miniGame.html" method="post">
+      <button id="take_river_button" type="submit" style="visibility: hidden;" name="end" onclick="sendSession()">Go to game</button>
+    </form>
+  </div>
+
+  <div id="game_win" class="modalBox" title="You Made it to Oregon!">
+    <img id="valley" visible="hidden" style="height: 200px; width: 250px; visibility: hidden;"/>
+    <form id="game_win_form" name="end" action="end.php" method="post">
+      <button id="game_win_button" type="submit" style="visibility: hidden;" name="win" onclick="sendSession()">Go to game</button>
     </form>
   </div>
 
