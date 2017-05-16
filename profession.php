@@ -11,9 +11,16 @@
   </head>
   <body>
 <?php
+/*
+Profession File for the Oregon Trail Game
+This file is use to determine the profession of the player.
+
+The player chooses 1 2 or 3 corresponding to banker carpenter
+or farmer. This effects the money they start with and the end score
+
+This is sent as a post and updated on the next page.
+*/  
 session_start();
-//echo $_SESSION["favanimal"];
-//print_r($_SESSION);
 ?>
   <h1> Profession </h1>
   <p>Many kinds of people made the trip to Oregon.
