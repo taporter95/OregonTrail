@@ -65,10 +65,11 @@ $_SESSION["tonguesBought"] = 0; //how many tongues the player buys
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="sessions.js"> </script>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
 
-	<h1> Titile </h1>
+	<h1> Oregon Trail</h1>
   <form name="info" action="profession.php" method="post">
   <button type="submit" onclick="sendSession()">Profession </button>
   </form>
