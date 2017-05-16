@@ -10,7 +10,7 @@ var blinking = false;
 var blinkCount = 0;
 
 
-setInterval('updateGame()', 250);
+setInterval('updateGame()', 100);
 
 //updates the game as per the interval's instructions
 function updateGame(){
@@ -68,7 +68,7 @@ function updateGame(){
 	}
 	counter++;
 	// waiting mechanism for end game
-	if (counter > 20){
+	if (counter > 100){
 		var boatLeft = left;
         var boatRight = left + 50;
         var boatBottom = 250;
