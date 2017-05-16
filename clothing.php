@@ -8,7 +8,7 @@ can have subtracted from the amount of clothing they already have.
 The input is validated and the result is returned as a post
 to the general store page.
 
-The maximum amount of food is 99 sets.
+The maximum amount of clothing is 99 sets.
 */
 session_start();
 $_SESSION["canBuy"] = 99 - $_SESSION["clothing"];
