@@ -94,9 +94,9 @@ function update_location(){
 		if (locationNames[locale-locale_mod] == "The Willamette Valley"){
 			game_win();
 		}
-		if (partySize == 0){
-			game_over();
-		}
+	}
+	if (partySize == 0){
+		game_over();
 	}
 }
 
@@ -248,7 +248,7 @@ function updateHealth(resting){
 		restingBonus = 0;
 	}
 	if (food <= 0){
-		foodMod = -10;
+		foodMod = -20;
 	}
 
 	var chanceOfRecovery = 100;
@@ -385,7 +385,7 @@ function open_trade(){
 	$("#i_for").val(trade_for);
 	$("#q_to").val(quantity_to);
 	$("#i_to").val(trade_to);
-	var trade_string = quantity_for + " " + items[trade_for] + " for " + quantity_to + " " + items[trade_to] + ". You have " + you_have;
+	var trade_string = "You meet a man who wants to trade with you, he offers you " + quantity_for + " " + items[trade_for] + " for " + quantity_to + " " + items[trade_to] + ". You have " + you_have;
 	trade_window(trade_string);
 }
 
@@ -692,7 +692,7 @@ function trade_window(text) {
 		}
 		]
 	});
-	$("#trade_string").text("You spend the day finding someone willing to trade with you, eventually you meet a man willing to make a deal, he offers you");
+	$("#trade_string").text(text);
 }
 
 function broken_wagon_1(text){

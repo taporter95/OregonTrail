@@ -48,6 +48,7 @@
   </tr>
 </table>
 
+
   <button id="continue" onclick="continueTrail()">Continue</button>
   
   <br>
