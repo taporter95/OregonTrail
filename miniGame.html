@@ -8,10 +8,63 @@
   <head>
     <title>OT Mini Game</title>
   </head>
-  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="sessions.js"> </script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="miniGame.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script type="text/javascript" src="miniGame.js"> </script>
 
+	
+	
+	<script>
+	$(document).ready(function(){
+	
+	  $(document).keydown(function (e) {
+        var keyCode = e.keyCode || e.which,
+        arrow = {left: 37, up: 38, right: 39, down: 40 };
+
+        switch (keyCode) {
+
+            case arrow.left:
+				if (left > 420)
+					left-= 10;
+				$("#boat").css('left', left);
+				console.log("left: " + left);
+            break;
+
+            case arrow.right: 
+				if (left < 820)
+					left+= 10;
+				$("#boat").css("left", left + "px"); 
+			  console.log("Right: " + left);
+            break;
+        }
+    });
+	
+	
+	});
+	</script>
+	
+	
+  <body>
 	<h1> Mini Game </h1>
-  <form name="info" action="end.html" method="post">
+	
+	<div class="boat" id="boat"> </div>
+	<div class="water" > </div>
+	<div class="sandLeft" > </div>
+	<div class="sandRight" > </div>
+	<div class="rock" id="rock1"> </div> 
+	<div class="rock" id="rock2"> </div> 
+	<div class="rock" id="rock3"> </div> 
+	<div class="rock" id="rock4"> </div> 
+	<div class="rock" id="rock5"> </div> 
+	<div class="end" id="end"> </div> 
+	
+	
+  <form name="info" action="end.php" method="post">
   <button type="submit">End Game</button>
   </form> 
 
