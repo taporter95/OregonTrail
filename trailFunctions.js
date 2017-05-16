@@ -72,6 +72,8 @@ function update_location(){
 		//get new info
 		milesToNext = travelDistances[locale];
 		locale += locale_mod;
+		if (locationNames[locale-1] == "Green River Crossing")
+			locale += 1;
 
 		//if the player reached a river, force them to cross it
 		if (locationType[locale-locale_mod] == "river"){
