@@ -62,7 +62,7 @@ function update_location(){
 		
 		locale_mod = 1;
 		if (locationNames[locale-1] == "Green River Crossing")
-			locale += 1;
+			locale_mod += 1;
 		//get new info
 		milesToNext = travelDistances[locale];
 		locale += locale_mod;
@@ -253,7 +253,7 @@ function updateHealth(resting){
 		restingBonus = 0;
 	}
 	if (food <= 0){
-		foodMod = -20;
+		foodMod = -30;
 	}
 
 	var chanceOfRecovery = 100;
@@ -285,7 +285,10 @@ function updateHealth(resting){
 			}
 			//check for death
 			if (stats[i] <= 0){
-				alert_window(party[i] + " has died of " + disease[i]);
+				var died_of = disease[i];
+				if (died_of == "none")
+					died_of = "natural causes";
+				alert_window(party[i] + " has died of " + died_of);
 				disease[i] = "dead";
 				partySize -= 1;
 				if (partySize == 0){
