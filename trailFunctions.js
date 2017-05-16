@@ -74,12 +74,12 @@ function update_location(){
 
 		//if the player reached a river, force them to cross it
 		if (locationType[locale-locale_mod-gr_mod] == "river"){
-			river_modal();
+			river_modal(locale_mod);
 		}
 		//if the player reached a fort, give them the option to go to it
 		else if (locationType[locale-locale_mod-gr_mod] == "fort"){
 			inFort = true;
-			fort_modal();
+			fort_modal(locale_mod);
 		}
 		else if (locationType[locale-locale_mod] == "landmark"){
 			landmark_modal();
@@ -586,7 +586,7 @@ function game_over(){
 	$("#skull").css("height", "250px");
 }
 
-function river_modal(){
+function river_modal(modifier){
 	$("#river_modal").css("visibility", "visible");
 	$("#river_modal").dialog({
 		closeOnEscape: false,
@@ -604,8 +604,8 @@ function river_modal(){
 		}
 		]
 	});
-	var image_source = "images/" + locationNames[locale-1] + ".jpg";
-	$("#river_modal").dialog('option', 'title', locationNames[locale-1]);
+	var image_source = "images/" + locationNames[locale-modifier] + ".jpg";
+	$("#river_modal").dialog('option', 'title', locationNames[locale-modifier]);
 	$("#river_image").attr("src", image_source);
 	$("#river_image").css("visibility", "visible");
 	$("#river_image").css("width", "275px");
@@ -614,7 +614,7 @@ function river_modal(){
 
 
 
-function fort_modal(){
+function fort_modal(modifier){
 	$("#fort_modal").css("visibility", "visible");
 	$("#fort_modal").dialog({
 		modal: true,
@@ -634,8 +634,8 @@ function fort_modal(){
 			}
 		]
 	});
-	var image_source = "images/" + locationNames[locale-1] + ".jpg";
-	$("#fort_modal").dialog('option', 'title', locationNames[locale-1]);
+	var image_source = "images/" + locationNames[locale-modifier] + ".jpg";
+	$("#fort_modal").dialog('option', 'title', locationNames[locale-modifier]);
 	$("#fort_image").attr("src", image_source);
 	$("#fort_image").css("visibility", "visible");
 	$("#fort_image").css("width", "275px");
