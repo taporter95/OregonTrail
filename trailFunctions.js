@@ -64,7 +64,7 @@ function update_location(){
 		if (locationNames[locale] == "Green River Crossing"){
 			console.log("at GRC");
 			locale_mod += 1;
-			gr_mod = 1;
+			gr_mod = 0;
 		}
 
 		//get new info
