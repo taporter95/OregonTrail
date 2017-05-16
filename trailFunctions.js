@@ -1,4 +1,4 @@
-	
+
 var locationNames = ["Independence", "Kansas River", "Big Blue River", "Fort Kearney", "Chimney Rock", "Fort Laramie", "Independence Rock", "South Pass", "Green River Crossing", "Fort Bridger", "Soda Springs", "Fort Hall", "Snake River Crossing", "Fort Boise", "Blue Mountains", "Fort Walla Walla", "The Dalles", "The Willamette Valley", "Error"];
 var travelDistances = [102, 82, 118, 250, 86, 190, 102, 57, 125, 143, 162, 57, 182, 113, 160, 55, 125, 100, 404];
 var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landmark", "landmark", "river", "fort", "landmark", "fort", "river", "fort", "landmark", "fort", "landmark", "end", "Error"];
@@ -63,7 +63,7 @@ function update_location(){
 	//if at new destination
 	if (milesToNext == 0){
 		//these locations are part of splits
-		if (locationNames[locale] == "Green River Crossing" || locationNames[locale] == "Fort Walla Walla"){
+		if (locationNames[locale] == "Green River Crossing"){
 			//variable need if the first option was chosen during a split
 			var locale_mod = 2;
 		}
@@ -90,6 +90,13 @@ function update_location(){
 		}
 		else{
 			alert_window("From " + locationNames[locale - locale_mod] + ", it is " + milesToNext + " miles to " + locationNames[locale]);
+		}
+
+		if (locationNames[locale-locale_mod] == "The Dalles"){
+			end_game_choice("You are reaching the end of your journey, just one final choice to make...");
+		}
+		if (locationNames[locale-locale_mod] == "The Willamette Valley"){
+			gmae_win();
 		}
 	}
 }
@@ -793,6 +800,67 @@ function rest(){
 		]
 	});
 }	
+
+function end_game_choice(text){
+	$("#end_game").css("visibility", "visible");
+	$("#end_game").dialog({
+		closeOnEscape: false,
+		open: function(event, ui){
+			$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+		},
+		modal: true,
+		buttons: [
+		{
+			text: "Take the Barlow Toll Road",
+			click: function() {
+				$( this ).dialog( "close" );
+				take_toll_road();
+				}
+		},
+		{
+			text: "Go down the Columbia River",
+			click: function(){
+				$( this ).dialog( "close" );
+				$("#take_river_button").trigger("click");
+			}
+		}
+		]
+	});
+	$("#end_game_text").text(text);
+}
+
+function game_win(){
+	$("#game_win").css("visibility", "visible");
+	$("#game_win").dialog({
+		closeOnEscape: false,
+		open: function(event, ui){
+			$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+		},
+		modal: true,
+		buttons: [
+		{
+			text: "The End",
+			click: function(){
+				$(this).dialog("close");
+				$("#game_win_button").trigger("click");
+			}
+		}
+		]
+	});
+	var image_source = "images/Willamette Valley.jpg";
+	$("#valley").attr("src", image_source);
+	$("#valley").css("visibility", "visible");
+	$("#valley").css("width", "275px");
+	$("#valley").css("height", "200px");
+}
+
+function take_toll_road(){
+	if (money > 13){
+		money -= 13;
+	}
+	else 
+		end_game_choice("You do not have enough money to take the toll road.");
+}
 
 function update_display(){
 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
