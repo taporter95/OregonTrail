@@ -1,3 +1,13 @@
+<?php
+/*
+Top Ten File for the Oregon Trail Game
+This file returns the Top Ten scores 
+and the corresponding names and returns 
+them to the userThe information is 
+pulled from a database using sql queries.
+*/
+?>
+
 <?xml version = "1.0"?>
 <!DOCTYPE html PUBLIC "-//w3c//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
