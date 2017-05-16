@@ -35,7 +35,7 @@ $_SESSION["canBuy"] = 3 - $_SESSION["tongues"];
   How many tongues do you want? (up to 3):
   <input type="number" name="tonguesNum" min="0" max="<?php echo $_SESSION["canBuy"]?>" required>
   <br>
-  <img src="images/wheel.png" alt="wheel" style="width:250px;height:250px;margin: 20px;">
+  <img src="images/wheel.png" alt="wheel" style="width:250px;height:250px;">
   <br>
   <button type="submit">Back to Store</button>
   </form>
