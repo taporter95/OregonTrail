@@ -84,7 +84,7 @@ function sendSession(){
 	error: bad
 	});
 
-	//alert("Continue");	
+	alert("Continue");	
 
 }
 
