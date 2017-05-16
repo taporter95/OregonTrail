@@ -45,7 +45,7 @@
   
 </div>
   
-<script type="text/javascript" src="trailFunctions.js" defer> </script>
+<script type="text/javascript" src="trailFunctions.js"> </script>
 <script>
 	var riverWidth = randomNumber(400, 600);
 	var riverDepth = parseFloat((Math.random() * (10 - 2) + 2).toFixed(1));

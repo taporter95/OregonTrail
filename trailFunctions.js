@@ -1,8 +1,8 @@
 	
-var locationNames = ["Independence", "Kansas River", "Big Blue River", "Fort Kearney", "Chimney Rock", "Fort Laramie", "Independence Rock", "South Pass", "Green River Crossing", "Fort Bridger", "Soda Springs", "Fort Hall", "Snake River Crossing", "Fort Boise", "Blue Mountains", "Fort Walla Walla", "The Dalles", "The Willamette Valley"];
-var travelDistances = [102, 82, 118, 250, 86, 190, 102, 57, 125, 143, 162, 57, 182, 113, 160, 55, 125, 100, 113];
-var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landmark", "landmark", "river", "fort", "landmark", "fort", "river", "fort", "landmark", "fort"];
-var danger = [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5, 5, 5];
+var locationNames = ["Independence", "Kansas River", "Big Blue River", "Fort Kearney", "Chimney Rock", "Fort Laramie", "Independence Rock", "South Pass", "Green River Crossing", "Fort Bridger", "Soda Springs", "Fort Hall", "Snake River Crossing", "Fort Boise", "Blue Mountains", "Fort Walla Walla", "The Dalles", "The Willamette Valley", "Error"];
+var travelDistances = [102, 82, 118, 250, 86, 190, 102, 57, 125, 143, 162, 57, 182, 113, 160, 55, 125, 100, 404];
+var locationType = ["fort", "river", "river", "fort", "landmark", "fort", "landmark", "landmark", "river", "fort", "landmark", "fort", "river", "fort", "landmark", "fort", "landmark", "end", "Error"];
+var danger = [0, 0, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5, 5, 5, 666];
 
 //there is an inverse relationship between this variable and the amount of food and water, the larger the variable, the worse it is
 var foodAndWater = 0;
@@ -11,6 +11,10 @@ var date_obj = new Date(year, month, day);
 
 //Step forward on the trail, updates distances, checks random events, updates stats and equipment
 function continueTrail(){
+
+	if (partySize == 0){
+
+	}
 	
 	broken = parseInt(broken);
 	//if the wagon is not broken
@@ -532,6 +536,32 @@ function randomNumber(min, max){
 	return Math.floor(Math.random() * (max - min)) + min;
 }
 
+function game_over(){
+	$("#game_over").css("visibility", "visible");
+	$("#game_over").dialog({
+		closeOnEscape: false,
+		open: function(event, ui){
+			$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+		},
+		modal: true,
+		buttons: [
+		{
+			text: "End Game",
+			click: function(){
+				$(this).dialog("close");
+				$("#game_over_button").trigger("click");
+			}
+		}
+		]
+	});
+	var image_source = "images/skull.jpg";
+	$("#game_over_modal").dialog('option', 'title', "Game Over, Everyone Is Dead");
+	$("#skull").attr("src", image_source);
+	$("#skull").css("visibility", "visible");
+	$("#skull").css("width", "250px");
+	$("#skull").css("height", "250px");
+}
+
 function river_modal(){
 	$("#river_modal").css("visibility", "visible");
 	$("#river_modal").dialog({
@@ -554,9 +584,10 @@ function river_modal(){
 	$("#river_modal").dialog('option', 'title', locationNames[locale-1]);
 	$("#river_image").attr("src", image_source);
 	$("#river_image").css("visibility", "visible");
-	$("#river_image").css("width", "250px");
+	$("#river_image").css("width", "275px");
 	$("#river_image").css("height", "200px");
 }
+
 
 
 function fort_modal(){
@@ -583,7 +614,7 @@ function fort_modal(){
 	$("#fort_modal").dialog('option', 'title', locationNames[locale-1]);
 	$("#fort_image").attr("src", image_source);
 	$("#fort_image").css("visibility", "visible");
-	$("#fort_image").css("width", "250px");
+	$("#fort_image").css("width", "275px");
 	$("#fort_image").css("height", "250px");
 }
 

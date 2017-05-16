@@ -53,12 +53,8 @@
   <br>
 
   <form name="options" action="options.php" method="post">
-  <button type="submit" onclick="sendSession()">Options</button>
+    <button type="submit" onclick="sendSession()">Options</button>
   </form> 
-	
-  <form name="view" action="viewTerrain.html" method="post">
-  <button type="submit">view Terrain</button>
-  </form>
   
   <!--
   <button id="geo"> Geo Event</button>
@@ -66,6 +62,13 @@
   <button id="grave"> Grave Event</button>
   <button id="divide"> Trail Divide</button>
   -->
+  <div id="game_over_modal" class="modalBox" title="Game Over"> 
+    <img id="skull" style="height: 200px; width: 250px; visibility: hidden;"/>
+    <form id="game_over_form" name="cross" action="title.php" method="post">
+      <button id="game_over_button" type="submit" style="visibility: hidden;">game over</button>
+    </form>
+  </div>
+
   <div id="river_modal" class="modalBox" title="River Crossing"> 
     <p id="rm_text"></p>
     <img id="river_image" style="height: 200px; width: 250px; visibility: hidden;"/>
