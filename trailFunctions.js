@@ -170,16 +170,24 @@ function randomEvent(){
 					var bait_lost = randomNumber(20, 200);
 					var clothes_lost = randomNumber(1, 10);
 					var food_lost = randomNumber(5, 50);
+					var money_lost = randomNumber(20, 150);
 					bait -= bait_lost;
 					if (bait < 0)
+						bait_lost = bait_lost + bait;
 						bait = 0;
 					clothing -= clothes_lost;
 					if (clothing < 0)
+						clothes_lost = clothes_lost + clothing;
 						clothing = 0;
 					food -= food_lost;
 					if (food < 0)
+						food_lost = food_lost + food;
 						food = 0;
-					alert_window("You were robbed! You lost: \n" + bait_lost + " bait\n" + clothes_lost + " pairs of clothes\n" + food_lost + " Lbs. of food");
+					money -= money_lost;
+					if (money < 0)
+						money_lost = money_lost + money;
+						money = 0;
+					alert_window("You were robbed! You lost: \n" + bait_lost + " bait\n" + clothes_lost + " pairs of clothes\n" + food_lost + " Lbs. of food, and " + "$" + money_lost);
 				}
 				break;
 			//friendly locals
