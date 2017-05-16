@@ -156,7 +156,7 @@ if (isset($_POST['fort'])){
 
 
  
-<script type="text/javascript" src="trailFunctions.js"> </script>  
+<script type="text/javascript" src="trailFunctions.js" defer> </script>  
 <script type="text/javascript">
 	$(document).ready(function(){
         update_display();
