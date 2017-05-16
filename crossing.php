@@ -75,6 +75,11 @@
 			$_SESSION["stats"][$i] = 0;
 		}
 		$_SESSION["partySize"] = 0;
+		echo ("<script>");
+		echo ("alert('Everyone died in the deep river.');");
+		echo ("window.location.replace('gameOver.php');");
+		echo ("</script>");
+		
 	}
 	
 	elseif (($chose == "caulk") && ($deep <= 2.5)){
