@@ -543,8 +543,8 @@ function randomNumber(min, max){
 }
 
 function game_over(){
-	$("#game_over").css("visibility", "visible");
-	$("#game_over").dialog({
+	$("#game_over_modal").css("visibility", "visible");
+	$("#game_over_modal").dialog({
 		closeOnEscape: false,
 		open: function(event, ui){
 			$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
