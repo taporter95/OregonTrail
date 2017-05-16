@@ -877,8 +877,20 @@ function update_date(){
 		console.log("undefined reloading");
 		location.reload();
 	}*/
+	date_obj = new Date(year, month, day);
 	date_obj.setDate(date_obj.getDate() + 1);
 	day = date_obj.getDate();
 	month = date_obj.getMonth();
 	year = date_obj.getFullYear();
+}
+
+function ferryDate(time) {
+	// make time pass, heal people, and the such
+	for (var i = 0; i < time; i++){
+	// ask how update Health works???
+		update_date();
+		food -= partySize * rationsVal;
+		updateHealth(true);
+	}
+	updateWeather();
 }

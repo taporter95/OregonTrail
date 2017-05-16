@@ -100,11 +100,11 @@
   });
   
   $("#crossForm").submit(function(event){
-	 if ((locale > 3) && (clothing < 3)){
+	 if ((locale > 3) && (clothing < 3) && ($("#choose3") == "ferry") ){
 		alert("You do not have enough clothes for the fee. Choose another option.");
 		event.preventDefault();
 	}
-	else if ((locale < 3) && (money < 5)){
+	else if ((locale < 3) && (money < 5) &&  ($("#choose3") == "ferry")){
 		alert("You do not have enough money for the ferry. Choose another option.");
 		event.preventDefault();
 	}
