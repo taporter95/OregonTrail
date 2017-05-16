@@ -93,10 +93,10 @@ if (isset($_POST['fort'])){
 </form>
   
 
-  <button id="pace">Change Pace</button>
+  <button id="paceBut">Change Pace</button>
   <button id="supplies">View Supplies</button>
   <button id="map">Show Map</button>
-  <button id="rations">Change Rations</button>
+  <button id="rationsBut">Change Rations</button>
   <button id="rest" onclick="rest()">Rest Up</button>
   <button id="trade" onclick="open_trade()">Trade with Locals</button>
   <!--<button id="help" onclick="startUp()">help</button>
@@ -166,7 +166,7 @@ if (isset($_POST['fort'])){
 <script>
 $( function() {
   
-	$("#pace").click(function(){
+	$("#paceBut").click(function(){
 		$("#paceBox").css("visibility","visible");
 		
 		$("#paceBox").dialog({
@@ -179,7 +179,7 @@ $( function() {
 					// add in change pace info
 					paceVal = 1;
 					pace = "steady";
-					
+					update_display();
 					$( this ).dialog( "close" );
 					}
 			},
@@ -189,6 +189,7 @@ $( function() {
 					// add in change pace info
 					paceVal = 2;
 					pace = "strenuous";
+					update_display();
 					$( this ).dialog( "close" );
 					}
 			},
@@ -198,6 +199,7 @@ $( function() {
 					// add in change pace info
 					paceVal = 3;
 					pace = "grueling";
+					update_display();
 					$( this ).dialog( "close" );
 					}
 			}
@@ -247,7 +249,7 @@ $( function() {
 	});
   
 
-	$("#rations").click(function(){
+	$("#rationsBut").click(function(){
 		$("#rationsBox").css("visibility","visible");
 		
 		$("#rationBox").dialog({	
@@ -259,6 +261,7 @@ $( function() {
 					// Chnge food
 					rationsVal = 1;
 					rations = "bare bones";
+					update_display();
 					$( this ).dialog( "close" );
 					}
 			},
@@ -268,6 +271,7 @@ $( function() {
 					// Chnge food
 					rationsVal = 2;
 					rations = "meager";
+					update_display();
 					$( this ).dialog( "close" );
 					}
 			},
@@ -277,6 +281,7 @@ $( function() {
 					// Chnge food
 					rationsVal = 3;
 					rations = "filling";
+					update_display()
 					$( this ).dialog( "close" );
 					}
 			}

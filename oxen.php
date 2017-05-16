@@ -1,4 +1,14 @@
 <?php
+/*
+Oxen File for the Oregon Trail Game
+This file is linked from the general store when a player
+is attempting to buy oxen.
+
+The canBuy variable is the maximum amount of oxen a player
+can have subtracted from the amount of oxen they already own.
+The input is validated and the result is returned as a post
+to the general store page.
+*/
 session_start();
 $_SESSION["canBuy"] = 18 - $_SESSION["oxen"];
 
