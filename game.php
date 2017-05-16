@@ -47,6 +47,7 @@
     <td id="traveled"></td>
   </tr>
 </table>
+<img src="images/wagonMove.gif" alt="wagonMove" style="width:349px;height:183px;">
 
 
   <button id="continue" onclick="continueTrail()">Continue</button>
