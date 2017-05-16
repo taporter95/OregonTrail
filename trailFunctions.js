@@ -67,6 +67,7 @@ function update_location(){
 		else{
 			var locale_mod = 1;
 		}*/
+		locale_mod = 1;
 
 		//get new info
 		milesToNext = travelDistances[locale];
