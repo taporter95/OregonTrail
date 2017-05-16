@@ -61,7 +61,7 @@ function update_location(){
 		//these locations are part of splits
 		var gr_mod = 0;
 		var locale_mod = 1;
-		if (locationNames[locale-1] == "Green River Crossing"){
+		if (locationNames[locale] == "Green River Crossing"){
 			console.log("at GRC");
 			locale_mod += 1;
 			gr_mod = 1;
