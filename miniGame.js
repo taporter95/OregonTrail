@@ -19,7 +19,7 @@ function updateGame(){
 	if (collision()){
 		if (!blinking){
 			blinking = true;
-			setTimeout('changeBlink()', 125);
+			setTimeout('changeBlink()', 90);
 			// announce lost materials
 			alert("You lost: " +
 			Math.round(money*1/5) + " dollars, " +
@@ -42,8 +42,16 @@ function updateGame(){
 			tongues = Math.round(tongues*2/3);
 			
 			if (partySize >0){
-				stats[partySize-1] = 0;
-				alert(party[partySize-1] + " is dead");
+				var i=4;
+				var dead = false;
+				for (i;i >= 0; i--){
+					console.log(stats[i]);
+					if(stats[i] !== 0 && !dead){
+						stats[i] = 0;
+						dead = true;
+					}
+				}
+				alert(party[i] + " is dead");
 				partySize--;
 			}
 			if (partySize <= 0){
@@ -55,20 +63,21 @@ function updateGame(){
 		}
 		else if(blinking && blinkCount < 10){
 			blinkCount++;
-			setTimeout('changeBlink()', 125);
+			setTimeout('changeBlink()', 90);
 		}
 		else{
 			blinking = false;
 			blinkCount = 0;
 			crash = false;
 			$("#boat").css('visibility', 'visible');
+			$("#bimg").css('visibility', 'visible');
 		}
 		
 		
 	}
 	counter++;
 	// waiting mechanism for end game
-	if (counter > 100){
+	if (counter > 200){
 		var boatLeft = left;
         var boatRight = left + 50;
         var boatBottom = 250;
@@ -139,10 +148,14 @@ function randomNumber(min, max){
 function changeBlink(){
 	
 	if (document.getElementById("boat").style.visibility == "visible"){
-		 $("#boat").css('visibility', 'hidden');
+		$("#boat").css('visibility', 'hidden');
+		$("#bimg").css('visibility', 'hidden');
+
 	}
 	else{
 		$("#boat").css('visibility', 'visible');
+		$("#bimg").css('visibility', 'visible');
+
 	}
 
 }
