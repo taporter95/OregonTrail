@@ -13,7 +13,7 @@ var date_obj = new Date(year, month, day);
 function continueTrail(){
 
 	if (partySize == 0){
-
+		game_over();
 	}
 	
 	broken = parseInt(broken);
