@@ -1,5 +1,9 @@
 <?php
-
+/*
+The start page of the Oregon Trail game
+Allows the player to start an Oregon Trail playthrough
+Also links to the high score page and the info page
+*/
 session_start();
 session_destroy();
 session_start();
