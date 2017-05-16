@@ -11,10 +11,6 @@ var date_obj = new Date(year, month, day);
 
 //Step forward on the trail, updates distances, checks random events, updates stats and equipment
 function continueTrail(){
-
-	if (partySize == 0){
-		game_over();
-	}
 	
 	broken = parseInt(broken);
 	//if the wagon is not broken
@@ -97,6 +93,9 @@ function update_location(){
 		}
 		if (locationNames[locale-locale_mod] == "The Willamette Valley"){
 			game_win();
+		}
+		if (partySize == 0){
+			game_over();
 		}
 	}
 }
