@@ -70,8 +70,9 @@ $_SESSION["tonguesBought"] = 0; //how many tongues the player buys
   <body>
 
 	<h1> Oregon Trail</h1>
+  <img src="images/Title Image.jpg" alt="Title" style="width:650px;height:400px;">
   <form name="info" action="profession.php" method="post">
-  <button type="submit" onclick="sendSession()">Profession </button>
+  <button type="submit" onclick="sendSession()">Start Game!</button>
   </form>
     
   <form name="info" action="topTen.php" method="post">
