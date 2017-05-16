@@ -12,7 +12,7 @@ setInterval('updateGame()', 250);
 
 //updates the game as per the interval's instructions
 function updateGame(){
-	console.log("gameUpdate");
+	//console.log("gameUpdate");
 	moveRocks();
 	if (collision()){
 		// update materials lost/ people dying
@@ -58,16 +58,16 @@ function moveRocks(){
 }
 
 
-// almost always says its colliding...
+//  this works fine
 //checks all rocks to see if they intersected with boat
 function collision() {
         var boatLeft = left;
-        var boatRight = left + $("#boat").css('width');
-        var boatBottom = $("#boat").css('height');
+        var boatRight = left + 50;
+        var boatBottom = 250;
 		// number of rocks max = 5
 		for (i = 1; i < 6; i++) {
 			// +50 cause rock width = 50
-			if ((boatBottom < rockTops[i]) || (boatRight < rockLefts[i]) || (boatLeft > rockLefts[i] + 50)) {
+			if ((boatBottom >= rockTops[i]) &&( ((boatRight >= rockLefts[i])&&(boatLeft <= rockLefts[i])) || ((boatRight >= rockLefts[i] +50)&&(boatLeft <= rockLefts[i] +50)) )) {
 				crash = true;
 				return crash;
 			}
