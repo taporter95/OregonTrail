@@ -282,7 +282,7 @@ function updateHealth(resting){
 				}
 			}
 			//if a sick person recovers
-			if (health[i] == 10 && disease[i] != "none") {
+			if (stats[i] == 10 && disease[i] != "none") {
 				console.log("recovered");
 				alert_window(party[i] + " has recovered!");
 				disease[i] = "none";
