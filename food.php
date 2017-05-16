@@ -39,7 +39,7 @@ $_SESSION["canBuy"] = 2000 - $_SESSION["food"];
   How many pounds of food do you want? (up to 2000):
   <input type="number" name="foodNum" min="0" max="<?php echo $_SESSION["canBuy"]?>" required>
   <br>
-  <img src="images/food.png" alt="food" style="width:627px;height:250px;margin: 20px;">
+  <img src="images/food.png" alt="food" style="width:627px;height:250px;">
   <br>
   <button type="submit">Back to Store</button>
   </form>
