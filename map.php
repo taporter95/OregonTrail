@@ -56,6 +56,11 @@ $_SESSION["split"] = 0;
   <body onload="getSession()">
 
 	<h1> Map </h1>
+	
+	 <form name="info" action="options.php" method="post">
+ <button type="submit" onclick="sendSession()">Options</button>
+ </form>
+
 
   <canvas id="map" width="1050" height="550" style="background-color:AntiqueWhite">
   <script>
@@ -218,9 +223,10 @@ for(var i = 0; i < locationNames.length; i++){
   </script>
 
   <br>
-  <br>
-  <button type="submit">Month</button>
-  </form>
+ <form name="info" action="options.php" method="post">
+ <button type="submit" onclick="sendSession()">Options</button>
+ </form>
+
     
   
   </body>
