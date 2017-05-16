@@ -62,6 +62,7 @@ function update_location(){
 		var gr_mod = 0;
 		var locale_mod = 1;
 		if (locationNames[locale-1] == "Green River Crossing"){
+			console.log("at GRC");
 			locale_mod += 1;
 			gr_mod = 1;
 		}
@@ -88,7 +89,7 @@ function update_location(){
 			split_trail(locationNames[locale], locationNames[locale+1]);
 		}
 		else if (locationNames[locale-locale_mod] != "The Willamette Valley"){
-			alert_window("From " + locationNames[locale - locale_mod] + ", it is " + milesToNext + " miles to " + locationNames[locale]);
+			alert_window("From " + locationNames[locale - locale_mod] + ", it is " + milesToNext + " miles to " + locationNames[locale + gr_mod]);
 		}
 
 		if (locationNames[locale-locale_mod] == "The Dalles"){
