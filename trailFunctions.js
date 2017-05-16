@@ -73,11 +73,11 @@ function update_location(){
 
 
 		//if the player reached a river, force them to cross it
-		if (locationType[locale-locale_mod+gr_mod] == "river"){
+		if (locationType[locale-locale_mod-gr_mod] == "river"){
 			river_modal();
 		}
 		//if the player reached a fort, give them the option to go to it
-		else if (locationType[locale-locale_mod+gr_mod] == "fort"){
+		else if (locationType[locale-locale_mod-gr_mod] == "fort"){
 			inFort = true;
 			fort_modal();
 		}
@@ -89,7 +89,7 @@ function update_location(){
 			split_trail(locationNames[locale], locationNames[locale+1]);
 		}
 		else if (locationNames[locale-locale_mod] != "The Willamette Valley"){
-			alert_window("From " + locationNames[locale - locale_mod] + ", it is " + milesToNext + " miles to " + locationNames[locale + gr_mod]);
+			alert_window("From " + locationNames[locale - locale_mod] + ", it is " + milesToNext + " miles to " + locationNames[locale]);
 		}
 
 		if (locationNames[locale-locale_mod] == "The Dalles"){
