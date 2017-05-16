@@ -47,20 +47,6 @@
     <td id="traveled"></td>
   </tr>
 </table>
-<!--
-<label for="date">Date: </label>
-<p id="date"></p> <br>
-<label for="weather">Weather: </label>    
-<p id="weather"></p> <br>
-<label for="health">Health: </label>
-<p id="health"></p> <br>
-<label for="Food">Food: </label>
-<p id="food"><p> <br>
-<label for="next">Next landmark: </label>
-<p id="next"></p> <br>
-<label for="traveled">Miles traveled: </label>
-<p id="traveled"></p> <br>
--->
 
   <button id="continue" onclick="continueTrail()">Continue</button>
   
@@ -120,7 +106,7 @@
     <p id="alert_text"></p>
   </div>
 
-   	<script type="text/javascript" src="trailFunctions.js"></script>
+   	<script type="text/javascript" src="trailFunctions.js" defer></script>
     <script type="text/javascript">
       $(document).ready(function(){
         update_display();

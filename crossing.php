@@ -241,7 +241,7 @@
 	
 	?>
   <form name="info" action="game.php" method="post">
-  <button onclick="sendSession()" type="submit">Game </button>
+  	<button onclick="sendSession()" type="submit">Game </button>
   </form>
   
   </body>

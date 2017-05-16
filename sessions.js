@@ -1,11 +1,10 @@
 // this gets and sends to sessions with ajax
 
-//function getSession(){
 $.ajax({url:"sessionGet.php", success: gotSess, error: bad});
 //}
 //see title.php for descriptions of these variables
 function gotSess(holder){
-	alert(holder);
+	//alert(holder);
 	holder = (JSON.parse(holder));
 	// get all party info from sessions
 	window.party = JSON.parse(holder[0]);
@@ -40,7 +39,7 @@ function gotSess(holder){
 	window.broken = holder[27];
 	window.split = holder[28];
 
-	alert(holder);
+	//alert(holder);
 	console.log("got session vars");
 }
 

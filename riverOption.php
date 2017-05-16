@@ -8,13 +8,13 @@
   <head>
     <title>OT River Option</title>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script type="text/javascript" src="sessions.js"></script> 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="boxStyle.css">
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  	<link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 			
   </head>
   <body>
@@ -45,9 +45,7 @@
   
 </div>
   
-<script type="text/javascript" src="trailFunctions.js"> </script>
-  
-  
+<script type="text/javascript" src="trailFunctions.js" defer> </script>
 <script>
 	var riverWidth = randomNumber(400, 600);
 	var riverDepth = parseFloat((Math.random() * (10 - 2) + 2).toFixed(1));
