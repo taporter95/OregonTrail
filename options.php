@@ -136,7 +136,6 @@ if (isset($_POST['fort'])){
 </div>
 
 <div id="tradeBox" class="modalBox" title="Trading">
-  <p>You meet a man wanting to trade, he offers you</p>
   <p id="trade_string"></p>
   <input type="hidden" id="q_for">
   <input type="hidden" id="i_for">
