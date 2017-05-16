@@ -1,4 +1,14 @@
 <?php
+/*
+Month Page of the Oregon Trail Game
+This page gets the month they player
+wants to start traveling similar to 
+the original game. This month is 
+used for determining the weather
+at parts of the game. The value
+is sent as a post to the next page
+to be recorded as a session variable
+*/
 session_start();
 
 $names = array($_POST["wagonleader"],$_POST["second"],$_POST["third"],$_POST["fourth"],$_POST["fifth"]);
