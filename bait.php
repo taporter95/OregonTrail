@@ -1,4 +1,16 @@
 <?php
+/*
+Bait File for the Oregon Trail Game
+This file is linked from the general store when a player
+is attempting to buy bait. Bait is used in the fishing game
+a replacement for hunting
+
+The canBuy variable is the maximum amount of bait a player
+can have subtracted from the amount of bait they already have.
+The input is validated and the result is returned as a post
+to the general store page.
+The maximum amount of bait is 20 boxes.
+*/
 session_start();
 $_SESSION["canBuy"] = 99 - $_SESSION["bait"];
 
