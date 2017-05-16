@@ -6,8 +6,10 @@ var rockLefts = [0, 620,620,620,620,620];
 var crash = false;
 var counter = 0;
 var endzoneTop = 650;
+var blinking = false;
+var blinkCount = 0;
 
-//set for testing, actual = 1000
+
 setInterval('updateGame()', 250);
 
 //updates the game as per the interval's instructions
@@ -15,22 +17,41 @@ function updateGame(){
 	//console.log("gameUpdate");
 	moveRocks();
 	if (collision()){
-		// update materials lost/ people dying
+		if (!blinking){
+			blinking = true;
+			setTimeout('changeBlink()', 125);
+			// update materials lost/ people dying
+			alert("you lost x materials");
+			// check if all are dead, end game -> load Gameover screen
+			alert("Bob died");
+			
+		}
+		else if(blinking && blinkCount < 10){
+			blinkCount++;
+			setTimeout('changeBlink()', 125);
+		}
+		else{
+			blinking = false;
+			blinkCount = 0;
+			crash = false;
+			$("#boat").css('visibility', 'visible');
+		}
 		
-		// check if all are dead, end game -> load Gameover screen
 		
-		console.log("Hit a rock");
-		// blink for a bit
-		
-		crash = false;
 	}
 	counter++;
 	// waiting mechanism for end game
 	if (counter > 20){
-		
+		var boatLeft = left;
+        var boatRight = left + 50;
+        var boatBottom = 250;
 		endzoneTop -= 10;
 		$("#end").css('top', endzoneTop);
 		$("#end").css('visibility', 'visible');
+		if ( ((boatBottom >= endzoneTop +60) && (boatBottom - 50 <= endzoneTop + 510))  && (boatRight > 820) ){
+			alert("You win!");
+			//redirect to end.php
+		}
 	}
 }
 
@@ -78,4 +99,15 @@ function collision() {
 // brought from trailFunctions.js to prevent loading that whole file
 function randomNumber(min, max){
 	return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function changeBlink(){
+	
+	if (document.getElementById("boat").style.visibility == "visible"){
+		 $("#boat").css('visibility', 'hidden');
+	}
+	else{
+		$("#boat").css('visibility', 'visible');
+	}
+
 }
