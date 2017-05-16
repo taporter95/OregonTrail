@@ -88,7 +88,7 @@ function update_location(){
 		if (locationNames[locale-locale_mod] == "South Pass" || locationNames[locale-locale_mod] == "Blue Mountains"){
 			split_trail(locationNames[locale], locationNames[locale+1]);
 		}
-		else{
+		else if (locationNames[locale-locale_mod] != "The Willamette Valley"){
 			alert_window("From " + locationNames[locale - locale_mod] + ", it is " + milesToNext + " miles to " + locationNames[locale]);
 		}
 
@@ -96,7 +96,7 @@ function update_location(){
 			end_game_choice("You are reaching the end of your journey, just one final choice to make...");
 		}
 		if (locationNames[locale-locale_mod] == "The Willamette Valley"){
-			gmae_win();
+			game_win();
 		}
 	}
 }
