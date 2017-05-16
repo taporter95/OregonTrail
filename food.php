@@ -1,4 +1,16 @@
 <?php
+/*
+Food File for the Oregon Trail Game
+This file is linked from the general store when a player
+is attempting to buy food.
+
+The canBuy variable is the maximum amount of food a player
+can have subtracted from the amount of food they already have.
+The input is validated and the result is returned as a post
+to the general store page.
+
+The maximum amount of food is 2000 lbs.
+*/
 session_start();
 $_SESSION["canBuy"] = 2000 - $_SESSION["food"];
 
