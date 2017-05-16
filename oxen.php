@@ -37,7 +37,7 @@ $_SESSION["canBuy"] = 18 - $_SESSION["oxen"];
   How many yoke do you want? (up to 18):
   <input type="number" name="oxenNum" min="0" max="<?php echo $_SESSION["canBuy"]?>" required>
   <br>
-  <img src="images/ox.png" alt="oxen" style="width:250px;height:300px;margin: 20px;">
+  <img src="images/ox.png" alt="oxen" style="width:250px;height:300px;">
   <br>
   <button type="submit">Back to Store</button>
   </form>
