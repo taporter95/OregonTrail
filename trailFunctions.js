@@ -11,7 +11,7 @@ var date_obj = new Date(year, month, day);
 
 //Step forward on the trail, updates distances, checks random events, updates stats and equipment
 function continueTrail(){
-	
+	partySize = parseInt(partySize);
 	broken = parseInt(broken);
 	//if the wagon is not broken
 	if (broken == 0){
