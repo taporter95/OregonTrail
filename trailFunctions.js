@@ -562,7 +562,6 @@ function game_over(){
 		]
 	});
 	var image_source = "images/skull.jpg";
-	$("#game_over_modal").dialog('option', 'title', "Game Over, Everyone Is Dead");
 	$("#skull").attr("src", image_source);
 	$("#skull").css("visibility", "visible");
 	$("#skull").css("width", "250px");

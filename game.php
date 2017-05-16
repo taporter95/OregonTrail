@@ -57,7 +57,7 @@
   </form> 
   
   
-  <div id="game_over_modal" class="modalBox" title="Game Over"> 
+  <div id="game_over_modal" class="modalBox" title="Game Over, Everyone Is Dead"> 
     <img id="skull" style="height: 200px; width: 250px; visibility: hidden;"/>
     <form id="game_over_form" name="gameOver" action="gameOver.php" method="post">
       <button id="game_over_button" type="submit" style="visibility: hidden;" onclick="sendSession()">game over</button>
