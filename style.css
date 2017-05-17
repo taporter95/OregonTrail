@@ -25,11 +25,12 @@ input[type="text"], textarea {
   font-family: "Courier New", Courier, monospace;
 }
 
-button, input[type="button"]{
+button, input[type="button"], input[type="submit"]{
     background-color: SaddleBrown;
     color: black;
     font-family: "Courier New", Courier, monospace;
-    padding: 15px 25px;
+    padding: 10px;
+    min-width: 100px;
     font-size: 15px;
     cursor: pointer;
     text-align: center;
