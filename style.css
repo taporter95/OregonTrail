@@ -14,6 +14,12 @@ h1 {
     color: SaddleBrown;
 }
 
+ol {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 input[type="text"], textarea {
   background-color : AntiqueWhite;
   font-family: "Courier New", Courier, monospace;
