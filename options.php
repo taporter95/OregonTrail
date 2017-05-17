@@ -114,7 +114,7 @@ if (isset($_POST['fort'])){
   
   
   <div id="paceBox" class="modalBox" title="Pace">
-  <p>Please choose which paceat which you would like to travel.</p>
+  <p>Please choose which pace at which you would like to travel.</p>
 </div>
 
 <div id="supplyBox" class="modalBox" title="Supplies">
