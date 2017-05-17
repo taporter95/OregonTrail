@@ -223,7 +223,7 @@
 	elseif ($chose == "ferry"){
 	// wait round(chance/10) days, with health updates
 		$chance = rand(1,5);
-		$_SESSION["day"].= $chance;
+		$_SESSION["day"]= (int)$_SESSION["day"] + $chance;
 		$msg .= "You waited $chance days<br/>";
 		if ($_SESSION["locale"] > 3){
 			$msg .= "It costed you 3 clothes<br/>";
