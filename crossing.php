@@ -32,16 +32,18 @@
 	
 	if (($chose == "ford") && ($deep <= 2.5)){
 		$msg .= "You crossed fine<br/>";
+		$msg.= "<img src=\"images/riverCrossing.gif\"><br/>";
 	}
 	elseif (($chose == "ford") && ($deep <= 6)){
 		if ($chance < 50){
 			//ruin player's life if they get unlucky
 			$msg.= "Your wagon tipped over <br/>";
+			$msg.= "<img src=\"images/riverFailing.gif\"><br/>";
 			
-			$msg .= "You lost ".ceil($_SESSION['oxen']/3). "oxen<br/>";			
+			$msg .= "You lost ".ceil($_SESSION['oxen']/3). " oxen<br/>";			
 			$_SESSION["oxen"] = floor( $_SESSION["oxen"]*2/3);
 			
-			$msg .= "You lost ".ceil($_SESSION['food']/3). "food<br/>";			
+			$msg .= "You lost ".ceil($_SESSION['food']/3). " food<br/>";			
 			$_SESSION["food"] = floor( $_SESSION["food"]*2/3);
 			
 			$msg .= "You lost ".ceil($_SESSION['clothing']/3). " clothes<br/>";			
@@ -50,21 +52,22 @@
 			$msg .= "You lost ".ceil($_SESSION['bait']/3). " bait<br/>";			
 			$_SESSION["bait"] = floor( $_SESSION["bait"]*2/3);
 			
-			$msg .= "You lost ".ceil($_SESSION['wheels']/3). "wheels<br/>";			
+			$msg .= "You lost ".ceil($_SESSION['wheels']/3). " wheels<br/>";			
 			$_SESSION["wheels"] = floor( $_SESSION["wheels"]*2/3);
 			
-			$msg .= "You lost ".ceil($_SESSION['axles']/3). "axles<br/>";			
+			$msg .= "You lost ".ceil($_SESSION['axles']/3). " axles<br/>";			
 			$_SESSION["axles"] = floor( $_SESSION["axles"]*2/3);
 			
-			$msg .= "You lost ".ceil($_SESSION['tongues']/3). "tongues<br/>";			
+			$msg .= "You lost ".ceil($_SESSION['tongues']/3). " tongues<br/>";			
 			$_SESSION["tongues"] = floor( $_SESSION["tongues"]*2/3);
 						
-			$msg .= "You lost ".ceil($_SESSION['money']/3). "money<br/>";			
+			$msg .= "You lost ".ceil($_SESSION['money']/3). " dollars<br/>";			
 			$_SESSION["money"] =floor( $_SESSION["money"]*2/3);
 			
 		}
 		else{
 			$msg .= "You crossed fine<br/>";
+			$msg.= "<img src=\"images/riverCrossing.gif\"><br/>";
 		}
 	}
 	elseif (($chose == "ford") && ($deep > 6)){
@@ -85,6 +88,7 @@
 		
 		if ($chance < 60){
 			$msg.= "Your wagon tipped over <br/>";
+			$msg.= "<img src=\"images/riverFailing.gif\"><br/>";
 		
 			if ($_SESSION["oxen"] > 0){
 				$msg .= "You lost 1 oxen<br/>";			
@@ -109,10 +113,10 @@
 				$_SESSION["tongues"] = $_SESSION["tongues"]-1;
 			}
 			
-			$msg .= "You lost ".ceil($_SESSION['money']/4). "money<br/>";			
+			$msg .= "You lost ".ceil($_SESSION['money']/4). " dollars<br/>";			
 			$_SESSION["money"] =floor( $_SESSION["money"]*3/4);
 		
-			$msg .= "You lost ".ceil($_SESSION['food']/6). "food<br/>";			
+			$msg .= "You lost ".ceil($_SESSION['food']/6). " food<br/>";			
 			$_SESSION["food"] = floor( $_SESSION["food"]*5/6);
 		
 			$msg .= "You lost ".ceil($_SESSION['clothing']/4). " clothes<br/>";			
@@ -120,6 +124,7 @@
 		}
 		else{
 			$msg .= "You crossed fine<br/>";
+			$msg.= "<img src=\"images/riverCrossing.gif\"><br/>";
 		}
 		
 	}
@@ -127,6 +132,7 @@
 	
 		if ($chance < 25){
 			$msg.= "Your wagon tipped over <br/>";
+			$msg.= "<img src=\"images/riverFailing.gif\"><br/>";
 		
 			if ($_SESSION["oxen"] > 0){
 				$msg .= "You lost 1 oxen<br/>";			
@@ -151,10 +157,10 @@
 				$_SESSION["tongues"] = $_SESSION["tongues"]-1;
 			}
 			
-			$msg .= "You lost ".ceil($_SESSION['money']/4). "money<br/>";			
+			$msg .= "You lost ".ceil($_SESSION['money']/4). " dollars<br/>";			
 			$_SESSION["money"] =floor( $_SESSION["money"]*3/4);
 		
-			$msg .= "You lost ".ceil($_SESSION['food']/6). "food<br/>";			
+			$msg .= "You lost ".ceil($_SESSION['food']/6). " food<br/>";			
 			$_SESSION["food"] = floor( $_SESSION["food"]*5/6);
 		
 			$msg .= "You lost ".ceil($_SESSION['clothing']/4). " clothes<br/>";			
@@ -162,6 +168,7 @@
 		}
 		else{
 			$msg .= "You crossed fine<br/>";
+			$msg.= "<img src=\"images/riverCrossing.gif\"><br/>";
 		}
 		
 	
@@ -170,6 +177,7 @@
 		
 		if ($chance < 40){
 			$msg.= "Your wagon tipped over <br/>";
+			$msg.= "<img src=\"images/riverFailing.gif\"><br/>";
 		
 			if ($_SESSION["oxen"] > 0){
 				$msg .= "You lost 1 oxen<br/>";			
@@ -195,10 +203,10 @@
 				$_SESSION["tongues"] = $_SESSION["tongues"]-1;
 			}
 			
-			$msg .= "You lost ".ceil($_SESSION['money']/4). "money<br/>";			
+			$msg .= "You lost ".ceil($_SESSION['money']/4). " dollars<br/>";			
 			$_SESSION["money"] =floor( $_SESSION["money"]*3/4);
 		
-			$msg .= "You lost ".ceil($_SESSION['food']/6). "food<br/>";			
+			$msg .= "You lost ".ceil($_SESSION['food']/6). " food<br/>";			
 			$_SESSION["food"] = floor( $_SESSION["food"]*5/6);
 		
 			$msg .= "You lost ".ceil($_SESSION['clothing']/4). " clothes<br/>";			
@@ -206,6 +214,7 @@
 		}
 		else{
 			$msg .= "You crossed fine<br/>";
+			$msg.= "<img src=\"images/riverCrossing.gif\"><br/>";
 		}
 		
 		
@@ -214,7 +223,7 @@
 	elseif ($chose == "ferry"){
 	// wait round(chance/10) days, with health updates
 		$chance = rand(1,5);
-		$_SESSION["day"]= $chance + $_SESSION["day"];
+		$_SESSION["day"].= $chance;
 		$msg .= "You waited $chance days<br/>";
 		if ($_SESSION["locale"] > 3){
 			$msg .= "It costed you 3 clothes<br/>";
@@ -225,6 +234,7 @@
 			$_SESSION["money"] =$_SESSION["money"]-5;
 		}
 		$msg .= "You crossed fine<br/>";
+		$msg .= "<img src=\"images/riverCrossing.gif\"><br/>";
 	}
 	
 	
