@@ -1,3 +1,11 @@
+<?php
+/*
+Trail Info Page of the Oregon Trail Game
+This page tells the player about the trail
+gives hints and mentions the members of
+this project
+*/
+?>
 <?xml version = "1.0"?>
 <!DOCTYPE html PUBLIC "-//w3c//DTD XHTML 1.1//EN"
   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -28,15 +36,15 @@
   </p>
   <p> What about supplies? Well, if you're low on food
   <br>
-  you can hunt. You might get a buffalo... you might. 
+  you can fish. Reel in the fish quickly or they'll get away. 
   <br>
-  And there are bear in the mountains.
+  Catch as many as you can!
   </p>
-  <p>At the Dalles, you can try navigating the Columbia River,
+  <p>At South Pass, you can try navigating the Green River,
   <br>
   but if running the rapids with a makeshift raft makes you
   <br>
-  queasy, better take the Barlow Road.
+  queasy, better head to Fort Bridger.
   </p>
   <p>If for some reason you don't survive -- your wagon burns,
   <br>
